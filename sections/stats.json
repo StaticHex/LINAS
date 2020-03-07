@@ -1,0 +1,73 @@
+[
+    {
+        "name":"Health Points",
+        "abbr":"HP",
+        "description":[
+            "This represents the amount of damage an entity can take before going",
+            "unconscious (or dying, in the case of some monsters or NPCs)."
+        ]
+    },
+    {
+        "name":"Magic Points",
+        "abbr":"MP",
+        "description":[
+            "This represents the amount of magical energy an entity is able to utilize to",
+            "cast spells or use special abilities."
+        ]
+    },
+    {
+        "name":"Strength",
+        "abbr":"STR",
+        "description":[
+            "This determines how physically strong the entity is. This is added to the",
+            "attack roll for most physical non-ranged weapons and is also used to determine",
+            "whether the entity can equip some of the heavier weapons and armors."
+        ]
+    },
+    {
+        "name":"Dexterity",
+        "abbr":"DEX",
+        "description":[
+            "This represents a measure of an entity's hand-eye coordination. This is added",
+            "to the attack roll for most physical ranged weapons (mainly bows and",
+            "crossbows).  This is also added to the attack roll for most martial arts",
+            "abilities."
+        ]
+    },
+    {
+        "name":"Intelligence",
+        "abbr":"INT",
+        "description":[
+            "Represents how easily an entity can understand spells and other forms of",
+            "magic. This is added to the attack roll for most magic attacks. This is also",
+            "a required stat in order to use some high level arcane items and spells."
+        ]
+    },
+    {
+        "name":"Endurance",
+        "abbr":"END",
+        "description":[
+            "A measure of how resilient an entity's body is against physical damage.",
+            "This is added to the defense roll for all physical weapons (both ranged",
+            "and melee)."
+        ]
+    },
+    {
+        "name":"Spirit",
+        "abbr":"SPR",
+        "description":[
+            "A measure of how resilient an entity's mind is against magical damage",
+            "(including spectral damage). This is added to the defense roll for all",
+            "non-physical attacks."
+        ]
+    },
+    {
+        "name":"Speed",
+        "abbr":"SPD",
+        "description":[
+            "How fast the user can move. This is both used to calculate initiative and",
+            "is also added to the number of squares an entity can move during a single",
+            "round of combat."
+        ]
+    }
+]

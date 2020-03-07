@@ -1,0 +1,352 @@
+[
+	{
+		"title":"Combat Skills",
+		"description":[
+			"&emsp;&emsp;&emsp;&emsp;",
+			"As their name suggests; these skills are primarily used for combat and are",
+			"generally associated with a certain weapon type or group"
+		],
+		"skills":[
+			{
+				"name":"Archery",
+				"description":[
+					"A ranged weapon skill. This primarily refers to bows, longbows, and crossbows.",
+					"For rifles marksmanship should be used instead. The reason for splitting this",
+					"skill into two is that the usage of a bow is so different from a gun that it",
+					"wouldn't make sense to combine the two."
+				]
+			},
+			{
+				"name":"Bashing",
+				"description":[
+					"This is the skill required to fight with clubs, maces, shields and virtually",
+					"any other non-bladed weapon. This also encompasses abilities related to these",
+					"weapons; although there are far fewer abilities associated with this class vs.",
+					"swordsmanship."
+				]
+			},
+			{
+				"name":"Fencing",
+				"description":[
+					"Like swordsmanship, this groups several weapons together in an effor to keep",
+					"the system simple and is primarily used for rapiers, knives, and pole arms",
+					"such as spears and quarterstaves"
+				]
+			},
+			{
+				"name":"Marksmanship",
+				"description":[
+					"This skill is primarily used for rifles and mechanical ranged weaponry like the",
+					"tinker class' dart gun. This is also the skill needed to fire cannons, catapults",
+					"and trebuchets."
+				]
+			},
+			{
+				"name":"Martial Arts",
+				"description":[
+					"When fighting unarmed, this is the skill which is used. By default; all",
+					"unarmed characters do 2 damage + strength. However, there are also many",
+					"abilities which supplement this skill which can turn an unarmed user into",
+					"a formidable foe."
+				]
+			},
+			{
+				"name":"Swordsmanship",
+				"description":[
+					"This skill is a bit broad, encompassing both European and Eastern sword",
+					"styles. This skill is used both for attacking with swords and axes as well",
+					"as for using abilities related to these weapons"
+				]
+			}
+		]
+	},
+	{
+		"title":"General Skills",
+		"description":[
+			"&emsp;&emsp;&emsp;&emsp;",
+			"These are skills which are equally useful to all classes. While it may be tempting",
+			"to take multiple skills from this category, some may be more useful than others. The",
+			"DM and player should work together to pick skills which both fit with their",
+			"character's background and also which will end up benefiting the player or the party."
+		],
+		"skills":[
+			{
+				"name":"Forecasting",
+				"description":[
+					"Weather can be an important aspect of a campaign and being able to forecast",
+					"the weather can give the party significant advantages; especially in locations",
+					"where it changes often."
+				]
+			},
+			{
+				"name":"Perception",
+				"description":[
+					"This skill generally refers to how aware an entity is to their surroundings. A",
+					"high perception skill can help avoid ambushes, traps, and other environmental",
+					"hazards before springing them."
+				]
+			},
+			{
+				"name":"Sensing",
+				"description":[
+					"While perception typically corresponds with the physical aspects of the",
+					"environment; sensing refers to the spiritual, magical, or otherwise unseen",
+					"aspects of the environment. These two skills are mutually exclusive, meaning",
+					"an entity with a high perception would be unaware of a curse or evil spirit",
+					"without seeing the physical signs of their presence."
+				]
+			},
+			{
+				"name":"Speech",
+				"description":[
+					"Another area where the system has been simplified is speech. This pretty much",
+					"includes everything related to charisma. Inimidation, flattery, haggling,",
+					"persuasion, etc. Meaning, everything related to speech is encompassed by",
+					"this skill."
+				]
+			}
+		]
+	},
+	{
+		"title":"Specialized Skills",
+		"description":[
+			"&emsp;&emsp;&emsp;&emsp;",
+			"Specialized skills are skills which are geared towards a specific class or job.",
+			"With this being said, there are no rules against picking one of the skills below",
+			"regardless as Kite in general strives to promote creativity and character",
+			"development."
+		],
+		"skills":[
+			{
+				"name":"Foraging",
+				"description":[
+					"The ability to gather plants or other natural resources from a given area.",
+					"This is primarily used for alchemists and cooks to gather ingredients for",
+					"crafting but can sometimes be used in a pinch if the user has no way to",
+					"heal themselves or otherwise give themselves aid."
+				]
+			},
+			{
+				"name":"Lockpicking",
+				"description":[
+					"Allows an entity to get into places (or chests) which they normally wouldn't",
+					"have access to. This only applies to physical locks, not magic locks and seals"
+				]
+			},
+			{
+				"name":"Pickpocket",
+				"description":[
+					"This is the ability to lift items off of an entity without them noticing.",
+					"While it's most often used to acquire a bit of extra pocket change; it can",
+					"be quite useful for getting things like keys, maps, or other required quest",
+					"items without having to resort to battle."
+				]
+			},
+			{
+				"name":"Stealth",
+				"description":[
+					"The ability to move and operate unseen or otherwise unnoticed. While some",
+					"classes rely more heavily on this skill than others; it is a useful skill for",
+					"almost any class and can help avoid wasting time and resources unnecessarily."
+				]
+			},
+			{
+				"name":"Taming",
+				"description":[
+					"This is used to determine how easily wild animal and beasts trust the user.",
+					"It should be noted that in this game; dragons, mu, and a few other races which",
+					"share features with beasts are considered sentient and as such require speech",
+					"to persuade them in lieu of this skill."
+				]
+			},
+			{
+				"name":"Tracking",
+				"description":[
+					"The ability to detect an entity's movement either towards or away from a",
+					"given location over time. This is different than perception and is limited to",
+					"detecting the direction an entity has moved or the presence of entities over a",
+					"given time."
+				]
+			},
+			{
+				"name":"Magic",
+				"description":[
+					"In order to keep Kite's skill system from becoming too bloated; every form of",
+					"magic has been consolidated into a single skill. That being said, different",
+					"schools of magic do exist and combined with elemental specializations allow for",
+					"a great range of flexibility despite this."
+				]
+			},
+			{
+				"name":"Music",
+				"description":[
+					"Music as expected is the ability to perform songs using an instrument. While",
+					"seemingly innocuous, music can be used to impart a variety of effects on an",
+					"entity both inside and outside of battle and can also be used as a form of",
+					"income during freetime making it a fairly versatile skill."
+				]
+			},
+			{
+				"name":"Ninjitsu",
+				"description": [
+					"This skill is about controlling the flow of battle. Abilities of this class",
+					"involve a heavy amount of item use as well as heavy use of the enviornment.",
+					"This class also combines a few assassination techniques as well which make",
+					"it a good work in with the rogue class."
+				]
+			}
+		]
+	},
+	{
+		"title":"Crafting Skills",
+		"description":[
+			"&emsp;&emsp;&emsp;&emsp;",
+			"As the name suggests, the main goal of these skills is to create items out of",
+			"various materials and resources. There are several advantages to crafting items",
+			"such as: superior quality, being able to save gold, and obtaining items not",
+			"found in shops. This list is a bit long but includes both crafting skills as",
+			"well as the skills needed to gather resources for these skills."
+		],
+		"skills":[
+			{
+				"name":"Alchemy",
+				"description":[
+					"This can be thought of as \"magic chemistry\". ALchemists primarily study the",
+					"art of extracting the base essence of various items into potions. However,",
+					"alchemists also possess the ability to make several advanced compounds such",
+					"as gunpowder and distilled alcohol as well."
+				]
+			},
+			{
+				"name":"Carpentry",
+				"description":[
+					"This skill combines fletching and carpentry together into one skill. With that",
+					"in mind; this is used to craft wooden weapons as well as arrows."
+				]
+			},
+			{
+				"name":"Cooking",
+				"description":[
+					"This skill is a bit limited and generally is used to create meals which can be",
+					"eaten immediately to heal status conditions or HP/MP outside battle. Usually",
+					"cooks have a set menu of things they can prepare; although this menu is subject",
+					"to change depending on whether the cook chooses variety over improving existing",
+					"recipes."
+				]
+			},
+			{
+				"name":"Enchanting",
+				"description":[
+					"This is used to give items and equipment magical abilities. This skill can also",
+					" be used to recharge magic abilities for further use."
+				]
+			},
+			{
+				"name":"Logging",
+				"description":[
+					"Used to obtain logs from trees. Items obtained can be used for crafting, sold,",
+					"or for things like torches or campfires."
+				]
+			},
+			{
+				"name":"Mining",
+				"description":[
+					"Primarily used to dig ore and gems out of the earth. Items obtained can either",
+					"be used for crafting or sold."
+				]
+			},
+			{
+				"name":"Sewing",
+				"description":[
+					"Tailors are able to work with both leather and cloth to make various forms of",
+					"equipment. In some cases, tailors can even use unconventional materials for",
+					"cloth such as spider silk or mythril."
+				]
+			},
+			{
+				"name":"Smithing",
+				"description":[
+					"Used primarily for crafting equipment (weapons and armor) from different types",
+					"of metal. Although depending on the DM and the campaign, it might be possible to",
+					"use this skill as a sort of side job between quests."
+				]
+			},
+			{
+				"name":"Tinkering",
+				"description":[
+					"This is sort of an early form of engineering. Tinkers use a combination of wood,",
+					"leather, metal, and other natural resources in order to create gadgets and",
+					"simple machines. They're also extremely useful at repairing broken tools and",
+					"equipment.<p style=\"page-break-before: always;\"></p>"
+				]
+			}
+		]
+	},
+	{
+		"title":"Lore and Knowledge",
+		"description":[
+			"&emsp;&emsp;&emsp;&emsp;",
+			"Lore skills are primarily used to give players specialized information which may",
+			"help them solve problems more effectively or use items to a better degree than",
+			"someone without that knowledge. Unlike other skills; lore skills can have a",
+			"specialization which may permit the entity to know additional knowledge that an",
+			"unspecialized entity wouldn't know. The extent of this difference is largely",
+			"dependent on what the DM allows an entity to know however and no official",
+			"guidelines are defined."
+		],
+		"skills":[
+			{
+				"name":"Arcane Lore",
+				"description":[
+					"This is lore pertaining to history involving the magic arts or the occult.",
+					"Examples of this would include knowing who specific magic figures are, knowing",
+					"about specific magic items, being able to detect magic properties on an item, as",
+					"well as knowing about events related to magic which happened in a given area.",
+					"This can be specialized to a particular branch of magic or unspecialized",
+					"encompassing all branches of magic"
+				]
+			},
+			{
+				"name":"Profession Lore",
+				"description":[
+					"This is lore pertaining to a specific job or class. Examples of this would be",
+					"knowing a specific military tattoo having been in the military, or being able to",
+					"tell whether the vegetables in a market stand are fresh or not based on their",
+					"appearance. This can be specialized only as it wouldn't really make sense for",
+					"this to be unspecialized."
+				]
+			},
+			{
+				"name":"Regional Lore",
+				"description":[
+					"This is lore corresponding to a particular area or region. Like profession lore,",
+					"this cannot be unspecialized. This is usually taken if a character has strong",
+					"ties to the area or region from which they originate. If a character wishes to",
+					"take a regional lore they should work with the DM to discuss the specifics of",
+					"their knowledge ahead of time."
+				]
+			},
+			{
+				"name":"Undercity Lore",
+				"description":[
+					"The undercity is not actually a city at all but rather is a sociological",
+					"structure within all cities consisting of thieves, degenerates, and those who",
+					"don't let the confines of the law restrain them. Entities with knowledge of",
+					"this society are less likely to get conned or taken advantage of and will also",
+					"be able to obtain information and get items that normal upstanding citizens",
+					"wouldn't be able to obtain. This can be specialized to a specific group within",
+					"the undercity or unspecialized to the entire undercity."
+				]
+			},
+			{
+				"name":"Language",
+				"description":[
+					"This is used to declare additional languages which an entity knows in addition",
+					"to common; which all races know by default. It is also omportant to note that",
+					"each individual language must be taken as an additional lore skill. For a list",
+					"of languages a player can learn; please see the race section of this guide."
+				]
+			}
+		]
+	}
+]

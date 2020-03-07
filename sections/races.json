@@ -1,0 +1,213 @@
+[
+    {
+        "name":"Dragon Half",
+        "description":[
+            "The hybrid offspring of dragons and some other race. Usually fairly tall with ",
+            "scaled skin (color varying), tails, horns, and slit eyes. Despite their ",
+            "strength and genuinely calm nature, they are often ostracized by both sides of ",
+            "their families. Excluded from the dragon race for not being pure-blooded ",
+            "dragons and excluded from the human race for their appearance. Dragon halves ",
+            "have an elemental affinity with fire as well as increased strength and spirit ",
+            "making them formidable opponents or allies. "
+        ],
+        "stats":[
+            {"name":"Spirit", "value":1},
+            {"name":"Strength", "value":1}
+        ],
+        "abilities":[
+            {"name":"fire specialization", "type":"passive"},
+            {"name":"fire breath", "type":"active"}
+        ],
+        "languages":[
+            "Common",
+            "Draconic"
+        ]
+    },
+    {
+        "name":"Dwarf",
+        "description":[
+            "Dwarves are as rough as the mountains they make their homes in. Dwarves respect ",
+            "traits such as courage and strength. They favor direct combat using melee ",
+            "weapons and snub their noses especially hard at magic and ranged weapon users. ",
+            "For this reason, they and the elves don't share a particular good relationship ",
+            "with one another. "
+        ],
+        "stats":[
+            {"name":"Endurance", "value":1},
+            {"name":"Strength", "value":1}
+        ],
+        "abilities":[
+            {"name":"advanced metalworking", "type":"passive"},
+            {"name":"last stand", "type":"active"}
+        ],
+        "languages":[
+            "common",
+            "dwarven(modern)"
+        ]
+    },
+    {
+        "name":"Dark Elf",
+        "description":[
+            "Dark elves have a long history as dark wizards, ninjas, rogues as well as ",
+            "fairly competent blade masters. Generally making their home in damp and marshy ",
+            "places; and surprisingly they tend to be one of the more devout varieties of ",
+            "elf taking great care to honor ancient ceremonies and traditions as well as ",
+            "fiercely protecting sacred artifacts and holy sites. "
+        ],
+        "stats":[
+            {"name":"Intelligence", "value":1},
+            {"name":"Dexterity", "value":1}
+        ],
+        "abilities":[
+            {"name":"fast study", "type":"passive"},
+            {"name":"blood magic", "type":"active"}
+        ],
+        "languages":[
+            "Elvish (Dark)",
+            "Common"
+        ]
+    },
+    {
+        "name":"Forest Elf",
+        "description":[
+            "One of the few elven tribes to remain on their ancestral homelands the Forest ",
+            "Elves are sometimes seen as sheltered or naïve by the other Elven tribes. ",
+            "Forest elves also share a greater number of connections with races outside ",
+            "their own due to a high demand for elven crafted goods. "
+        ],
+        "stats":[
+            {"name":"Intelligence", "value":1},
+            {"name":"Dexterity", "value":1}
+        ],
+        "abilities":[
+            {"name":"arboreal parkour", "type":"passive"},
+            {"name":"multi-shot", "type":"active"}
+        ],
+        "languages":[
+            "Elvish (Forest)",
+            "Common"
+        ]
+    },
+    {
+        "name":"High Elf",
+        "description":[
+            "Seen as cowards and traitors by their own tribes and as arrogant and ",
+            "off-putting by many of the other races. High Elves can usually be found in ",
+            "positions of power or prestige. Their abilities with control magic combined ",
+            "with their connections to nobility and royalty usually make them powerful ",
+            "behind the scenes characters. However, High Elves are also gifted mages and can ",
+            "certainly hold their own in battle just as well as the rest of their brethren. "
+        ],
+        "stats":[
+            {"name":"Intelligence", "value":1},
+            {"name":"Dexterity", "value":1}
+        ],
+        "abilities":[
+            {"name":"heightened reflexes", "type":"passive"},
+            {"name":"perfect seal", "type":"active"}
+        ],
+        "languages":[
+            "Elvish (High)",
+            "Common"
+        ]
+    },
+    {
+        "name":"Ice Elf",
+        "description":[
+            "An ancient elven tribe which is said to have had strong ties to the Mu at one ",
+            "point. Kept fairly isolated until recent times, the Ice Elves homeland has ",
+            "recently become a spot of interest from outsiders due to the discovery of large ",
+            "deposits of Mythril. Because of this Ice Elves can be a bit standoffish when ",
+            "dealing with other races. However, once an Ice Elf's trust is earned their ",
+            "skills with water and control magic make them powerful allies. "
+        ],
+        "stats":[
+            {"name":"Intelligence", "value":1},
+            {"name":"Dexterity", "value":1}
+        ],
+        "abilities":[
+            {"name":"water specialization", "type":"passive"},
+            {"name":"snow veil", "type":"active"}
+        ],
+        "languages":[
+            "Elvish (Ice)",
+            "Common"
+        ]
+    },
+    {
+        "name":"Human",
+        "description":[
+            "While humans may not specialize in any one area. They are extremely flexible ",
+            "and adaptive. Humans hold the most power of all races primarily due to their ",
+            "speech. However, this isn't to say humans are completely helpless either and ",
+            "have been involved with numerous skirmishes with most of the other races ",
+            "particularly in the area of religious conflict. This is especially true among ",
+            "the elves who have had much of their homeland seized by the humans in order to ",
+            "obtain control of various Elven holy sites as well as access to natural ",
+            "resources at those sites. "
+        ],
+        "stats":[
+            {"name":"Any", "value":1}
+        ],
+        "abilities":[
+            {"name":"silver tongue", "type":"passive"},
+            {"name":"prayer", "type":"active"}
+        ],
+        "languages":[
+            "Common"
+        ]
+    },
+    {
+        "name":"Mu",
+        "description":[
+            "The Mu are an ancient race which has been hunted nearly to extinction after ",
+            "being exiled from their homeland due to natural disaster. Mu are generally ",
+            "anywhere from 6 - 7 feet tall and have a hunched appearance. Their snout tends ",
+            "to be rounded and their floppy ears droop down on either side of their head. ",
+            "Their eyes tend to be large and round, similar to those of a dog and their ",
+            "entire body is covered with long shaggy hair except for their hands, feet, ",
+            "face, and tail. Mu fur is extremely high quality and holds magic properties, ",
+            "hence the poaching. The Mu tend to be especially acclimated to magic and some ",
+            "myths even suggest the Mu alongside the Dragons created magic. "
+        ],
+        "stats":[
+            {"name":"spr", "value":1},
+            {"name":"int", "value":1}
+        ],
+        "abilities":[
+            {"name":"advanced decomposition", "type":"passive"},
+            {"name":"borrowed knowledge", "type":"active"}
+        ],
+        "languages":[
+            "Alyssian",
+            "Common"
+        ]
+    },
+    {
+        "name":"Vampire",
+        "description":[
+            "Vampires can both be created and birthed and are an actual race. Rather than ",
+            "being true undead. In Kite, vampires are merely creatures aligned with the ",
+            "shadow element. Many other aspects of vampires such as being damaged by ",
+            "sunlight hold true however. Vampires have naturally heightened speed as well as ",
+            "a natural resistance to magic. To be transformed into a vampire; an entity must ",
+            "both be bitten by the vampire as well as drink a small amount of that vampires ",
+            "blood. Being transformed into a vampire replaces all racial abilities with the ",
+            "vampire's. And the vampire's stat bonuses are immediately added to the ",
+            "character's stats. However, to learn the Alyssian language, the entity will ",
+            "still need to study that as a language skill. "
+        ],
+        "stats":[
+            {"name":"spr", "value":1},
+            {"name":"spd", "value":1}
+        ],
+        "abilities":[
+            {"name":"vampiric curse", "type":"passive"},
+            {"name":"vampiric feeding", "type":"active"}
+        ],
+        "languages":[
+            "Alyssian",
+            "Common"
+        ]
+    }
+]

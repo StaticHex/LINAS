@@ -1,0 +1,51 @@
+{
+    "description":[
+        "&emsp;&emsp;&emsp;&emsp;",
+        "This is a primer developed for the Kite tabletop system focuses on building games",
+        "with a classic fantasy theme (swords and sorcery). It defines everything which", 
+        "players need to create characters and everything a dungeon master will need to",
+        "create a campaign."
+    ],
+    "overrides":[
+        "None"
+    ],
+    "optional-components":[
+        "Effects & Abilities",
+        "Loot Tables"
+    ],
+    "added-components":[
+        { "Currency":
+            [
+                "Gold (G)"
+            ]
+        },
+        {
+            "Initiative":[
+                "Players roll 1d6 at the start of combat and then add their speed",
+                "stat as well as any modifications from weapons and armor to determine",
+                "battle order. Highest value goes first, lowest value goes last.",
+                "(put under combat)"
+            ]
+        },
+        {
+            "Races":[
+                "Adds the concept of racial abilities, languages, and stat/skill bonuses",
+                "to the game."
+            ]
+        },
+        {
+            "Classes":[
+                "Adds a job system to the game, players can still create their own character",
+                "from scratch and these are more of guidelines vs. hard set restrictions on",
+                "what a character can play."
+            ]
+        },
+        {
+            "Crafting":[
+                "Adds the ability for users to craft equipment and items themselves from purchased",
+                "or obtained resources. (put under items)"
+            ]
+        }
+    ]
+
+}

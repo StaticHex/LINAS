@@ -1,0 +1,22 @@
+{
+    "elem":[
+        {"name":"Earth", "elem":"earth", "weak":"wind"},
+        {"name":"Fire","elem":"fire", "weak":"water"},
+        {"name":"Wind","elem":"wind","weak":"earth"},
+        {"name":"Water","elem":"water","weak":"fire"},
+        {"name":"Light","elem":"light","weak":"dark"},
+        {"name":"Dark","elem":"dark","weak":"light"},
+        {"name":"Electricity","elem":"wind and light","weak":"earth and dark"},
+        {"name":"Ice","elem":"water and dark","weak":"fire and light"},
+        {"name":"Wood","elem":"water and wind","weak":"fire and earth"},
+        {"name":"Metal","elem":"earth and fire","weak":"wind and water"}
+    ],
+    "environ":[
+        {"name":"Forest", "adv":"forest", "dis":"prarie"},
+        {"name":"Mountain", "adv":"mountain", "dis":"swamp"},
+        {"name":"Swamp", "adv":"swamp", "dis":"snow"},
+        {"name":"Field", "adv":"prarie", "dis":"mountain"},
+        {"name":"Snow", "adv":"snowy", "dis":"desert"},
+        {"name":"Sand", "adv":"desert", "dis":"forest"}
+    ]
+}

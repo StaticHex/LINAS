@@ -1,0 +1,7 @@
+*.pyc
+__pycache__
+.vscode/*
+.ipynb_checkpoints/*
+testing.ipynb
+*.html
+*.pdf
