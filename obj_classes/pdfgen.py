@@ -95,7 +95,7 @@ class PDFGen:
         self.__add_title('./sections/title.json')
 
         # Create description page
-        self.__add_description('./sections/description.json')
+        # self.__add_description('./sections/description.json')
 
         # Create contents page
         self.__add_contents([
@@ -111,8 +111,7 @@ class PDFGen:
             "Abilities",
             "Effects & Status Conditions",
             "Item",
-            "Entities",
-            "Loot Tables"
+            "Entities"
         ])
 
         # Create introduction section
@@ -981,9 +980,6 @@ class PDFGen:
                         </span>
                     </div>
                     <div class="cont-inner">
-                        Description
-                    </div>
-                    <div class="cont-inner">
                         <span class="rel" style="width: 10%;"><strong>Levels</strong></span>
                         <span class="rel" style="width: 10%;"><strong>MP Cost</strong></span>
                         <span class="rel" style="width: 10%;"><strong>Req. Stat</strong></span>
@@ -996,7 +992,163 @@ class PDFGen:
                 </div>
                 """
             ),
-            parser=self.__parse_spells
+            parser=self.__parse_spells,
+            suffix=self.__htag(
+                "Creating Custom Spells"
+            )+self.__paragraph(
+                """
+                Like most aspects of the system, spell creation is completely open and the
+                system itself kind of assumes that at some point there will be the need to
+                create some spell which the system doesn't support simply because everyone's
+                idea of what certain things are is different. For examply, what I view as a
+                "druid spell" may differ vastly from what you view as a "druid spell".
+                """
+            )+self.__paragraph(
+                """
+                With the above in mind, spell creation is largely left up to the GM and Players
+                to work out. That being said, there are a few recommended guidelines designed to
+                keep spells from becoming too powerful. It is up to the GM to enforce these and
+                they are certainly not mandatory. However, if the GM or player are uncertain on
+                how to go about creating a spell, these are certainly good guidelines to follow:
+                <ol>
+                    <li>
+                        Add 1 mana to the MP cost for the spell for every 1 block of damage a
+                        spell inflicts, prevents, or restores.
+                    </li><br/>
+                    <li>
+                        Add 2 MP to the MP cost for the spell if the spell inflicts a status
+                        condition
+                    </li><br/>
+                    <li>
+                        Only 1 status condition can be added to a spell at a time
+                    </li><br/>
+                    <li>
+                        Add 1 MP to the MP cost for the spell for each entity the spell targets
+                        past the first.
+                    </li><br/>
+                    <li>
+                        If a spell targets an area vs. a single entity, double the mana cost
+                        of the spell.
+                    </li><br/>
+                    <li>
+                        If a spell targets an entire team or the entire field, triple the mana
+                        cost of the spell
+                    </li><br/>
+                    <li>
+                        If a spell targets a random entity, or team; half the mana cost of the
+                        spell.
+                    </li>
+                    <li>
+                        If a spell is ongoing, decrease the mana cost of the spell by 2
+                    </li><br/>
+                    <li>
+                        If a spell is ongoing, caster must pay 1/2 of the spell's MP cost at
+                        the beginning of each turn to keep the spell going.
+                    </li><br/>
+                    <li>
+                        For every 3 mana the spell costs, increase the stat requirement by 1
+                        e.g. a spell which costs 15 to cast has a stat requirement of 5
+                    </li><br/>
+                    <li>
+                        When a spell levels up, multiply the damage and MP cost by the spell's
+                        level to obtain the new damage and MP cost. e.g. if a spell does 2
+                        damage and costs 4 MP at level 1, it will deal 4 damage and cost 8 MP
+                        at level 2.
+                    </li><br/>
+                    <li>
+                        A spell's "max level" is reached when either the spell reaches level 5,
+                        the stat requirement goes above 5, or the MP cost goes above 20.
+                    </li><br/>
+                </ol>
+                """
+            )+self.__htag(
+                "Leveling Up Spells"
+            )+self.__paragraph(
+                """
+                Spells are typically leveled up through training or studying. The exact
+                amount of time needed for a spell to level up is up to the GM.
+                Additionally, the GM can decide to have the player roll to level up.
+                one nice idea when rolling to level up and to keep things from getting
+                to stale is to add a bonus point to damage if the player rolls a 6 or 
+                add an additional point to the MP cost if they roll a 1. Like most other
+                things in the system, the specifics on leveling up spells are largely
+                between the GM and players to work out and nothing printed in this
+                section or the one above detailing "spell creation rules" should be
+                considered hardfast. The GM always has the ability to override the rules
+                """
+            )+self.__paragraph(
+                "<h3>Forgetting Spells</h3>",
+                add_br=False
+            )+self.__paragraph(
+                """
+                Forgetting spells is much less involved than forgetting skills. You simply strike
+                through or cross out the spell from your spellbook (something to indicate you no
+                longer know that spell). However, before forgetting a spell it should be noted that
+                once forgotten, all the time spent training that spell will be lost. If you decide
+                to re-learn the spell at a later time; you will have to start from scratch.
+                """
+            )
+        )
+
+        self.__add_section(
+            title  = "10. Abilities",
+            prefix = self.__paragraph(
+                """
+                Abilities can be thought of as extra perks or advantages which make a character
+                uniqoe or give a character an edge over other characters in certain situations.
+                Generally speaking, everyone starts the game with at least 2 abilities due to
+                their race. As a general rule and to keep any one character from getting too
+                overpowered A character is limited to 3 abilities. However, in an effort to
+                keep characters dynamic, abilities can be forgotten similar to spells. For more
+                on this see the section labeled "Forgetting Abilities" at the end of this section
+                """
+            ),
+            parser=self.__parse_abilities,
+            suffix=self.__htag(
+                "Forgetting Abilities"
+            )+self.__paragraph(
+                """
+                Like spells, abilities can be forgotten by striking through them, crossing them out
+                or otherwise marking them as forgotten in some way. This is doen to keep characters
+                flexible. Additionally, unlike spells; abilities don't really level up so there's
+                less of a penalty for forgetting them. This being said, the GM may attach conditions
+                to learning certain abilities and so like spells, when an ability is forgotten it
+                should be assumed that re-learning that ability will result in relearning from scratch.
+                """
+            )+self.__htag(
+                "Creating Custom Abilities"
+            )+self.__paragraph(
+                """
+                Like most aspects of the system, if there is a particular ability a player wants for
+                their character; the GM and that player should work together to make that ability a
+                reality. That being said there are a few suggestions for creating abilities to keep
+                the game balanced and as always the GM may add to or override any of the suggested
+                rules below:
+                <ul>
+                    <li>
+                        If the ability is an active ability, it is recommended to limit the number
+                        of uses a character can use that ability per session. Most active abilities
+                        can only be used once. However, this is not a steadfast rule and there may
+                        be times when an active ability can be permitted to be used multiple times
+                        per rest period or may recharge under completely different circumstances.
+                    </li><br/>
+                    <li>
+                        If a passive ability gives an advantage under certain conditions e.g.
+                        weather, location, using certain types of magic, etc. It is recommended
+                        that the ability give a proportional disadvantage under some other
+                        condition. For example, if the character gets a +2 to speed when the
+                        weather is sunny, give the character -2 to speed when it's raining.
+                    </li><br/>
+                    <li>
+                        If the passive ability is dependent on a specific action to be
+                        performed, a negative does not need to be assigned; however it is
+                        recommended to keep abilities like these fairly weak to avoide the
+                        game becoming unbalanced. e.g. If character rolls a 6 when resting
+                        HP is restored to full, regardless of location.
+                    </li><br/>
+                </ul>
+                """
+            )
         )
 
 
@@ -1377,6 +1529,49 @@ class PDFGen:
 
     """
     ============================================================================
+    = Parse Abilities Method                                                   =
+    = ------------------------------------------------------------------------ =
+    = description:                                                             =
+    = Reads in ability data loaded from file and adds it to the appropriate    =
+    = html section.                                                            =
+    ============================================================================
+    """   
+    def __parse_abilities(
+        self    # (Ref) A reference ot this class, required by all members
+    ):
+        ability_tree = self.__loader.get('abilities')
+        keys = ability_tree.getContentNames()
+        for key in keys:
+            section = ability_tree.get(key)
+            abilities = section.getEntryNames()
+            self.__open_tag('u')
+            self.__open_tag('h3')
+            self.__write(section.name.title())
+            self.__close_tag()
+            self.__close_tag()
+            self.__open_tag('p')
+            self.__write(' '.join(section.description))
+            self.__close_tag()
+            for entry in abilities:
+                ability = section.get(name=entry)
+
+                #sect = cat.get(ability['type'])
+                #a = sect.get(ability['name'])
+                atype = section.name.title()
+                self.__open_tag('div',{'class':'container'})
+                self.__open_tag('div',{'class':f'{atype.lower()[0]}-abil-title cont-inner'})
+                self.__write(f"<strong>{ability['name']}</strong>")
+                self.__close_tag()
+                self.__open_tag('div',{'class':'cont-inner'})
+                self.__write(' '.join(ability['description']))
+                self.__close_tag()
+                self.__close_tag()
+                self.__write("<br/>")
+            if key != keys[-1]:
+                self.__page_break()
+
+    """
+    ============================================================================
     = Parse Spells Method                                                      =
     = ------------------------------------------------------------------------ =
     = description:                                                             =
@@ -1402,7 +1597,54 @@ class PDFGen:
             self.__close_tag()
             for entry in sec_spells:
                 sp = sec.get(name=entry)
-                rng = sp['range'] == '?' and '?' or sp['range']
+
+                # Use spell rules to define MP cost here
+                targetTypes = {
+                    'self':1,
+                    'ground':1,
+                    'entity':1,
+                    'area':2,
+                    'team':3,
+                    'all':3,
+                    'rentity':0.5,
+                    'rarea':1,
+                    'rteam':1.5,
+                    'rall':1.5
+
+                }
+                # First calculate spell's base cost
+                base_cost = sp['dmg']                                  # 1. spell damage determines base mana cost
+                base_cost += (2 if sp['condition'] else 0)             # 2. If spell causes a status condition +2 to cost
+                base_cost += max(0, sp['numTargets'] - 1)              # 3. Increase mana cost by 1 for each target past the 
+                                                                       #    first
+                base_cost *= targetTypes[sp['targetType']]             # 4. If spell targets an area, double the  mana cost
+                                                                       # 5. If spell targets entire team or entire field triple
+                                                                       #    mana cost
+                                                                       # 6. If spell target is random, half mana cost
+                base_cost = max(                                       # 7. If spell is ongoing, decrease MP cost by 2
+                    0, 
+                    base_cost - (2 if sp['ongoing'] else 0)
+                )
+                base_cost = max(0, base_cost + sp["bonus"])            # 8. GM may choose to increase/decrease MP cost for 
+                                                                       #    a spell
+                
+                # Next, check to see if max level needs to be updated
+                m_lev_adj = 0
+                mp_cost = int(round(base_cost*(m_lev_adj+1)))
+                req_stat = int(round(mp_cost / 3))
+                level_check = m_lev_adj < sp["maxLevel"]
+                mp_check    = mp_cost <= 20
+                stat_check  = req_stat <= 5
+                while level_check and mp_check and stat_check:
+                    m_lev_adj += 1
+                    mp_cost = int(round(base_cost*(m_lev_adj+1)))
+                    req_stat = int(round(mp_cost / 3))
+                    level_check = m_lev_adj < sp["maxLevel"]
+                    mp_check    = mp_cost <= 20
+                    stat_check  = req_stat <= 5
+                sp["maxLevel"] = m_lev_adj
+
+                rng = ('?' if sp['range'] == '?' else sp['range'])
                 elem = self.__elemTags[sp['element']]
                 self.__open_tag('div',{'class':'container pop'})
                 self.__open_tag('div',{'class':'cont-title'})
@@ -1419,11 +1661,8 @@ class PDFGen:
                 self.__close_tag()
                 styles='width: 17.85%; padding-top: 0px; text-align: right;'
                 self.__open_tag('span',{'class':'rel','style':f'{styles}'})
-                self.__write(sp['max-level']*'&nbsp;&#9734;')
+                self.__write(sp['maxLevel']*'&nbsp;&#9734;')
                 self.__close_tag()
-                self.__close_tag()
-                self.__open_tag('div', {'class':'cont-inner'})
-                self.__write(' '.join(sp['description']).format(**self.__elemTags))
                 self.__close_tag()
                 self.__open_tag('div',{'class':'cont-inner'})
                 self.__open_tag('span',{'class':'rel','style':'width: 15%;'})
@@ -1440,18 +1679,28 @@ class PDFGen:
                 self.__write('<strong>Effect(s)</strong>')
                 self.__close_tag()
                 self.__write('<hr style="border: 1px solid #dddddd;">')
-                for i in range(0, sp['max-level']):
-                    mp_cost = sp['mp-cost-pl'] == '?' and '?' or (i+1)*sp['mp-cost-pl']
-                    req_stat = len(sp['req-stat']) and sp['req-stat'][i] or '-'
-                    level_desc = ' '.join(sp['effects']['description'])
-                    if len(sp['effects']['tags']):
-                        level_desc = level_desc.format(
-                            **sp['effects']['tags'][i],**self.__elemTags
+                
+                if sp['ongoing']:
+                    sp['notes'].append(
+                        ' '.join(
+                            [
+                                "Must pay 1/2 cost of spell (rounded up)",
+                                "at the beginning of each turn to keep",
+                                "the spell going."
+                            ]
                         )
-                    else:
-                        level_desc = level_desc.format(
-                            **self.__elemTags
-                        )   
+                    )
+
+                for i in range(0, sp["maxLevel"]):
+                    mp_cost = int(round(base_cost * (i+1)))
+                    req_stat_val = int(round(mp_cost / 3))
+                    req_stat = ("{stat} {val}" if req_stat_val else "-").format(
+                        stat=sp['stat'],
+                        val = req_stat_val
+                    )
+                    level_desc = ' '.join(sp['description']).format(
+                        dmg=sp['dmg']*(i+1)
+                    )
                     color = 'background: {col};'.format(
                         col = i % 2 and '#e0e0e0' or '#ffffff'
                     )
@@ -1473,9 +1722,10 @@ class PDFGen:
                 if len(sp['notes']):
                     self.__open_tag('div',{'class':'cont-inner'})
                     self.__open_tag('ul')
-                    self.__open_tag('li')
-                    self.__write(' '.join(sp['notes']).format(**self.__elemTags))
-                    self.__close_tag()
+                    for note in sp['notes']:
+                        self.__open_tag('li')
+                        self.__write(note)
+                        self.__close_tag()
                     self.__close_tag()
                     self.__close_tag()
                 self.__close_tag()

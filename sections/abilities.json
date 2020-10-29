@@ -176,7 +176,7 @@
                 "<t>":"elem",
                 "name":"{name} Specialization",
                 "description":[
-                    "All elementally based magic attacks are taken to be the {elem}",
+                    "All non-elementally based magic attacks are taken to be the {elem}",
                     "element. Meaning, elementally based attacks do 1/2 damage to",
                     "{elem} based entities and deal 2x damage to {weak}",
                     "based entities. Additionally, this entity takes 1/2 damage from",

@@ -1,2 +1,25 @@
-
-================================================================================
+print_spell({
+    "name":"Summon Daemon",
+    "description":"""
+    The caster calls out for help from an alternate dimension.
+    """,
+    "element":"dark",
+    "max-level":2,
+    "mp-cost-pl":4,
+    "req-stat":['INT 1','INT 3'],
+    "effects":{
+        "tags":[
+            {'effect':'whose horrible visage casts fear on target entity'}
+            {'effect':'to fight alongside the user'}
+        ],
+        "description":"""
+        User summons a shogoth from an alternate dimension {effect}
+        ================================================================================
+        """
+    },
+    "notes":"""
+    Summoned entities drop nothing when killed. Entity is summoned adjacent to caster.
+    Summoner controls actions for summoned entity. Summoned entity rolls initiative
+    immediately when summoned.
+    """
+})

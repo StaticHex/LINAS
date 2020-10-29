@@ -1,1032 +1,937 @@
 [
     {
-        "title":"Basic Spells",
+        "title":"Light Magic Spells",
         "description":[
-            "The spells under this category are generally the spells which are useful to all",
-            "magic users when first starting out. That being said these spells are fairly",
-            "versatile but are usually discarded by pure mages later on as more powerful",
-            "spells become available and these are generally considered to be novice level",
-            "spells."
+			
+			"The spells in this category are generally defensive and restorative in nature",
+			"even if your character isn't specializing in healing or magic in general;",
+			"picking up one or two of these spells can be extremely helpful especially if",
+			"you don't feel like spending a huge amount of money on potions."
         ],
         "spells":[
-            {
-                "name":"Magic Missile",
-                "description":[
-                    "The most basic magic spell available. The user hurls a burst of magical energy",
-                    "at their target. Can either be taken without specialization for non-elemental",
-                    "damage or with specialization for an elemental based attack."                    
-                ],
-                "range":3,
-                "element":"null",
-                "max-level":3,
-                "mp-cost-pl":1,
-                "req-stat":[],
-                "effects":{
-                    "tags":[
-                        {"dmg":1},
-                        {"dmg":2},
-                        {"dmg":3}
-                    ],
-                    "description":[
-                        "Does {dmg} non-elemental magic damage to a single target."
-                    ]
-                },
-                "notes":[
-                    "If the entity casting this spell has an elemental specialization chosen. This",
-                    "spell takes on the Element(s) of the caster."
-                ]
-            },
-            {
+			{
                 "name":"Barrier",
-                "description":[
-                    "Creates a barrier of magical energy to absorb physical damage. Popular among",
-                    "pure mages as a way to compensate for a lack of physical defense capabilities."
-                ],
-                "range":0,
                 "element":"null",
-                "max-level":5,
-                "mp-cost-pl":1,
-                "req-stat":[
-                    "-", "-", "-", "INT 1", "INT 3"
-                ],
-                "effects":{
-                    "tags":[
-                        {"dmg":1},
-                        {"dmg":3},
-                        {"dmg":5},
-                        {"dmg":7},
-                        {"dmg":10}
-                    ],
-                    "description":[
-                        "Prevents the next {dmg} physical damage (and then pops)"
-                    ]
-                },
-                "notes":[]
+				"dmg":1,
+				"range":2,
+				"maxLevel":5,
+				"stat":"INT",
+				"condition":"",
+				"numTargets":1,
+				"targetType":"entity",
+				"ongoing":false,
+				"bonus":0,
+				"description":[
+                    "prevents the next {dmg} physical damage and then pops. This spell can take on",
+                    "an elemental specialization."
+				],
+                "notes":[
+                    "If specialized, change element, add +1 to dmg, and +1 to mana cost"
+                ]
             },
             {
                 "name":"Magic Barrier",
-                "description":[
-                    "Creates a barrier of magical energy to absorb magical damage. Can either be",
-                    "taken with or without specialization."
-                ],
-                "range":0,
                 "element":"null",
-                "max-level":5,
-                "mp-cost-pl":1,
-                "req-stat":[
-                    "-","-","-","INT 1","INT 3"
-                ],
-                "effects":{
-                    "tags":[
-                        {"dmg":1},
-                        {"dmg":3},
-                        {"dmg":5},
-                        {"dmg":7},
-                        {"dmg":10}
-                    ],
-                    "description":[
-                        "Prevents the next {dmg} magic damage (and then pops)"
-                    ]
-                },
+				"dmg":1,
+				"range":2,
+				"maxLevel":5,
+				"stat":"INT",
+				"condition":"",
+				"numTargets":1,
+				"targetType":"entity",
+				"ongoing":false,
+				"bonus":0,
+				"description":[
+					"prevents the next {dmg} magical damage and then pops. This spell can take on",
+                    "an elemental specialization."
+				],
                 "notes":[
-                    "If the entity casting this spell has an elemental specialization chosen, this",
-                    "spell takes on the Element(s) of the caster and prevents an additional +2 magic",
-                    "damage per level: e.g. Level 1 would prevent 3 magic damage instead of 1"
+                    "If specialized, change element, add +1 to dmg, and +1 to mana cost"
                 ]
             },
             {
-                "name":"Fire Ball",
-                "description":[
-                    "One of the most basic fire spells. Hurls a ball of fire to a single target."
-                ],
-                "range":3,
-                "element":"fire",
-                "max-level":3,
-                "mp-cost-pl":1,
-                "req-stat":[],
-                "effects":{
-                    "tags":[
-                        {"dmg":2},
-                        {"dmg":3},
-                        {"dmg":5}
-                    ],
-                    "description":[
-                        "Deals {dmg} fire damage to a single target"
-                    ]
-                },
-                "notes":[]
-            },
-            {
-                "name":"Lightning",
-                "description":[
-                    "Calls down a bolt of lightning on a target. This spell also impacts adjacent",
-                    "entities to the target (both friend and foe)."
-                ],
-                "range":5,
-                "element":"electricity",
-                "max-level":2,
-                "mp-cost-pl":4,
-                "req-stat":[
-                    "-","INT 3"
-                ],
-                "effects":{
-                    "tags":[
-                        {"dam":5, "dam-adj":3},
-                        {"dam":10, "dam-adj":7}
-                    ],
-                    "description":[
-                        "When rolling for success of this spell, if a 5 or 6 is rolled, the initial",
-                        "target becomes paralyzed. Adjacent entities are not paralyzed"
-                    ]
-                },
-                "notes":[]
-            },
-            {
-                "name":"Ice Spear",
-                "description":[
-                    "Hurls giant spears made of ice towards the caster's target. Higher levels allow",
-                    "the user to control more spears."                    
-                ],
-                "range":3,
-                "element":"ice",
-                "max-level":5,
-                "mp-cost-pl":2,
-                "req-stat":[
-                    "-","-","-","INT 1","INT 3"
-                ],
-                "effects":{
-                    "tags":[
-                        {"dmg":3,"target":"single target"},
-                        {"dmg":5,"target":"single target"},
-                        {"dmg":5,"target":"up to 2 different targets"},
-                        {"dmg":7,"target":"up to 2 different targets"},
-                        {"dmg":7,"target":"up to 3 different targets"}
-                    ],
-                    "description":[
-                        "Deals {dmg} to {target}"
-                    ]
-                },
-                "notes":[]
-            },
-            {
-                "name":"Gravity",
-                "description":[
-                    "Increases the force of gravity in a given area. Deals more damage to entities",
-                    "in heavy armor."
-                ],
-                "range":2,
-                "element":"dark",
-                "max-level":2,
-                "mp-cost-pl":3,
-                "req-stat":[
-                    "-","INT 2"
-                ],
-                "effects":{
-                    "tags":[
-                        {"dmg":" "},
-                        {"dmg":" 2x "}
-                    ],
-                    "description":[
-                        "Deals damage equal to{dmg}target's armor rating"
-                    ]
-                },
-                "notes":[]
-            },
-            {
-                "name":"Light",
-                "description":[
-                    "Creates a floating light above the user's palm with the same light output as a",
-                    "torch. The light lasts the same duration as a torch."
-                ],
-                "range":0,
+                "name":"Shell",
                 "element":"null",
-                "max-level":1,
-                "mp-cost-pl":1,
-                "req-stat":[],
-                "effects":{
-                    "tags":[],
-                    "description":[
-                        "Creates a magical light to illuminate dark areas."                       
-                    ]
-                },
-                "notes":[]
-            },
-            {
-                "name":"Ensoul Equipment",
-                "description":[
-                    "Caster turns target weapon or armor into an entity. Ensouled equipment's HP is",
-                    "equal to it's ATK or DEF value (max 25)"                    
-                ],
-                "range":2,
-                "element":"null",
-                "max-level":1,
-                "mp-cost-pl":5,
-                "req-stat":[],
-                "effects":{
-                    "tags":[],
-                    "description":[
-                        "Caster turns target weapon or armor into an entity. Armor can only defend,",
-                        "weapons can only attack."                        
-                    ]
-                },
+				"dmg":1,
+				"range":2,
+				"maxLevel":5,
+				"stat":"INT",
+				"condition":"",
+				"numTargets":1,
+				"targetType":"entity",
+				"ongoing":false,
+				"bonus":1,
+				"description":[
+					"prevents the next {dmg} physical or magical damage and then pops. This spell can take on",
+                    "an elemental specialization."
+				],
                 "notes":[
-                    "if the caster took a specialization the element(s) transfer to the ensouled",
-                    "weapon. If the ensouled weapon has one or more conflicting elements the",
-                    "conflicting elements cancel out."
+                    "If specialized, change element, add +1 to dmg, and +1 to mana cost"
                 ]
             },
-            {
-                "name":"Oak Flesh",
-                "description":[
-                    "Caster's flesh becomes as hard as oak. Caster is considered to be of the",
-                    "{wood} element in place of whatever element they originally were as long as this",
-                    "spell is in place."                    
-                ],
-                "range":0,
-                "element":"wood",
-                "max-level":3,
-                "mp-cost-pl":2,
-                "req-stat":[
-                    "-","INT 1","INT 2"
-                ],
-                "effects":{
-                    "tags":[
-                        {"ar":"+2"},
-                        {"ar":"+3"},
-                        {"ar":"+4"}
-                    ],
-                    "description":[
-                        "Gain {ar} to armor for one full round. This armor is elementally aligned"
-                    ]
-                },
-                "notes":[
-                    "Cannot be stacked with itself, with stone flesh, or with iron flesh. Can,",
-                    "however be stacked with barrier and magic barrier."                    
-                ]
-            },
-            {
-                "name":"Wall of Thorns",
-                "description":[
-					"The caster summons a wall of thorny vines which deals damage to entities which",
-					"get too close."				
-                ],
-                "range":3,
-                "element":"wood",
-                "max-level":3,
-                "mp-cost-pl":2,
-                "req-stat":[
-					"-","INT 1","INT 3"
-                ],
-                "effects":{
-                    "tags":[
-						{"len":"1 square",  "hp":3, "dmg":2},
-						{"len":"2 squares", "hp":5, "dmg":3},
-						{"len":"3 squares", "hp":7, "dmg":4}
-                    ],
-                    "description":[
-						"Summons a wall {len} wide, with {hp} HP, and which deals {dmg} damage when",
-						"attacked physically. This wall is considered to be the {wood} element."						
-                    ]
-                },
-                "notes":[
-					"Walls are treated as obstacles, meaning entities cannot move through them (but",
-					"can move over them by jumping or climbing). Walls can be summoned even if there",
-					"are less squares available than defined. e.g. a wall 2 squares wide can be",
-					"summoned in a space 1 square wide."				
-				]
-            }
-        ]
-    },
-    {
-        "title":"Intermediate Spells",
-        "description":[
-            "The spells in this section are a bit more diverse than the spells listed in the",
-            "basic section and most mages which want to play their character according to a",
-            "specialization or particular school of magic will most likely take quite a few",
-            "spells from this section. Additionally, the spells in this section pack quite a",
-            "bit more of a punch than the basic spells and many of these spells will serve a",
-            "mage for the majority of their careers."
-        ],
-        "spells":[
             {
                 "name":"Heal",
-                "description":[
-                    "Restores HP to target. The higher the level, the more HP restored"
-                ],
-                "range":3,
                 "element":"light",
-                "max-level":5,
-                "mp-cost-pl":2,
-                "req-stat":[
-                    "-","-","INT 1","INT 3","INT 5"
-                ],
-                "effects":{
-                    "tags":[
-                        {"amt":2},
-                        {"amt":4},
-                        {"amt":7},
-                        {"amt":13},
-                        {"amt":25}
-                    ],
-                    "description":[
-                        "Restores {amt} HP to target"
-                    ]
-                },
-                "notes":[
-                    "If the target of this spell is undead, deal 2x amount as damage instead."
-                ]
+				"dmg":1,
+				"range":3,
+				"maxLevel":5,
+				"stat":"INT",
+				"condition":"",
+				"numTargets":1,
+				"targetType":"entity",
+				"ongoing":false,
+				"bonus":0,
+				"description":[
+					"Remove {dmg} damage from target."
+				],
+                "notes":[]
             },
             {
-                "name":"Purify",
-                "description":[
-                    "Used to remove status conditions from a single target. Fully leveling up this",
-                    "ability allows the user to remove all status conditions except for",
-                    "unconsciousness from the target."
+                "name":"Cure",
+                "element":"null",
+				"dmg":0,
+				"range":3,
+				"maxLevel":1,
+				"stat":"INT",
+				"condition":"",
+				"numTargets":1,
+				"targetType":"entity",
+				"ongoing":false,
+				"bonus":2,
+				"description":[
+					"Can be used to remove all status conditions (except death) from target. "
                 ],
-                "range":3,
-                "element":"light",
-                "max-level":3,
-                "mp-cost-pl":2,
-                "req-stat":[
-                    "-","INT 2","INT 4"
-                ],
-                "effects":{
-                    "tags":[
-                        {"status":"sleep, poison, confusion, and virus"},
-                        {"status":"sleep, poison, confusion, virus, paralysis, immobilization, disability, and blind"},
-                        {"status":"all conditions except unconsciousness"}
-                    ],
-                    "description":[
-                        "Remove {status} from target."
-                    ]
-                },
                 "notes":[]
             },
             {
                 "name":"Bless",
-                "description":[
-                    "Used to remove curses from cursed equipment. Can also be used to neutralize",
-                    "dark rituals."                    
-                ],
-                "range":5,
-                "element":"light",
-                "max-level":1,
-                "mp-cost-pl":3,
-                "req-stat":[],
-                "effects":{
-                    "tags":[],
-                    "description":[
-                        "<strong>Choose One:</strong> Remove cursed status from target weapon or armor.",
-                        "OR Target dark aligned ritual or object is nullified."                        
-                    ]
-                },
-                "notes":[
-                    "If this is used to interrupt a ritual, the location itself is not destroyed or",
-                    "altered in any way; the ritual is just reset. This means anything being used to",
-                    "initiate the ritual needs to be destroyed or otherwise removed to truly stop",
-                    "it."                    
-                ]
-            },
-            {
-                "name":"Exorcise",
-                "description":[
-                    "Performs a ritual to put wandering and restless spirits at ease. This spell can",
-                    "only target undead entities and ensouled equipment."
-                ],
-                "range":1,
-                "element":"light",
-                "max-level":1,
-                "mp-cost-pl":1,
-                "req-stat":[
-                ],
-                "effects":{
-                    "tags":[
-                    ],
-                    "description":[
-                        "<strong>Choose 1:</strong> Deal 5 damage to target undead entity. If a 6 is",
-                        "rolled when casting this spell, automatically KO the entity instead OR Remove",
-                        "ensouled status from target ensouled equipment."
-                    ]
-                },
-                "notes":[]
-            },
-            {
-                "name":"Revive",
-                "description":[
-                    "If used to remove the ensouled status, the original equipment simply returns to",
-                    "it's original state (it is not destroyed). When used to target an entity, do",
-                    "not apply weakness, armor or any other means of damage redirection to the",
-                    "damage from this spell (it will always do 5 damage)."                                      
-                ],
-                "range":5,
-                "element":"light",
-                "max-level":2,
-                "mp-cost-pl":5,
-                "req-stat":[
-                    "INT 3", "INT 5"
-                ],
-                "effects":{
-                    "tags":[
-                        {"effect":"heals 5 HP"},
-                        {"effect":"fully heals HP"}
-                    ],
-                    "description":[
-                        "Removes unconsciousness and death conditions from target and {effect}."
-                    ]
-                },
-                "notes":[]
-            },
-            {
-                "name":"Dark Contract",
-                "description":[
-					"The user makes a contract with a dark entity sacrificing their own life force",
-					"for additional MP"
-                ],
-                "range":0,
-                "element":"dark",
-                "max-level":2,
-                "mp-cost-pl":0,
-                "req-stat":[
-					"INT 2","INT 4"
-                ],
-                "effects":{
-                    "tags":[
-						{"mp":1},
-						{"mp":2}
-                    ],
-                    "description":[
-						"Caster may exchange HP for MP at a rate of 1 HP for {mp} MP."
-                    ]
-                },
-                "notes":[
-					"This spell can only be used to transfer MP to the person who cast it. This",
-					"cannot give MP to entities other than the caster."				
-				]
-            },
-            {
-                "name":"Eldritch Understanding",
-                "description":[
-					"The caster peers beyond time and space in order to gain knowledge beyond their",
-					"understanding."
-                ],
-                "range":0,
-                "element":"dark",
-                "max-level":1,
-                "mp-cost-pl":"?",
-                "req-stat":[
-					"INT 3"
-                ],
-                "effects":{
-                    "tags":[
-                    ],
-                    "description":[
-						"The caster can cast a single spell of their choosing (even those not known) for",
-						"2x the MP cost of casting the spell. After the spell resolves the caster is now",
-						"blind and confused."
-                    ]
-                },
-                "notes":[
-					"The user may ignore all stat requirements for this spell. Required items are",
-					"still required"
-				]
-            },
-            {
-                "name":"Miasma",
-                "description":[
-					"The caster summons a cloud of poisonous gas to swirl around where they're",
-					"standing."
-                ],
-                "range":"?",
-                "element":"dark",
-                "max-level":3,
-                "mp-cost-pl":1,
-                "req-stat":[
-					"-","INT 2","INT 4"
-                ],
-                "effects":{
-                    "tags":[
-						{"range":"adjacent","conj":"to"},
-						{"range":"within 2 squares","conj":"from"},
-						{"range":"within 3 squares","conj":"from"}
-                    ],
-                    "description":[
-						"All enemies {range} {conj} the caster roll to check if poisoned."
-                    ]
-                },
-                "notes":[]
-            },
-            {
-                "name":"Reanimate",
-                "description":[
-					"Target corpse is resurrected under the user's control."
-                ],
-                "range":1,
-                "element":"dark",
-                "max-level":5,
-                "mp-cost-pl":3,
-                "req-stat":[
-					"-","INT 2","INT 3","INT 4","INT 5"
-                ],
-                "effects":{
-                    "tags":[
-						{"rank":"up to rank 1"},
-						{"rank":"up to rank 2"},
-						{"rank":"up to rank 3"},
-						{"rank":"up to rank 4"},
-						{"rank":"all non-boss"}
-                    ],
-                    "description":[
-						"Able to resurrect and control {rank} monsters as well as humans."
-                    ]
-                },
-                "notes":[
-					"All resurrected entities are considered to be undead as well as the {dark}",
-					"element. Resurrected entities are brought back to life at 1/2 HP and cannot be",
-					"healed past this point."
-				]
-            },
-            {
-                "name":"Cornucopia",
-                "description":[
-					"Uses magical energy to create and grow a piece of fruit with restorative",
-					"properties. Higher levels produce better fruit."
-                ],
-                "range":0,
-                "element":"wood",
-                "max-level":5,
-                "mp-cost-pl":1,
-                "req-stat":[
-					"-","INT 2","INT 3","INT 4","INT 5"
-                ],
-                "effects":{
-                    "tags":[
-						{
-							"hp":2, 
-							"sp1":"", 
-							"status":"", 
-							"sp2":"", 
-							"buff":""
-						},
-						{
-							"hp":4, 
-							"sp1":"", 
-							"status":"", 
-							"sp2":"", 
-							"buff":""
-						},
-						{
-							"hp":7, 
-							"sp1":" and ", 
-							"status":"allows entity to roll to recover from status ailments",
-							"sp2":"",
-							"buff":""
-						},
-						{
-							"hp":13,
-							"sp1":" and ",
-							"status":"recover from all status ailments",
-							"sp2":"",
-							"buff":""
-						},
-						{
-							"hp":25,
-							"sp1":", ",
-							"status":"recover from all status ailments",
-							"sp2":" and ",
-							"buff":"adds +2 to STR and END for the rest of the round"
-						}
-                    ],
-                    "description":[
-						"Summon a piece of fruit which restores {hp} HP{sp1}{status}{sp2}{buff}."
-                    ]
-                },
-                "notes":[
-					"Fruit goes bad once session ends. Cannot stockpile fruit past one session. DM",
-					"may change this rule if desired."
-				]
-            },
-            {
-                "name":"Transform",
-                "description":[
-					"Caster transforms themselves into an animal and gains all traits of the animal",
-					"transformed into."
-                ],
-                "range":0,
                 "element":"null",
-                "max-level":4,
-                "mp-cost-pl":2,
-                "req-stat":[
-                    "-","INT 1","INT 3","INT 5"
+				"dmg":1,
+				"range":2,
+				"maxLevel":5,
+				"stat":"INT",
+				"condition":"",
+				"numTargets":1,
+				"targetType":"entity",
+				"ongoing":false,
+				"bonus":0,
+				"description":[
+                    "Increases the damage of the target's next attack by {dmg} points."
                 ],
-                "effects":{
-                    "tags":[
-						{"animal":"dove, or rat", "conj":"a"},
-						{"animal":"wolf, or dolphin", "conj":"a"},
-						{"animal":"bear, or giant eagle", "conj":"a"},
-						{"animal":"dragon or sea serpent", "conj":"a"}
-                    ],
-                    "description":[
-						"Transform into {conj} {animal}. Obtain all stats and abilities of that animal",
-                        "as described in the entities section. If the caster goes unconscious, the",
-                        "transfomration ends immediately."
-                    ]
-                },
                 "notes":[
-					"MP cost for this spell is cumulative, meaning the MP cost must be paid at the",
-					"beginning of the caster's turn in order to maintain the transformation. Outside",
-                    "battle, the DM determines when to pay the upkeep cost. Using this spell does not",
-                    "consume an action."				
-				]
-            },
-            {
-                "name":"Stone Flesh",
-                "description":[
-                    "Caster's flesh becomes as hard as oak. Caster is considered to be of the",
-                    "{earth} element in place of whatever element they originally were as long as this",
-                    "spell is in place."                    
-                ],
-                "range":0,
-                "element":"earth",
-                "max-level":3,
-                "mp-cost-pl":3,
-                "req-stat":[
-                    "-","INT 2","INT 3"
-                ],
-                "effects":{
-                    "tags":[
-                        {"ar":"+4"},
-                        {"ar":"+5"},
-                        {"ar":"+6"}
-                    ],
-                    "description":[
-                        "Gain {ar} to armor for one full round. This armor is elementally aligned"
-                    ]
-                },
-                "notes":[
-                    "Cannot be stacked with itself, with oak flesh, or with iron flesh. Can,",
-                    "however be stacked with barrier and magic barrier."                    
+                    "Does not affect HP/MP drain."
                 ]
             },
             {
-                "name":"Root Spike",
-                "description":[
-					"Caster causes sharp roots to spring up under their target's feet"
-                ],
-                "range":3,
-                "element":"wood",
-                "max-level":5,
-                "mp-cost-pl":2,
-                "req-stat":[
-					"-","INT 1","INT 2","INT 3","INT 4"
-                ],
-                "effects":{
-                    "tags":[
-						{"dam":3,"target":"single target","status":""},
-						{"dam":5,"target":"single target","status":""},
-						{"dam":5,"target":"up to 2 targets","status":""},
-						{"dam":7,"target":"up to 3 targets","status":""},
-						{
-							"dam":10, 
-							"target":"up to 3 targets",
-							"status":" Targets are now bound"
-						}
-                    ],
-                    "description":[
-						"Deals {dam} damage to {target}.{status}"
-                    ]
-                },
-                "notes":[]
-            },
-            {
-                "name":"Wall of Earth",
-                "description":[
-					"The caster summons a wall of hardened earth to stop entities from",
-					"getting past."				
-                ],
-                "range":3,
-                "element":"earth",
-                "max-level":3,
-                "mp-cost-pl":3,
-                "req-stat":[
-					"INT 2","INT 3","INT 4"
-                ],
-                "effects":{
-                    "tags":[
-						{"len":"1 square",  "hp":7},
-						{"len":"2 squares", "hp":9},
-						{"len":"3 squares", "hp":11}
-                    ],
-                    "description":[
-						"Summons a wall {len} wide with {hp} HP. This wall is considered to be",
-						"the {earth} element."					
-                    ]
-                },
-                "notes":[
-					"Walls are treated as obstacles, meaning entities cannot move through them (but",
-					"can move over them by jumping or climbing). Walls can be summoned even if there",
-					"are less squares available than defined. e.g. a wall 2 squares wide can be",
-					"summoned in a space 1 square wide."				
-				]
-            },
-            {
-                "name":"Counter",
-                "description":[
-                    "Counters a spell being cast by another mage."
-                ],
-                "range":2,
+                "name":"Resurrect",
                 "element":"null",
-                "max-level":2,
-                "mp-cost-pl":"?",
-                "req-stat":[
-					"INT 1","INT 3"
+				"dmg":3,
+				"range":3,
+				"maxLevel":5,
+				"stat":"INT",
+				"condition":"",
+				"numTargets":1,
+				"targetType":"entity",
+				"ongoing":false,
+				"bonus":0,
+				"description":[
+                    "Brings target entity back to life with {dmg} HP."
                 ],
-                "effects":{
-                    "tags":[
-                        {"mp":" "},
-                        {"mp":" &frac12; "}
-                    ],
-                    "description":[
-                        "Counters a spell being cast by another mage. Counter target spell. MP required",
-                        "to counter is equal to{mp}the MP being used to cast the spell being countered.",
-                        "Additionally, the caster of this spell must meet or exceed the stat",
-                        "requirements of the spell being cast to counter it."                        
-                    ]
-                },
-                "notes":[
-                    "requirements of the spell being cast to counter it. This spell can be cast even",
-                    "if it is not the caster's turn. If an entity uses this outside of their turn,",
-                    "they skip their action phase on their next turn."
-                ]
+                "notes":[]
             }
         ]
     },
     {
-        "title":"Advanced Spells",
+        "title":"Arcane Spells",
         "description":[
-            "The spells in this section are extremely powerful and most require a fairly",
-            "heavy intelligence requirement before they become available for use.",
-            "Additionally, learning these spells usually requires a bit of luck as well as",
-            "there aren't many shops which carry the scrolls on-hand to learn them."            
+            "The spells in this category tend to focus on dealing direct damage to enemies.",
+            "However, there are a couple of spells which don't fit that pattern as well.",
+            "Generally speaking this school of magic tends to focus on elemental magic; and",
+            "in order to keep things simple, many classic specialized forms of magic such as",
+            "nature magic end up falling under this category."
         ],
         "spells":[
             {
-                "name":"Meteor",
-                "description":[
-                    "Calls down a meteor to strike a single target. Damage is dealt to adjacent",
-                    "squares as well"                    
-                ],
-                "range":5,
+                "name":"Magic Missile",
+                "element":"null",
+				"dmg":1,
+				"range":2,
+				"maxLevel":5,
+				"stat":"INT",
+				"condition":"",
+				"numTargets":1,
+				"targetType":"entity",
+				"ongoing":false,
+				"bonus":0,
+				"description":[
+                    "Deals {dmg} magical damage to target. This spell can take on",
+                    "an elemental specialization."
+				],
+                "notes":[
+                    "If specialized, change element, add +1 to dmg, and +1 to mana cost"
+                ]
+            },
+            {
+                "name":"Fireball",
                 "element":"fire",
-                "max-level":2,
-                "mp-cost-pl":7,
-                "req-stat":[
-                    "INT 4","INT 5"
+				"dmg":2,
+				"range":3,
+				"maxLevel":5,
+				"stat":"INT",
+				"condition":"burn",
+				"numTargets":1,
+				"targetType":"entity",
+				"ongoing":false,
+				"bonus":0,
+				"description":[
+                    "Deals {dmg} fire damage to target."
                 ],
-                "effects":{
-                    "tags":[
-                        {"dmg":20, "1sq":10, "2sq": 5},
-                        {"dmg":30, "1sq":15, "2sq": 7}
-                    ],
-                    "description":[
-                        "squares as well Deals {dmg} to target entity. Deals {1sq} damage to entities 1",
-                        "square away from target. Deals {2sq} damage to entities 2 squares away from",
-                        "target."                        
-                    ]
-                },
-                "notes":[]
-            },
-            {
-                "name":"Evergreen",
-                "description":[
-                    "The caster turns themselves into a giant oak providing healing and protection",
-                    "to all friendly entities beneath it's leaves."
-                ],
-                "range":0,
-                "element":"wood",
-                "max-level":1,
-                "mp-cost-pl":3,
-                "req-stat":[
-                    "INT 4"
-                ],
-                "effects":{
-                    "tags":[
-                    ],
-                    "description":[
-                        "The caster is immobilized, disabled, and considered to be the {wood} element",
-                        "until their next turn. This counts as a transformation. All friendly",
-                        "entities adjacent to caster regain +4 HP per turn and gain +2 to endurance",
-                        " and all status conditions are removed. All entities two squares away from",
-                        "caster regain +2 HP per turn and gain +1 to endurance."
-                    ]
-                },
                 "notes":[
-                    "The MP cost for this spell must be payed every turn in order to keep",
-                    "it in effect. The caster can refuse to pay this cost at any time to end the",
-                    "transformation. If the caster goes unconscious, the transfomration ends",
-                    "immediately."
+                    "If 6 is rolled on this attack, target is burned"
                 ]
             },
             {
-                "name":"Steel Flesh",
-                "description":[
-                    "Caster's flesh becomes as hard as Steel. Caster is considered to be of the",
-                    "{metal} element in place of whatever element they originally were as long as this",
-                    "spell is in place."                    
+                "name":"Lightning",
+                "element":"electricity",
+				"dmg":2,
+				"range":5,
+				"maxLevel":5,
+				"stat":"INT",
+				"condition":"paralysis",
+				"numTargets":3,
+				"targetType":"entity",
+				"ongoing":false,
+				"bonus":0,
+				"description":[
+                    "Deals {dmg} electric damage to up to 3 targets."
                 ],
-                "range":0,
-                "element":"metal",
-                "max-level":3,
-                "mp-cost-pl":4,
-                "req-stat":[
-                    "-","INT 4","INT 5"
-                ],
-                "effects":{
-                    "tags":[
-                        {"ar":"+7"},
-                        {"ar":"+8"},
-                        {"ar":"+9"}
-                    ],
-                    "description":[
-                        "Gain {ar} to armor for one full round. This armor is elementally aligned"
-                    ]
-                },
                 "notes":[
-                    "Cannot be stacked with itself, with oak flesh, or with stone flesh. Can,",
-                    "however be stacked with barrier and magic barrier."                    
+                    "Each target rolls to see if attack his. If target rolls a 1, they are paralyzed."
                 ]
-            },
-            {
-                "name":"Wall of Iron",
-                "description":[
-					"The caster summons a wall of thorny vines which deals damage to entities which",
-					"get too close."				
-                ],
-                "range":3,
-                "element":"metal",
-                "max-level":3,
-                "mp-cost-pl":2,
-                "req-stat":[
-					"-","INT 1","INT 3"
-                ],
-                "effects":{
-                    "tags":[
-						{"len":"1 square",  "hp":11},
-						{"len":"2 squares", "hp":13},
-						{"len":"3 squares", "hp":15}
-                    ],
-                    "description":[
-                        "Summons a wall {len} wide, with {hp} HP. This wall is considered to be the",
-                        "{metal} element. This wall cannot be climbed."					
-                    ]
-                },
-                "notes":[
-					"Walls are treated as obstacles, meaning entities cannot move through them (but",
-					"can move over them by jumping or climbing). Walls can be summoned even if there",
-					"are less squares available than defined. e.g. a wall 2 squares wide can be",
-					"summoned in a space 1 square wide."				
-				]
             },
             {
                 "name":"Blizzard",
-                "description":[
-                    "Summons a raging snowstorm to engulf a group of entities."
-                ],
-                "range":5,
                 "element":"ice",
-                "max-level":2,
-                "mp-cost-pl":5,
-                "req-stat":[
-                    "INT 4","INT 5"
+				"dmg":2,
+				"range":3,
+				"maxLevel":5,
+				"stat":"INT",
+				"condition":"",
+				"numTargets":0,
+				"targetType":"area",
+				"ongoing":true,
+				"bonus":0,
+				"description":[
+                    "Deals {dmg} ice damage to all entities within 3 squares of the caster."
                 ],
-                "effects":{
-                    "tags":[
-                        {"dmg":5,"sq1":3,"sq2":2},
-                        {"dmg":7,"sq1":5,"sq2":4}
-                    ],
-                    "description":[
-                        "Summons a raging snowstorm to engulf a group of entities. Target entity is",
-                        "engulfed in a blizzard and takes {dmg}. All adjacent entities to target take",
-                        "{sq1} damage. All entities 2 squares away from target take {sq2} damage. Any",
-                        "entities entering the spaces effected are blind and receive -2 speed for the",
-                        "remainder of the round."
-                    ]
-                },
                 "notes":[]
-            },
-            {
-                "name":"Chain Lightning",
-                "description":[
-                    "An advanced lightning spell capable of spreading from entity to entity."                    
-                ],
-                "range":5,
-                "element":"electricity",
-                "max-level":3,
-                "mp-cost-pl":4,
-                "req-stat":[
-                    "INT 3","INT 4","INT 5"
-                ],
-                "effects":{
-                    "tags":[
-                        {"dmg":5},
-                        {"dmg":7},
-                        {"dmg":10}
-                    ],
-                    "description":[
-                        "An advanced lightning spell capable of spreading from entity to entity. Deals",
-                        "{dmg} damage to target. Repeat this spell for each entity adjacent to target.",
-                        "Adjacent entities become the new targets."                        
-                    ]
-                },
-                "notes":[
-                    "Adjacent entities become the new targets. This spell cannot be repeated on an",
-                    "entity which has already been hit by this spell during the turn it was cast",
-                    "(each entity gets hit a maximum of 1 times)."
-                ]
             },
             {
                 "name":"Earthquake",
-                "description":[
-                    "A risky spell which shakes the entire area targeting both friend and foe alike"
-                ],
-                "range":"?",
                 "element":"earth",
-                "max-level":2,
-                "mp-cost-pl":10,
-                "req-stat":[
-                    "INT 4","INT 5"
+				"dmg":5,
+				"range":0,
+				"maxLevel":3,
+				"stat":"INT",
+				"condition":"",
+				"numTargets":0,
+				"targetType":"all",
+				"ongoing":false,
+				"bonus":0,
+				"description":[
+                    "All entities (including caster) take {dmg} earth damage."
                 ],
-                "effects":{
-                    "tags":[
-                        {"dam":"2x"},
-                        {"dam":"3x"}
-                    ],
-                    "description":[
-                        "All entities (including the caster) roll 1d6 and take damage equal to {dam} the",
-                        "face shown."
-                    ]
-                },
-                "notes":[]
-            },
-            {
-                "name":"Twister",
-                "description":[
-                    "Summons a strong wind to damage everything in it's path. Deals extra strong",
-                    "damage to flying enemies."
-                ],
-                "range":7,
-                "element":"wind",
-                "max-level":2,
-                "mp-cost-pl":7,
-                "req-stat":[
-                    "INT 4","INT 5"
-                ],
-                "effects":{
-                    "tags":[
-                        {"dam":7,"aux":5},
-                        {"dam":10,"aux":7}
-                    ],
-                    "description":[
-                        "Target takes {dam} damage. All entities between caster and target take {aux}",
-                        "damage."
-                    ]
-                },
                 "notes":[
-                    "If entity is in the air, they take an additional 2 damage and are now on the",
-                    "ground and immobilized."                  
+                    "Each target rolls to see if attack his.",
+                    "Flying entities are not effected by this spell"
                 ]
             },
             {
-                "name":"Mana Bomb",
-                "description":[
-                    "A powerful blast of magical energy. The more energy which is poured into it,",
-                    "the more powerful it becomes"
-                ],
-                "range":3,
+                "name":"Teleport",
                 "element":"null",
-                "max-level":3,
-                "mp-cost-pl":2,
-                "req-stat":[
-                    "INT 3","INT 4","INT 5"
+				"dmg":1,
+				"range":0,
+				"maxLevel":5,
+				"stat":"INT",
+				"condition":"",
+				"numTargets":1,
+				"targetType":"self",
+				"ongoing":false,
+				"bonus":0,
+				"description":[
+                    "Caster teleports up to {dmg} squares away."
                 ],
-                "effects":{
-                    "tags":[
-                        {"dmg":3, "2dmg":7, "3dmg":12},
-                        {"dmg":5, "2dmg":11, "3dmg":18},
-                        {"dmg":7, "2dmg":15, "3dmg":25}
-                    ],
-                    "description":[
-                        "Repeat casting this spell each turn for more damage. 1 turn = {dmg}, 2 turns =",
-                        "{2dmg}, and 3 turns = {3dmg}."
-                    ]
-                },
                 "notes":[
-                    "Must use mana each turn this spell is repeated; however it is still considered",
-                    "the same spell. Must repeat spell consecutively for charged effect."
+                    "This does not count as the caster's movement step for the turn"
+                ]
+            },
+            {
+                "name":"Transform",
+                "element":"null",
+				"dmg":4,
+				"range":0,
+				"maxLevel":5,
+				"stat":"INT",
+				"condition":"transformed",
+				"numTargets":1,
+				"targetType":"self",
+				"ongoing":true,
+				"bonus":0,
+				"description":[
+                    "Caster transforms into an animal of their choice. Caster's stats are capped at {dmg} while transformed"
+                ],
+                "notes":[
+                    "Monsters and people are not animals.",
+                    "Caster receives the transformed status when using this"
                 ]
             }
         ]
     },
     {
-        "tit"
-    }
+        "title":"Dark Magic Spells",
+        "description":[
+            "Dark magic spells tend to focus on weakening opponents and attacking in",
+            "indirect ways. Many dark mages aslo employ a mixture of summoning and status",
+            "spells to ensure their adversaries don't get too close for comfort."            
+        ],
+        "spells":[
+            {
+                "name":"Gravity",
+                "element":"dark",
+				"dmg":0,
+				"range":3,
+				"maxLevel":1,
+				"stat":"INT",
+				"condition":"",
+				"numTargets":1,
+				"targetType":"entity",
+				"ongoing":false,
+				"bonus":5,
+				"description":[
+                    "Deals damage to entity equal to their armor value."
+                ],
+                "notes":[
+                    "Causes flying entities to return to earth."
+                ]
+            },
+            {
+                "name":"Curse",
+                "element":"null",
+				"dmg":1,
+				"range":3,
+				"maxLevel":5,
+				"stat":"INT",
+				"condition":"",
+				"numTargets":1,
+				"targetType":"entity",
+				"ongoing":false,
+				"bonus":0,
+				"description":[
+                    "Decreases the damage of the target's next attack by {dmg} points."
+                ],
+                "notes":[
+                    "Does not affect HP/MP Drain"
+                ]
+            },
+            {
+                "name":"Animate Dead",
+                "element":"dark",
+				"dmg":5,
+				"range":1,
+				"maxLevel":5,
+				"stat":"INT",
+				"condition":"zombie",
+				"numTargets":1,
+				"targetType":"entity",
+				"ongoing":true,
+				"bonus":0,
+				"description":[
+                    "Reanimates fallen corpse to fight for caster. All animated corpe's stats are",
+                    "capped at {dmg}. Corpse is reanimated with {dmg} HP"
+                ],
+                "notes":[
+                    "Corpse gets zombie status"
+                ]
+            },
+            {
+                "name":"Dran HP",
+                "element":"dark",
+				"dmg":2,
+				"range":1,
+				"maxLevel":5,
+				"stat":"INT",
+				"condition":"",
+				"numTargets":1,
+				"targetType":"entity",
+				"ongoing":false,
+				"bonus":0,
+				"description":[
+                    "Reduces target entity's HP by {dmg} points and increases caster's HP by 1/2 ",
+                    "that amount."
+                ],
+                "notes":[
+                    "This spell does not do damage, and therefore this cannot be prevented or redirected"
+                ]
+            },
+            {
+                "name":"Dran HP",
+                "element":"dark",
+				"dmg":2,
+				"range":1,
+				"maxLevel":5,
+				"stat":"INT",
+				"condition":"",
+				"numTargets":1,
+				"targetType":"entity",
+				"ongoing":false,
+				"bonus":0,
+				"description":[
+                    "Reduces target entity's MP by {dmg} points and increases caster's MP by 1/2 ",
+                    "that amount."
+                ],
+                "notes":[
+                    "This spell does not do damage, and therefore this cannot be prevented or redirected"
+                ]
+            }
+        ]
+    },
+    {
+        "title":"Status Spells",
+        "description":[
+            "The spells in this category don't cause any direct damage nor are they aligned",
+            "with any element. Instead, these spells focus on inflicting special conditions",
+            "on the target. These spells are usually taken in combination with other spells",
+            "as a way to control the flow of battle or as a part of a larger more complex",
+            "strategy."            
+        ],
+        "spells":[
+            {
+                "name":"Poison",
+                "element":"null",
+				"dmg":0,
+				"range":3,
+				"maxLevel":1,
+				"stat":"INT",
+				"condition":"poison",
+				"numTargets":1,
+				"targetType":"entity",
+				"ongoing":false,
+				"bonus":0,
+				"description":[
+                    "Target entity is now poisoned."
+                ],
+                "notes":[]
+            },
+            {
+                "name":"Sleep",
+                "element":"null",
+				"dmg":0,
+				"range":3,
+				"maxLevel":1,
+				"stat":"INT",
+				"condition":"sleep",
+				"numTargets":1,
+				"targetType":"entity",
+				"ongoing":false,
+				"bonus":0,
+				"description":[
+                    "Target entity is now asleep."
+                ],
+                "notes":[]
+            },
+            {
+                "name":"Insanity",
+                "element":"null",
+				"dmg":0,
+				"range":2,
+				"maxLevel":1,
+				"stat":"INT",
+				"condition":"insanity",
+				"numTargets":1,
+				"targetType":"entity",
+				"ongoing":false,
+				"bonus":0,
+				"description":[
+                    "Target entity is now insane."
+                ],
+                "notes":[]
+            },
+            {
+                "name":"Charm",
+                "element":"null",
+				"dmg":0,
+				"range":1,
+				"maxLevel":1,
+				"stat":"INT",
+				"condition":"charm",
+				"numTargets":1,
+				"targetType":"entity",
+				"ongoing":false,
+				"bonus":0,
+				"description":[
+                    "Target entity is now charmed."
+                ],
+                "notes":[]
+            },
+            {
+                "name":"Seal",
+                "element":"null",
+				"dmg":0,
+				"range":1,
+				"maxLevel":1,
+				"stat":"INT",
+				"condition":"sealed",
+				"numTargets":1,
+				"targetType":"entity",
+				"ongoing":false,
+				"bonus":0,
+				"description":[
+                    "Target entity is now sealed."
+                ],
+                "notes":[]
+            }
+        ]
+    },
+    {
+        "title":"Summoning Spells",
+        "description":[
+           
+            "Summoning is generally considered to be a skill favored by dark mages and as",
+            "such, most of the spells listed in this section are associated with dark magic",
+            "this being said, there are other examples of summoning and so a mage who has",
+            "an interest in this section shouldn't consider it off limits just because",
+            "their specialty isn't dark magic."   
+        ],
+        "spells":[
+            {
+                "name":"Summon Daemon",
+                "element":"dark",
+				"dmg":6,
+				"range":1,
+				"maxLevel":5,
+				"stat":"INT",
+				"condition":"",
+				"numTargets":1,
+				"targetType":"ground",
+				"ongoing":true,
+				"bonus":0,
+				"description":[
+                    "Summons a daemon which fights under the caster's control.",
+                    "Summoned entity's stats (not including HP/MP) are capped at {dmg}",
+                    "Summoned entity's HP/MP are capped at 2x {dmg}"
+                ],
+                "notes":[
+					"Entity leaves no corpse when killed and cannot be looted"
+				]
+            },
+            {
+                "name":"Summon Shogoth",
+                "element":"dark",
+				"dmg":4,
+				"range":1,
+				"maxLevel":5,
+				"stat":"INT",
+				"condition":"",
+				"numTargets":1,
+				"targetType":"ground",
+				"ongoing":true,
+				"bonus":0,
+				"description":[
+                    "Summons a shogoth which fights under the caster's control.",
+                    "Summoned entity's stats (not including HP/MP) are capped at {dmg}",
+                    "Summoned entity's HP/MP are capped at 2x {dmg}"
+                ],
+                "notes":[
+					"Entity leaves no corpse when killed and cannot be looted"
+				]
+            },
+            {
+                "name":"Summon Skeleton",
+                "element":"dark",
+				"dmg":2,
+				"range":1,
+				"maxLevel":5,
+				"stat":"INT",
+				"condition":"",
+				"numTargets":1,
+				"targetType":"ground",
+				"ongoing":true,
+				"bonus":2,
+				"description":[
+                    "Summons a skeleton which fights under the caster's control.",
+                    "Summoned entity's stats (not including HP/MP) are capped at {dmg}",
+                    "Summoned entity's HP/MP are capped at 2x {dmg}"
+                ],
+                "notes":[
+					"Entity leaves no corpse when killed and cannot be looted"
+				]
+            }
+        ]
+	},
+    {
+        "title":"Combat Spells",
+        "description":[
+		   "The spells in this section are unique in the aspect that they are more geared",
+		   "towards physical combat vs magical. These spells also tend to have fairly low",
+		   "MP costs as they are geared more towards non-magical classes."
+        ],
+        "spells":[
+            {
+                "name":"Protect",
+                "element":"null",
+				"dmg":1,
+				"range":1,
+				"maxLevel":5,
+				"stat":"STR",
+				"condition":"",
+				"numTargets":1,
+				"targetType":"entity",
+				"ongoing":false,
+				"bonus":0,
+				"description":[
+					"Until your next turn, any time target entity would take damage, {dmg} points of",
+					"that damage is redirected to the caster of this spell instead."
+                ],
+                "notes":[]
+			},
+            {
+                "name":"Berserk",
+                "element":"null",
+				"dmg":0,
+				"range":0,
+				"maxLevel":1,
+				"stat":"STR",
+				"condition":"",
+				"numTargets":1,
+				"targetType":"self",
+				"ongoing":false,
+				"bonus":3,
+				"description":[
+					"Pysical melee attacks now deal 2x damage."
+                ],
+                "notes":[
+					"Can no longer be healed.",
+					"Can no longer counter or defend.",
+					"Can no longer use spells or abilities."
+				]
+			},
+            {
+                "name":"Backstab",
+                "element":"null",
+				"dmg":2,
+				"range":1,
+				"maxLevel":3,
+				"stat":"STR",
+				"condition":"",
+				"numTargets":1,
+				"targetType":"entity",
+				"ongoing":false,
+				"bonus":0,
+				"description":[
+					"Deals {dmg}x weapon damage to target."
+                ],
+                "notes":[
+					"Can only be used with knives and daggers.",
+					"Can only be used while in stealth.",
+					"Target is no longer in stealth after attack resolves."
+				]
+            }
+		]
+	},
+    {
+        "title":"Music Spells",
+        "description":[
+		   "Music spells are special songs which when played on a musical instrument cause",
+		   "unpredictible effects in and outside of battle. In the true spirit of bardship,",
+		   "many of these spells effects are random and have the chance to hit either friend",
+		   "or foe. However, when used at the right time these spells can also turn the tides",
+		   "of battle as their effects are usually widespread."
+        ],
+		"spells":[
+            {
+                "name":"Lullaby",
+                "element":"null",
+				"dmg":0,
+				"range":0,
+				"maxLevel":1,
+				"stat":"INT",
+				"condition":"sleep",
+				"numTargets":0,
+				"targetType":"rall",
+				"ongoing":false,
+				"bonus":2,
+				"description":[
+					"When cast, all entities roll to see if they avoid the attack. Any entities who",
+					"fail this roll are now asleep."
+                ],
+                "notes":[
+					"The term 'all entities' includes the caster of the spell"
+				]
+			},
+            {
+                "name":"Battle March",
+                "element":"null",
+				"dmg":0,
+				"range":0,
+				"maxLevel":1,
+				"stat":"INT",
+				"condition":"",
+				"numTargets":0,
+				"targetType":"rall",
+				"ongoing":false,
+				"bonus":2,
+				"description":[
+					"When cast, all entities roll to see if they are affected by the attack.",
+					"Any entities who pass this roll get 2 damage added to their next attack."
+                ],
+                "notes":[
+					"The term 'all entities' includes the caster of the spell",
+					"Does not affect HP/MP Drain"
+				]
+			},
+            {
+                "name":"Heavy Metal",
+                "element":"electricity",
+				"dmg":3,
+				"range":0,
+				"maxLevel":5,
+				"stat":"INT",
+				"condition":"",
+				"numTargets":0,
+				"targetType":"rall",
+				"ongoing":false,
+				"bonus":0,
+				"description":[
+					"When cast, all entities roll to see if they avoid the attack. Any entities who",
+					"fail this roll take {dmg} damage."
+                ],
+                "notes":[
+					"The term 'all entities' includes the caster of the spell."
+				]
+			},
+            {
+                "name":"Holy Chorus",
+                "element":"light",
+				"dmg":2,
+				"range":0,
+				"maxLevel":5,
+				"stat":"INT",
+				"condition":"",
+				"numTargets":0,
+				"targetType":"rall",
+				"ongoing":false,
+				"bonus":0,
+				"description":[
+					"When cast, all entities roll to see if they are affected by the attack.",
+					"Any entities who pass this roll get {dmg} HP restored."
+                ],
+                "notes":[
+					"The term 'all entities' includes the caster of the spell"
+				]
+			},
+            {
+                "name":"Freestyle Jazz",
+                "element":"null",
+				"dmg":0,
+				"range":0,
+				"maxLevel":1,
+				"stat":"INT",
+				"condition":"insanity",
+				"numTargets":0,
+				"targetType":"rall",
+				"ongoing":false,
+				"bonus":3,
+				"description":[
+					"When cast, all entities roll to see if they avoid the attack. Any entities who",
+					"fail this roll are now insane."
+                ],
+                "notes":[
+					"The term 'all entities' includes the caster of the spell"
+				]
+			},
+            {
+                "name":"Song of Silence",
+                "element":"null",
+				"dmg":0,
+				"range":0,
+				"maxLevel":1,
+				"stat":"INT",
+				"condition":"sealed",
+				"numTargets":0,
+				"targetType":"rall",
+				"ongoing":false,
+				"bonus":3,
+				"description":[
+					"When cast, all entities roll to see if they avoid the attack. Any entities who",
+					"fail this roll are now sealed."
+                ],
+                "notes":[
+					"The term 'all entities' includes the caster of the spell"
+				]
+			},
+            {
+                "name":"Song of Provokation",
+                "element":"null",
+				"dmg":0,
+				"range":0,
+				"maxLevel":1,
+				"stat":"INT",
+				"condition":"",
+				"numTargets":0,
+				"targetType":"rall",
+				"ongoing":false,
+				"bonus":4,
+				"description":[
+					"When cast, all entities roll to see if they avoid the attack. Any entities who",
+					"fail this roll have physical melee attacks deal 2x damage, can no longer be healed,",
+					"can no longer use items, and can no longer use spells."
+                ],
+                "notes":[
+					"The term 'all entities' includes the caster of the spell"
+				]
+			}
+		]
+	},
+    {
+		"title":"Ninjitsu Spells",
+        "description":[
+		   "Ninjitsu is one of two spell categories inspired by eastern culture. Ninjitsu",
+		   "spells focus on surprising the enemy and attacking from the shadows. Ninjitsu",
+		   "is strongest when paired up with items and combat abilities allowing characters",
+		   "to attack close range while staying just out of their opponent's reach."
+        ],
+		"spells":[
+            {
+                "name":"Clone",
+                "element":"null",
+				"dmg":5,
+				"range":1,
+				"maxLevel":3,
+				"stat":"SPD",
+				"condition":"",
+				"numTargets":1,
+				"targetType":"ground",
+				"ongoing":true,
+				"bonus":1,
+				"description":[
+					"Caster summons a copy of themselves. All stats are the same as the caster's but",
+					"the clone only has {dmg} HP"
+                ],
+                "notes":[
+					"The clone cannot obtain more HP than the caster."
+				]
+			},
+            {
+                "name":"Substitute",
+                "element":"null",
+				"dmg":1,
+				"range":0,
+				"maxLevel":5,
+				"stat":"SPD",
+				"condition":"",
+				"numTargets":1,
+				"targetType":"self",
+				"ongoing":false,
+				"bonus":0,
+				"description":[
+					"The next time the caster is attacked, they may trade places with an inanimate",
+					"object on the field up to {dmg} squares away."
+                ],
+                "notes":[
+					"Small objects such as rocks and logs only; no trees or large objects.",
+					"If used during the caster's turn, this does not count as the reaction phase"
+				]
+			},
+            {
+                "name":"Mimic",
+                "element":"null",
+				"dmg":0,
+				"range":1,
+				"maxLevel":1,
+				"stat":"SPD",
+				"condition":"",
+				"numTargets":1,
+				"targetType":"entity",
+				"ongoing":false,
+				"bonus":5,
+				"description":[
+					"Copy the last attack which occured before this one. Any bonuses, effects, etc.",
+					"of the attack are also copied."
+                ],
+                "notes":[
+					"Do not have to pay MP cost for copied spell, pay this move's MP cost instead."
+				]
+			}
+		]
+	},
+    {
+		"title":"Bushido Spells",
+        "description":[
+		   "The second spell category based on eastern culture. Bushido spells are similar",
+		   "to combat spells but focus on speed rather than strength for cutting enemies",
+		   "down. Additionally, many bushido spells tend to be linked to a specific weapon",
+		   "so finding a weapon and mastering it is more important in bushido than simply",
+		   "learning a large variety of spells. However, there are a few spells which can",
+		   "be used independent of weapon which are listed below."
+
+        ],
+		"spells":[
+            {
+                "name":"Draw",
+                "element":"null",
+				"dmg":0,
+				"range":1,
+				"maxLevel":1,
+				"stat":"SPD",
+				"condition":"",
+				"numTargets":1,
+				"targetType":"entity",
+				"ongoing":false,
+				"bonus":2,
+				"description":[
+					"Deals damage to target entity equal to caster's speed."
+                ],
+                "notes":[]
+			},
+            {
+                "name":"Vacuum Cut",
+                "element":"dark",
+				"dmg":2,
+				"range":2,
+				"maxLevel":5,
+				"stat":"SPD",
+				"condition":"",
+				"numTargets":1,
+				"targetType":"entity",
+				"ongoing":false,
+				"bonus":0,
+				"description":[
+					"Deals {dmg} damage to target."
+                ],
+                "notes":[
+					"Ignores target's armor value",
+					"This damage cannot be absorbed, prevented, or redirected."
+				]
+			},
+            {
+                "name":"Step-Cut",
+                "element":"null",
+				"dmg":2,
+				"range":3,
+				"maxLevel":5,
+				"stat":"SPD",
+				"condition":"",
+				"numTargets":1,
+				"targetType":"entity",
+				"ongoing":false,
+				"bonus":0,
+				"description":[
+					"Deal {dmg} damage to target entity and then move adjacent to that entity."
+                ],
+                "notes":[
+					"This does not count as the movement step for the caster's turn."
+				]
+			}
+		]
+	}
 ]
