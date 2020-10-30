@@ -19,7 +19,7 @@
         ],
         "items":[
             {
-                "name":"Pine Bow",
+                "name":"Bow",
                 "qty":1,
                 "notes":""
             },
@@ -59,7 +59,7 @@
         ],
         "items":[
             {
-                "name":"Oak Lute",
+                "name":"Lute",
                 "qty":1,
                 "notes":"Choose 2 songs"
             }
@@ -84,12 +84,12 @@
         ],
         "items":[
             {
-                "name":"Copper Sword",
+                "name":"Sword",
                 "qty":1,
                 "notes":""
             },
             {
-                "name":"Copper Armor",
+                "name":"Plate Armor",
                 "qty":1,
                 "notes":""
             }
@@ -123,7 +123,7 @@
                 "notes":"Choose 2 spells"
             },
             {
-                "name":"Novice Robes",
+                "name":"Novice Robe",
                 "qty":1,
                 "notes":""
             }
@@ -151,9 +151,9 @@
         ],
         "items":[
             {
-                "name":"White Belt",
+                "name":"Novice Gauntlet",
                 "qty":1,
-                "notes":"Choose 1 technique"
+                "notes":"Choose 1 Spell"
             },
             {
                 "name":"Padded Gloves",
@@ -195,9 +195,9 @@
                 "notes":""
             },
             {
-                "name":"Blue Spirit Jewel",
+                "name":"Novice Gauntlet",
                 "qty":1,
-                "notes":"2 abilities"
+                "notes":"Choose 1 spell"
             }
         ]
     },
@@ -230,7 +230,7 @@
         ],
         "items":[
             {
-                "name":"Copper Knife",
+                "name":"Knife",
                 "qty":1,
                 "notes":""
             },

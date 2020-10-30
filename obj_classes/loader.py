@@ -51,6 +51,7 @@ class Loader:
         self.__load_simple('classes.json',      'classes')
         self.__load_abilities('abilities.json')
         self.__load_spells('spells.json')
+        self.__load_effects('effects.json')
 
         if debug:
             print(self.__memory)
@@ -187,6 +188,37 @@ class Loader:
                 description = sec_desc
             )
             for skill in section['skills']:
+                self.__memory.add(
+                    category    = cat,
+                    section     = sec_name,
+                    entry       = skill
+                )
+
+        """
+    ============================================================================
+    = Load Effects Method                                                      =
+    = ------------------------------------------------------------------------ =
+    = description:                                                             =
+    = looks for the specified file in the __dir directory and attempts to load =
+    = its contents into the memory object                                      =
+    ============================================================================
+    """     
+    def __load_effects(
+        self,   # (Ref) Reference to this class, required by all members
+        file    # (String) The name of a file to load from
+    ):
+        jdata = self.__load_json_data(file)
+        cat = 'effects'
+        self.__memory.add(cat)
+        for section in jdata:
+            sec_name = section['title']
+            sec_desc = section['description']
+            self.__memory.add(
+                category    = cat, 
+                section     = sec_name, 
+                description = sec_desc
+            )
+            for skill in section['entries']:
                 self.__memory.add(
                     category    = cat,
                     section     = sec_name,

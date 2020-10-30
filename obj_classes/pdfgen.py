@@ -1150,6 +1150,20 @@ class PDFGen:
                 """
             )
         )
+        self.__add_section(
+            title="11. Effects & Status Conditions",
+            prefix=self.__paragraph(
+                """
+                Effects and status conditions are temporary conditions which alter an
+                entity's abilities. The effect may be short term, lasting a single battle
+                or action; or could be long term, lasting several game sessions. How long
+                an effect lasts as well as any specifics needed to get rid of the effect
+                are determined by the GM and as always the GM has the freedom to define
+                new effects or to modify existing effects as needed.
+                """
+            ),
+            parser=self.__parse_effects
+        )
 
 
     # ==========================================================================
@@ -1525,6 +1539,41 @@ class PDFGen:
                     '<u>'+sk['name']+'</u>'+' -- '+' '.join(sk['description'])
                 )
                 self.__close_tag()
+        self.__close_tag()
+
+    """
+    ============================================================================
+    = Parse Effects Method                                                     =
+    = ------------------------------------------------------------------------ =
+    = description:                                                             =
+    = Reads in effect data loaded from file and adds it to the appropriate     =
+    = html section.                                                            =
+    ============================================================================
+    """        
+    def __parse_effects(
+        self        # (Ref) A reference to this class, required by all members
+    ):
+        effect_cat = self.__loader.get('effects')
+        effect_sec = effect_cat.getContentNames()
+        for section in effect_sec:
+            eff = effect_cat.get(section)
+            sec_effects = eff.getEntryNames()
+            self.__open_tag('u')
+            self.__open_tag('h3')
+            self.__write('<br/><br/>'+eff.name)
+            self.__close_tag()
+            self.__close_tag()
+            self.__open_tag('p')
+            self.__write(' '.join(eff.description))
+            self.__close_tag()
+            for entry in sec_effects:
+                ef = eff.get(name=entry)
+                self.__open_tag('p')
+                self.__write(
+                    '<u>'+ef['name']+'</u>'+' -- '+' '.join(ef['description'])
+                )
+                self.__close_tag()
+            self.__page_break()
         self.__close_tag()
 
     """
