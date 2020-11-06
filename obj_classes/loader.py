@@ -52,6 +52,7 @@ class Loader:
         self.__load_abilities('abilities.json')
         self.__load_spells('spells.json')
         self.__load_effects('effects.json')
+        self.__load_items("items.json")
 
         if debug:
             print(self.__memory)
@@ -131,6 +132,37 @@ class Loader:
                 entry       = entry,
                 field       = field
             )
+
+    """
+    ============================================================================
+    = Load Items Method                                                        =
+    = ------------------------------------------------------------------------ =
+    = description:                                                             =
+    = looks for the specified file in the __dir directory and attempts to load =
+    = its contents into the memory object                                      =
+    ============================================================================
+    """ 
+    def __load_items(
+        self,   # (Ref) Reference to this class, required by all members
+        file    # (String) The name of a file to load from   
+    ):
+        jdata = self.__load_json_data(file)
+        cat = 'items'
+        self.__memory.add(cat)
+        for section in jdata:
+            sec_name = section["title"]
+            sec_desc = section["description"]
+            self.__memory.add(
+                category        = cat,
+                section         = sec_name,
+                description     = sec_desc
+            )
+            for item in section['items']:
+                self.__memory.add(
+                    category    = cat,
+                    section     = sec_name,
+                    entry       = item
+                )
 
     """
     ============================================================================

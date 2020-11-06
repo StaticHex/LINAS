@@ -1,0 +1,904 @@
+[
+    {
+        "title":"General Use",
+        "description":[
+            "The items in this category are considered useful for all races and classes.",
+            "However, some classes will rely more heavily on the items in this category than",
+            "others."
+        ],
+        "items":[
+            {
+                "name":"Health Potion",
+                "description":[
+                    "Restores 5 HP to target entity"
+                ],
+                "cost":15,
+                "uses":1,
+                "notes":[]
+            },
+            {
+                "name":"Greater Health Potion",
+                "description":[
+                    "Restores 10 HP to target entity"
+                ],
+                "cost":50,
+                "uses":1,
+                "notes":[]
+            },
+            {
+                "name":"Mana Potion",
+                "description":[
+                    "Restores 5 MP to target entity"
+                ],
+                "cost":25,
+                "uses":1,
+                "notes":[]
+            },
+            {
+                "name":"Greater Mana Potion",
+                "description":[
+                    "Restores 10 MP to target entity"
+                ],
+                "cost":80,
+                "uses":1,
+                "notes":[]
+            },
+            {
+                "name":"Exploding Potion",
+                "description":[
+                    "Deals 3 fire damage to target entity"
+                ],
+                "cost":120,
+                "uses":1,
+                "notes":[]
+            },
+            {
+                "name":"Panancea",
+                "description":[
+                    "Removes all status conditions (except death) from target entity"
+                ],
+                "cost":35,
+                "uses":1
+            },
+            {
+                "name":"Angel Feather",
+                "description":[
+                    "Removes death and restores 5 HP to target entity"
+                ],
+                "cost":250,
+                "uses":1,
+                "notes":[]
+            },
+            {
+                "name":"Grenade",
+                "description":[
+                    "Deals 5HP fire damage to target entity up to 3 squares away."
+                ],
+                "cost":65,
+                "uses":1,
+                "notes":[]
+            },
+            {
+                "name":"Smoke Ball",
+                "description":[
+                    "-1 to all attack rolls made against target entity"
+                ],
+                "cost":30,
+                "uses":1,
+                "notes":[]
+            },
+            {
+                "name":"Torch",
+                "description":[
+                    "Used to light up dark areas. Must be lit to use."
+                ],
+                "cost":5,
+                "uses":1,
+                "notes":[]
+            },
+            {
+                "name":"Flint",
+                "description":[
+                    "Gives +1 to roll when starting a fire or lighting a torch."
+                ],
+                "cost":10,
+                "uses":5,
+                "notes":[]
+            },
+            {
+                "name":"Arrow",
+                "description":[
+                    "Ammo for bows and longbows."
+                ],
+                "cost":7,
+                "uses":1,
+                "notes":[
+                    "Can be retrieved after firing."
+                ]
+            },
+            {
+                "name":"Crossbow Bolt",
+                "description":[
+                    "Ammo for crossows."
+                ],
+                "cost":5,
+                "uses":1,
+                "notes":[
+                    "Can be retrieved after firing."
+                ]
+            },
+            {
+                "name":"Iron Pellet",
+                "description":[
+                    "Ammo for pistols and rifles."
+                ],
+                "cost":3,
+                "uses":1,
+                "notes":[]
+            }
+        ]
+    },
+    {
+        "title":"Weapons",
+        "description":[
+            "As the name suggests, these are items which are primarily meant for combat and",
+            "include both melee and ranged weapons. Pay close attention to the notes each of",
+            "these items list out however, as picking the wrong weapon could put your",
+            "character at a serious disadvantage. Additionally, heavier weapons require higher",
+            "stats to use and also give a heavy bonus to speed (speed cannot drop below 0)",
+            "making it harder to react during battle."
+        ],
+        "items":[
+            {
+                "name":"Kunai",
+                "description":[
+                    "A small bladed weapon which can be wielded like a knife or thrown."
+                ],
+                "cost":35,
+                "p_damage":1,
+                "range":3,
+                "reqSkill":"Fencing",
+                "reqStat":[],
+                "speedPenalty":0,
+                "notes":[
+                    "If dual wielding add +1 to damage.",
+                    "Cannot use items in battle while dual wielding.",
+                    "Range is only 3 if being thrown, if not throwing, range is 1",
+                    "Once thrown, must be retrieved before using again."
+                ]
+            },
+            {
+                "name":"Knife",
+                "description":[
+                    "A favorite of rogues and assassins. Easy to use and easily concealed."
+                ],
+                "cost":25,
+                "p_damage":1,
+                "range":1,
+                "reqSkill":"Fencing",
+                "reqStat":[],
+                "speedPenalty":0,
+                "notes":[
+                    "If dual wielding add +1 to damage.",
+                    "Cannot use items in battle while dual wielding."
+                ]
+            },
+            {
+                "name":"Dagger",
+                "description":[
+                    "A short bladed weapon which favors speed over power."
+                ],
+                "cost":50,
+                "p_damage":2,
+                "range":1,
+                "reqSkill":"Swordsmanship",
+                "reqStat":["STR",1],
+                "speedPenalty":1,
+                "notes":[
+                    "If dual wielding add +1 to damage",
+                    "Cannot use items in battle while dual wielding."
+                ]
+            },
+            {
+                "name":"Sword",
+                "description":[
+                    "The gold star standard used by knights and soldiers everywhere."
+                ],
+                "cost":65,
+                "p_damage":3,
+                "range":1,
+                "reqSkill":"Swordsmanship",
+                "reqStat":["STR",2],
+                "speedPenalty":2,
+                "notes":[
+                    "If dual weilding add +1 to damage",
+                    "Cannot use items in battle while dual wielding."
+                ]
+            },
+            {
+                "name":"Two-Handed Sword",
+                "description":[
+                    "A large bladed weapon which uses weight vs. sharpness to tear through",
+                    "armor and flesh."
+                ],
+                "cost":115,
+                "p_damage":5,
+                "range":1,
+                "reqSkill":"Swordsmanship",
+                "reqStat":["STR",4],
+                "speedPenalty":3,
+                "notes":[
+                    "Cannot be dual weilded."
+                ]
+            },
+            {
+                "name":"Axe",
+                "description":[
+                    "A large bladed weapon which can be used either for battle or for",
+                    "chopping wood."
+                ],
+                "cost":85,
+                "p_damage":4,
+                "range":1,
+                "reqSkill":"Swordsmanship",
+                "reqStat":["STR",3],
+                "speedPenalty":2,
+                "notes":[
+                    "Cannot be dual weilded"
+                ]
+            },
+            {
+                "name":"Hatchet",
+                "description":[
+                    "A small hand-held size axe which can be dual wielded or thrown."
+                ],
+                "cost":45,
+                "p_damage":2,
+                "range":3,
+                "reqSkill":"Swordsmanship",
+                "reqStat":["STR",1],
+                "speedPenalty":1,
+                "notes":[
+                    "If dual wielding add +1 to damage.",
+                    "Cannot use items in battle while dual wielding.",
+                    "Range is only 3 if being thrown, if not throwing, range is 1",
+                    "Once thrown, must be retrieved before using again."
+                ]
+            },
+            {
+                "name":"Mace",
+                "description":[
+                    "Great for smashing things, a favorite of goblins and kobolds."
+                ],
+                "cost":95,
+                "p_damage":4,
+                "range":1,
+                "reqSkill":"Bashing",
+                "reqStat":["STR",3],
+                "speedPenalty":2,
+                "notes":[
+                    "Cannot be dual weilded."
+                ]
+            },
+            {
+                "name":"Staff",
+                "description":[
+                    "A large piece of wood often carried by wizards and monks."
+                ],
+                "cost":70,
+                "p_damage":2,
+                "range":2,
+                "reqSkill":"Bashing",
+                "reqStat":["STR",2],
+                "speedPenalty":1,
+                "notes":[
+                    "Cannot be dual weilded."
+                ]
+            },
+            {
+                "name":"Spear",
+                "description":[
+                    "Standard pointed weapon used for battle and can also be used for",
+                    "fishing or hunting."
+                ],
+                "cost":75,
+                "p_damage":2,
+                "range":2,
+                "reqSkill":"Fencing",
+                "reqStat":["STR",2],
+                "speedPenalty":1,
+                "notes":[
+                    "Cannot be dual wielded"
+                ]
+            },
+            {
+                "name":"Lance",
+                "description":[
+                    "Generally used from atop a horse, pegasus",
+                    "or wyvern. It's large size generally does not make it a good candidate",
+                    "for fighting on the ground."
+                ],
+                "cost":125,
+                "p_damage":4,
+                "range":2,
+                "reqSkill":"Fencing",
+                "reqStat":["STR",3],
+                "speedPenalty":3,
+                "notes":[
+                    "Cannot be dual wielded"
+                ]
+            },
+            {
+                "name":"Bow",
+                "description":[
+                    "Standard bow used by archers everywhere."
+                ],
+                "cost":65,
+                "p_damage":2,
+                "range":3,
+                "reqSkill":"Archery",
+                "reqStat":["DEX",2],
+                "speedPenalty":2,
+                "notes":[
+                    "Cannot be dual wielded."
+                ]
+            },
+            {
+                "name":"Long-bow",
+                "description":[
+                    "An enormous bow which requires an immense amount of skill to use."
+                ],
+                "cost":80,
+                "p_damage":3,
+                "range":4,
+                "reqSkill":"Archery",
+                "reqStat":["DEX",3],
+                "speedPenalty":3,
+                "notes":[
+                    "Cannot be dual wielded"
+                ]
+            },
+            {
+                "name":"Crossbow",
+                "description":[
+                    "An extremely powerful bow which takes an enormous amount of strength",
+                    "to use."
+                ],
+                "cost":100,
+                "p_damage":5,
+                "range":3,
+                "reqSkill":"Archery",
+                "reqStat":["STR",2],
+                "speedPenalty":3,
+                "notes":[
+                    "Cannot be dual wielded",
+                    "Do not add dexterity to this weapon when calculating damage."
+                ]
+            },
+            {
+                "name":"Blunderbuss pistol",
+                "description":[
+                    "A small high power pistol favored by brigands and pirates."
+                ],
+                "cost":90,
+                "p_damage":2,
+                "range":4,
+                "reqSkill":"Marksmanship",
+                "reqStat":["DEX",1],
+                "speedPenalty":2,
+                "notes":[
+                    "If dual wielding add +1 to damage",
+                    "Cannot use items in battle while dual wielding."
+                ]
+            },
+            {
+                "name":"Musket",
+                "description":[
+                    "A muzzle loaded long gun which can be used for battle or hunting",
+                    "game."
+                ],
+                "cost":110,
+                "p_damage":3,
+                "range":5,
+                "reqSkill":"Marksmanship",
+                "reqStat":["DEX",2],
+                "speedPenalty":3,
+                "notes":[
+                    "Cannot be dual wielded"
+                ]
+            },
+            {
+                "name":"Trebuchet",
+                "description":[
+                    "A large siege weapon capable of firing debris long distances."
+                ],
+                "p_damage":5,
+                "range":6,
+                "reqSkill":"Marksmanship",
+                "reqStat":[],
+                "speedPenalty":0,
+                "notes":[
+                    "This weapon cannot be moved from it's location on the map",
+                    "This weapon can only be fired while there is ammo in it's ammo box",
+                    "Must take 1 turn to load and 1 turn to fire",
+                    "This weapon must be mounted/unmounted"
+                ]
+            },
+            {
+                "name":"Catapult",
+                "description":[
+                    "A large siege weapon capable of firing debris long distances."
+                ],
+                "p_damage":5,
+                "range":6,
+                "reqSkill":"Marksmanship",
+                "reqStat":[],
+                "speedPenalty":0,
+                "notes":[
+                    "This weapon cannot be moved from it's location on the map",
+                    "This weapon can only be fired while there is ammo in it's ammo box",
+                    "Must take 1 turn to load and 1 turn to fire",
+                    "This weapon must be mounted/unmounted"
+                ]
+            },
+            {
+                "name":"Cannon",
+                "description":[
+                    "A heavy ranged weapon capable of firing large balls of metal",
+                    "long distances."
+                ],
+                "p_damage":7,
+                "range":7,
+                "reqSkill":"Marksmanship",
+                "reqStat":[],
+                "speedPenalty":0,
+                "notes":[
+                    "This weapon cannot be moved from it's location on the map",
+                    "This weapon can only be fired while there is ammo in it's ammo box",
+                    "Must take 1 turn to load and 1 turn to fire",
+                    "This weapon must be mounted/unmounted"
+                ]
+            },
+            {
+                "name":"Drill Harpoon",
+                "description":[
+                    "A gigantic bow which can only be fired once. A siege weapon",
+                    "generally used to fight large monsters or invading armies."
+                ],
+                "p_damage":7,
+                "range":5,
+                "reqSkill":"Archery",
+                "reqStat":[],
+                "speedPenalty":0,
+                "notes":[
+                    "This weapon cannot be moved from it's location on the map",
+                    "This weapon can only be fired once",
+                    "This weapon must be mounted/unmounted"
+                ]
+            },
+            {
+                "name":"Padded Gloves",
+                "description":[
+                    "A set of gloves designed to protect the hands and knuckles",
+                    "while fighting."
+                ],
+                "cost":30,
+                "p_damage":1,
+                "range":1,
+                "reqSkill":"Martial Arts",
+                "reqStat":[],
+                "speedPenalty":0,
+                "notes":[
+                    "This weapon cannot be dual wielded."
+                ]
+            },
+            {
+                "name":"Brass Knuckles",
+                "description":[
+                    "A set of joined metal rings worn during fights. Not",
+                    "acceptable to use during tournaments."
+                ],
+                "cost":50,
+                "p_damage":2,
+                "range":1,
+                "reqSkill":"Martial Arts",
+                "reqStat":[],
+                "speedPenalty":0,
+                "notes":[
+                    "This weapon cannot be dual wielded."
+                ]
+            }
+        ]
+    },
+    {
+        "title":"Armor & Clothing",
+        "description":[
+            "Armor provides a way for characters to protect themselves from damage.",
+            "Entities can equip only a single armor set at a single time and can also",
+            "equip a shield for a bit of extra protection if they choose. Like weapons",
+            "the heavier pieces of armor require a higher amount of strength to use and",
+            "also give a heavy bonus to speed (speed cannot drop below 0) making it harder",
+            "to react during battle."
+        ],
+        "items":[
+            {
+                "name":"Robe",
+                "description":[
+                    "A heavy robe made out of woven linen. Offers very little protection",
+                    "but is fairly lightweight making it a favorite of mages."
+                ],
+                "cost":25,
+                "p_protection":1,
+                "reqStat":[],
+                "speedPenalty":0,
+                "notes":[]
+            },
+            {
+                "name":"Leather Armor",
+                "description":[
+                    "Armor made from tanned leather hides, is reasonably lightweight and",
+                    "provides a small amount of protection."
+                ],
+                "cost":40,
+                "p_protection":2,
+                "reqStat":["STR",1],
+                "speedPenalty":0,
+                "notes":[]
+            },
+            {
+                "name":"Lacquered Armor",
+                "description":[
+                    "Lightweight armor made from lacquered slats of wood and allowing for fast",
+                    "and fluid movement."
+                ],
+                "cost":55,
+                "p_protection":2,
+                "reqStat":["STR",2],
+                "speedPenalty":0,
+                "notes":[]
+            },
+            {
+                "name":"Studded Armor",
+                "description":[
+                    "Leather armor with metal studs embedded into it for added protection"
+                ],
+                "cost":65,
+                "p_protection":3,
+                "reqStat":["STR",2],
+                "speedPenalty":1,
+                "notes":[]
+            },
+            {
+                "name":"Chainmail Armor",
+                "description":[
+                    "Armor made from interwoven links of metal. Provides decent protection",
+                    "And is fairly lightweight. A favorite of battle mages."
+                ],
+                "cost":75,
+                "p_protection":4,
+                "reqStat":["STR",2],
+                "speedPenalty":2,
+                "notes":[]
+            },
+            {
+                "name":"Bone Armor",
+                "description":[
+                    "Armor made from stitched together animal bones and hide. Fairly strong but",
+                    "also a bit heavy"
+                ],
+                "cost":95,
+                "p_protection":6,
+                "reqStat":["STR",3],
+                "speedPenalty":3,
+                "notes":[]
+            },
+            {
+                "name":"Platemail Armor",
+                "description":[
+                    "Armor made from solid plates of metal. Provides good protection but is",
+                    "extremely heavy"
+                ],
+                "cost":110,
+                "p_protection":8,
+                "reqStat":["STR",3],
+                "speedPenalty":4,
+                "notes":[]
+            },
+            {
+                "name":"Dragon Scale Armor",
+                "description":[
+                    "Armor made from dragon hides and scales and illegal to buy or sell in shops.",
+                    "However, some articles have turned up in ancient ruins and tombs."
+                ],
+                "p_protection":6,
+                "m_protection":3,
+                "reqStat":["STR",1],
+                "speedPenalty":0,
+                "notes":[
+                    "While this is equipped, ice damage taken is doubled, Fire damage taken is halved"
+                ]
+            },
+            {
+                "name":"Dragon Bone Armor",
+                "description":[
+                    "Armor made from dragon bones stitched together with dragon hides. Like dragon",
+                    "scale armor, this is illegal to buy or sell in shops; however suits of this are",
+                    "still traded on the black market."
+                ],
+                "p_protection":10,
+                "m_protection":5,
+                "reqStat":["STR",3],
+                "speedPenalty":3,
+                "notes":[
+                    "While this is equipped, ice damage taken is doubled, Fire damage taken is halved"
+                ]
+            },
+            {
+                "name":"Shield",
+                "description":[
+                    "Useful for blocking physical attacks. Can be made out of metal or wood."
+                ],
+                "cost":45,
+                "p_protection":3,
+                "reqStat":["STR",2],
+                "speedPenalty":1,
+                "notes":[
+                    "This cannot be used if dual wielding",
+                    "Cannot use items during battle while this is equipped"
+                ]
+            },
+            {
+                "name":"Dragon Scale Shield",
+                "description":[
+                    "A durable shield made of dragon hide and scales and illegal to buy or",
+                    "sell in shops. However, some articles have turned up in ancient ruins",
+                    "and tombs."
+                ],
+                "p_protection":4,
+                "m_protection":2,
+                "reqStat":["STR",2],
+                "speedPenalty":1,
+                "notes":[
+                    "This cannot be used if dual wielding",
+                    "Cannot use items during battle while this is equipped",
+                    "While this is equipped, ice damage taken is doubled, Fire damage taken is halved"
+                ]
+            },
+            {
+                "name":"Dragon Bone Shield",
+                "description":[
+                    "A durable shield made from dragon bones stitched together with dragon",
+                    "hides and illegal to buy or sell in shops. However, some articles have",
+                    "turned up in ancient ruins and tombs."
+                ],
+                "p_protection":5,
+                "m_protection":3,
+                "reqStat":["STR",2],
+                "speedPenalty":1,
+                "notes":[
+                    "This cannot be used if dual wielding",
+                    "Cannot use items during battle while this is equipped",
+                    "While this is equipped, ice damage taken is doubled, Fire damage taken is halved"
+                ]
+            },
+            {
+                "name":"Mithrill Armor",
+                "description":[
+                    "Armor made from interwoven threads of mithrill. Extremely lightweight and",
+                    "provides some weak magic protection. This is a favorite of battle mages.",
+                    "However it is a bit pricey."
+                ],
+                "cost":475,
+                "p_protection":2,
+                "m_protection":2,
+                "reqStat":[],
+                "speedPenalty":0,
+                "notes":[]
+            },
+            {
+                "name":"Mithrill Shield",
+                "description":[
+                    "A shield made from a solid plate of mithrill. Fairly lightweight and provides.",
+                    "a small amount of magical protection as well."
+                ],
+                "cost":345,
+                "p_protection":2,
+                "m_protection":1,
+                "reqStat":["STR",1],
+                "speedPenalty":0,
+                "notes":[
+                    "This cannot be used if dual wielding",
+                    "Cannot use items during battle while this is equipped"
+                ]
+            }
+        ]
+    },
+    {
+        "title":"Specialized",
+        "description":[
+            "The items in this category are items which are geared towards specific class use such",
+            "as spellbooks or crafting tools."
+        ],
+        "items":[
+            {
+                "name":"Lockpick",
+                "description":[
+                    "Required to use the lockpicking skill"
+                ],
+                "cost":10,
+                "uses":1,
+                "notes":[]
+            },
+            {
+                "name":"Novice Instrument",
+                "description":[
+                    "Required to cast spells out of the Music school."
+                ],
+                "cost":40,
+                "notes":[
+                    "Holds 2 spells (Music spells only)",
+                    "Can be pretty much any instrument: Lute, Drum, Fife, etc."
+                ]
+            },
+            {
+                "name":"Instrument",
+                "description":[
+                    "Required to cast spells out of the Music school."
+                ],
+                "cost":80,
+                "notes":[
+                    "Holds 3 spells (Music spells only)",
+                    "Can be pretty much any instrument: Lute, Drum, Fife, etc."
+                ]
+            },
+            {
+                "name":"Bardic Instrument",
+                "description":[
+                    "Required to cast spells out of the Music school."
+                ],
+                "cost":160,
+                "notes":[
+                    "Holds 4 spells (Music spells only)",
+                    "Can be pretty much any instrument: Lute, Drum, Fife, etc."
+                ]
+            },
+            {
+                "name":"Novice Spellbook",
+                "description":[
+                    "Required to cast spells."
+                ],
+                "cost":60,
+                "reqStat":["INT",2],
+                "notes":[
+                    "-1 to MP cost for spells",
+                    "Holds 2 spells (Light, Arcane, Dark, and Summoning magic only)",
+                    "Weapon cannot be equipped while using this"
+                ]
+            },
+            {
+                "name":"Spellbook",
+                "description":[
+                    "Required to cast spells."
+                ],
+                "cost":120,
+                "reqStat":["INT",2],
+                "notes":[
+                    "-1 to MP cost for spells",
+                    "Holds 3 spells (Light, Arcane, Dark, and Summoning magic only)",
+                    "Weapon cannot be equipped while using this"
+                ]
+            },
+            {
+                "name":"Arcane Spellbook",
+                "description":[
+                    "Required to cast spells."
+                ],
+                "cost":250,
+                "reqStat":["INT",4],
+                "notes":[
+                    "-2 to MP cost for spells",
+                    "Holds 4 spells (Light, Arcane, Dark, and Summoning magic only)",
+                    "Weapon cannot be equipped while using this"
+                ]
+            },
+            {
+                "name":"Novice Gauntlet",
+                "description":[
+                    "Required to cast spells."
+                ],
+                "cost":60,
+                "reqStat":["STR",2],
+                "notes":[
+                    "Holds 2 spells (Anything but Music)"
+                ]
+            },
+            {
+                "name":"Gauntlet",
+                "description":[
+                    "Required to cast spells."
+                ],
+                "cost":120,
+                "reqStat":["STR",2],
+                "notes":[
+                    "Holds 3 spells (Anything but Music)"
+                ]
+            },
+            {
+                "name":"Elder Gauntlet",
+                "description":[
+                    "Required to cast spells."
+                ],
+                "cost":120,
+                "reqStat":["STR",4],
+                "notes":[
+                    "Holds 4 spells (Anything but Music)"
+                ]
+            },
+            {
+                "name":"Chemistry Set",
+                "description":[
+                    "Required to use alchemy"
+                ],
+                "cost":45,
+                "notes":[]
+            },
+            {
+                "name":"Saw",
+                "description":[
+                    "Required to use carpentry."
+                ],
+                "cost":25,
+                "reqStat":["STR",2],
+                "notes":[]
+            },
+            {
+                "name":"Mixing Bowl",
+                "description":[
+                    "Required to use cooking."
+                ],
+                "cost":30,
+                "notes":[]
+            },
+            {
+                "name":"Etching Tool",
+                "description":[
+                    "Required to use enchanting."
+                ],
+                "cost":45,
+                "notes":[]
+            },
+            {
+                "name":"Pickaxe",
+                "description":[
+                    "Required to use mining."
+                ],
+                "cost":35,
+                "notes":[]
+            },
+            {
+                "name":"Pickaxe",
+                "description":[
+                    "Required to use mining."
+                ],
+                "cost":35,
+                "notes":[]
+            },
+            {
+                "name":"Blacksmith's Hammer",
+                "description":[
+                    "Required to use blacksmithing."
+                ],
+                "cost":25,
+                "notes":[]
+            },
+            {
+                "name":"Toolbox",
+                "description":[
+                    "Required to use tinkering."
+                ],
+                "cost":25,
+                "notes":[]
+            }
+        ]
+    }
+]

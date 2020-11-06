@@ -292,6 +292,14 @@
                     "specify a crafting skill to apply this to. Finished products related to this ",
                     "skill get +2 added to their value. "
                 ]
+            },
+            {
+                "name":"Spectral",
+                "description":[
+                    "The entity is a spirit not of this world. The entity cannot be targeted by physical",
+                    "attacks. The entity takes 2x damage from magical attaks. The entity cannot equip",
+                    "standard equipment"
+                ]
             }
         ]
     }

@@ -59,9 +59,9 @@
         ],
         "items":[
             {
-                "name":"Lute",
+                "name":"Novice Instrument",
                 "qty":1,
-                "notes":"Choose 2 songs"
+                "notes":"Choose 2 spells"
             }
         ]
     },
@@ -70,7 +70,9 @@
         "description":[
             "Knights tend to favor heavy armor and physical weapons. However, this is not a",
             "steadfast rule and magic can be added to the class to make it play more like a",
-            "paladin or spell sword if desired."
+            "paladin or spell sword if desired. This also umbrellas in samurai characters",
+            "since \"sword\" doesn't make a distinction between western and eastern sword",
+            "types."
         ],
         "skills":[
             {
@@ -89,7 +91,7 @@
                 "notes":""
             },
             {
-                "name":"Plate Armor",
+                "name":"Plate Armor or Laquered Armor",
                 "qty":1,
                 "notes":""
             }
@@ -180,7 +182,7 @@
                 "value":1
             },
             {
-                "name":"Magic",
+                "name":"Speech",
                 "value":-1
             },
             {

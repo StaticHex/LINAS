@@ -110,7 +110,7 @@ class PDFGen:
             "Spells & Battle Skills",
             "Abilities",
             "Effects & Status Conditions",
-            "Item",
+            "Items",
             "Entities"
         ])
 
@@ -1005,10 +1005,10 @@ class PDFGen:
                 """
             )+self.__paragraph(
                 """
-                With the above in mind, spell creation is largely left up to the GM and Players
+                With the above in mind, spell creation is largely left up to the DM and Players
                 to work out. That being said, there are a few recommended guidelines designed to
-                keep spells from becoming too powerful. It is up to the GM to enforce these and
-                they are certainly not mandatory. However, if the GM or player are uncertain on
+                keep spells from becoming too powerful. It is up to the DM to enforce these and
+                they are certainly not mandatory. However, if the DM or player are uncertain on
                 how to go about creating a spell, these are certainly good guidelines to follow:
                 <ol>
                     <li>
@@ -1066,15 +1066,15 @@ class PDFGen:
             )+self.__paragraph(
                 """
                 Spells are typically leveled up through training or studying. The exact
-                amount of time needed for a spell to level up is up to the GM.
-                Additionally, the GM can decide to have the player roll to level up.
+                amount of time needed for a spell to level up is up to the DM.
+                Additionally, the DM can decide to have the player roll to level up.
                 one nice idea when rolling to level up and to keep things from getting
                 to stale is to add a bonus point to damage if the player rolls a 6 or 
                 add an additional point to the MP cost if they roll a 1. Like most other
                 things in the system, the specifics on leveling up spells are largely
-                between the GM and players to work out and nothing printed in this
+                between the DM and players to work out and nothing printed in this
                 section or the one above detailing "spell creation rules" should be
-                considered hardfast. The GM always has the ability to override the rules
+                considered hardfast. The DM always has the ability to override the rules
                 """
             )+self.__paragraph(
                 "<h3>Forgetting Spells</h3>",
@@ -1111,7 +1111,7 @@ class PDFGen:
                 Like spells, abilities can be forgotten by striking through them, crossing them out
                 or otherwise marking them as forgotten in some way. This is doen to keep characters
                 flexible. Additionally, unlike spells; abilities don't really level up so there's
-                less of a penalty for forgetting them. This being said, the GM may attach conditions
+                less of a penalty for forgetting them. This being said, the DM may attach conditions
                 to learning certain abilities and so like spells, when an ability is forgotten it
                 should be assumed that re-learning that ability will result in relearning from scratch.
                 """
@@ -1120,9 +1120,9 @@ class PDFGen:
             )+self.__paragraph(
                 """
                 Like most aspects of the system, if there is a particular ability a player wants for
-                their character; the GM and that player should work together to make that ability a
+                their character; the DM and that player should work together to make that ability a
                 reality. That being said there are a few suggestions for creating abilities to keep
-                the game balanced and as always the GM may add to or override any of the suggested
+                the game balanced and as always the DM may add to or override any of the suggested
                 rules below:
                 <ul>
                     <li>
@@ -1158,14 +1158,116 @@ class PDFGen:
                 entity's abilities. The effect may be short term, lasting a single battle
                 or action; or could be long term, lasting several game sessions. How long
                 an effect lasts as well as any specifics needed to get rid of the effect
-                are determined by the GM and as always the GM has the freedom to define
+                are determined by the DM and as always the DM has the freedom to define
                 new effects or to modify existing effects as needed.
                 """
             ),
             parser=self.__parse_effects
         )
-
-
+        self.__add_section(
+            title="12. Items",
+            prefix=self.__paragraph(
+                """
+                This section contains a list of items for the system. As with most
+                things in the system this shouldn't be considered an absolute list
+                as the DM may choose to add more or make certain items off limits
+                depending on the campaign. Unless the DM states otherwise, any
+                items which have a set cost associated with them should be
+                considered as valid items to purchase during character creation.
+                """
+            ),
+            parser=self.__parse_items,
+            suffix=self.__htag(
+                "Crafting Items"
+            )+self.__paragraph(
+                """
+                In order to keep things simple and moving quickly while still allowing
+                players the freedom to roleplay as craftsmen/craftswomen; the crafting
+                system has been simplified tremendously. Generally speaking, when gathering
+                resources it's up to the DM to determine what the players gather (hence why
+                resources aren't listed in items). Players should still keep track of gathered
+                resources on their character sheet and the DM is encouraged to keep things
+                generic. For example, mining ore might yeild simply \"usable ore\" which can
+                be turned into \"ingots\" that a blacksmith can use. Generally speaking a
+                crafter can attempt to craft any item which the DM deems falls under that
+                user's discipline.
+                """
+            )+self.__paragraph(
+                """
+                To better clarify on the point above, consider the following example. A
+                blacksmith attempts to make an iron bow. While this is technically possible;
+                generally speaking bowcrafting typically falls under woodworking and therefore
+                would be better suited as a carpentry. However, this is ultimately up to the DM
+                to decide. In the example above the DM may like the idea of an iron bow and allow
+                it and may even give a bonus for using a stronger material. In the end it's up to
+                the players and the DM to work out.
+                """
+            )+self.__paragraph(
+                """
+                Once it's determined that the player's character can craft the item they wish to
+                attempt they roll 1 d6 to determine whether they successfully create the item
+                using the chart below:
+                <ul>
+                    <li> 
+                        1 -- Fail to make the item and resources are used up
+                    </li>
+                    <li>
+                        2 -- Make the item but it is inferior quality.
+                        <ul>
+                            <li>For weapons this means -2 to damage</li>
+                            <li>For armor this means -2 to protection</li>
+                            <li>For items which restore HP/MP they restore 2 HP/MP less than usual</li>
+                            <li>
+                                For other items which simply do something i.e. cure status or resurrect
+                                entities; a d6 roll at -1 is required to use them.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        3 -- Make the item but is poor quality
+                        <ul>
+                            <li>For weapons this means -1 to damage</li>
+                            <li>For armor this means -1 to protection</li>
+                            <li>For items which restore HP/MP they restore 1 HP/MP less than usual</li>
+                            <li>
+                                For other items which simply do something i.e. cure status or resurrect
+                                entities; a d6 roll is required to use them.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        4 -- you make the item as usual (same as if you bought it in a shop)
+                    </li>
+                    <li>
+                        5 -- you make the item and it is great quality
+                        <ul>
+                            <li>For weapons this means +1 to damage</li>
+                            <li>For armor this means +1 to protection</li>
+                            <li>For items which restore HP/MP they restore 1 HP/MP more than usual</li>
+                        </ul>
+                    </li>
+                    <li>
+                        6 -- you make the item and it is exceptional quality
+                        <ul>
+                            <li>For weapons this means +2 to damage</li>
+                            <li>For armor this means +2 to protection</li>
+                            <li>For items which restore HP/MP they restore 2 HP/MP more than usual</li>
+                        </ul>
+                    </li>
+                </ul>
+                """
+            )+self.__page_break(True)+self.__paragraph(
+                """
+                The DM may choose to include other effects such as increased/decreased spell price
+                or adding additional effects to exceptional items. As always this is up to the DM and
+                the players to determine; but one thing to keep in mind is that a player who's chosen
+                to play as a tradesman should be able to feel the same pride in an exceptional piece
+                that a real tradesman does. As a DM, when in doubt ask your players what they think
+                \"exceptional\" means.
+                """
+            )
+        )
+        
     # ==========================================================================
     # = THROW PUBLICLY ACCESSIBLE FUNCTIONS HERE                               =
     # ==========================================================================
@@ -1621,6 +1723,130 @@ class PDFGen:
 
     """
     ============================================================================
+    = Parse Items Method                                                       =
+    = ------------------------------------------------------------------------ =
+    = description:                                                             =
+    = Reads in spell data loaded from file and adds it to the appropriate html =
+    = section.                                                                 =
+    ============================================================================
+    """   
+    def __parse_items(
+        self     # (Ref) A reference to this class, required by all members
+    ):
+        item_cat = self.__loader.get('items')
+        item_sec = item_cat.getContentNames()
+        for section in item_sec:
+            sec = item_cat.get(section)
+            sec_items = sec.getEntryNames()
+            self.__open_tag('u')
+            self.__open_tag('h3')
+            self.__write(sec.name.title())
+            self.__close_tag()
+            self.__close_tag()
+            self.__open_tag('p')
+            self.__write(' '.join(sec.description))
+            self.__close_tag()
+            for entry in sec_items:
+                it = sec.get(name=entry)
+
+                name = it['name']
+                uses = it['uses'] if 'uses' in it else None
+                cost = f"{it['cost']:,}G" if "cost" in it else "-"
+                req_skill = it['reqSkill'] if 'reqSkill' in it else None
+                req_stat = it["reqStat"] if 'reqStat' in it else None
+                speed_penalty = it["speedPenalty"] if "speedPenalty" in it else None
+                w_range = it['range'] if 'range' in it else None
+                p_damage = it['p_damage'] if 'p_damage' in it else None
+                m_damage = it['m_damage'] if 'm_damage' in it else None
+                p_protection = it["p_protection"] if "p_protection" in it else None
+                m_protection = it["m_protection"] if "m_protection" in it else None
+                desc = ' '.join(it['description'])
+                notes = it['notes'] if 'notes' in it else None
+
+                
+                self.__open_tag('div',{'class':'container pop'})
+                self.__open_tag('div',{'class':'cont-title'})
+                self.__open_tag('span',{'class':'rel','style':'width: 55%;'})
+                self.__open_tag('h4',{'class':'nopad'})
+                self.__write(name)
+                self.__close_tag()
+                self.__close_tag()
+                spanW='37.85'
+                if uses:
+                    self.__open_tag('span',{'class':'rel','style':'width: 10%;'})
+                    self.__write(f'<strong>Uses: </strong>{uses}')
+                    self.__close_tag()
+                    spanW='27.85'
+                styles=f'width: {spanW}%; padding-top: 0px; text-align: right;'
+                self.__open_tag('span',{'class':'rel','style':f'{styles}'})
+                self.__write(f'<strong>Cost: </strong>{cost}')
+                self.__close_tag()
+                self.__close_tag()
+                if req_skill:
+                    self.__open_tag('div',{'class':'cont-inner'})
+                    self.__open_tag('span',{'class':'rel','style':'width: 92.85%'})
+                    self.__write(f"<strong>Required Skill: </strong>{req_skill.title()}")
+                    self.__close_tag()
+                    self.__close_tag()
+                if w_range:
+                    self.__open_tag('div',{'class':'cont-inner'})
+
+                    req_stat = " ".join([str(x) for x in req_stat]) if req_stat else "-"
+                    speed_penalty = speed_penalty if speed_penalty else 0 
+                    self.__open_tag('span',{'class':'rel','style':'width: 30.95%;'})
+                    self.__write(f"<strong>Stat Requirements:</strong> {req_stat}")
+                    self.__close_tag()
+                    self.__open_tag('span',{'class':'rel','style':'width: 30.95%; text-align: center;'})
+                    self.__write(f"<strong>Speed Penalty:</strong> {speed_penalty}")
+                    self.__close_tag()
+                    self.__open_tag('span',{'class':'rel','style':'width: 30.95%; text-align: right;'})
+                    self.__write(f"<strong>Range:</strong> {w_range}")
+                    self.__close_tag()
+                    self.__close_tag()
+                
+                if p_damage or p_protection or m_damage or m_protection:
+                    span_w = 92.85
+                    if (p_damage and m_damage) or (p_protection and m_protection):
+                        span_w = 46.425
+                    self.__open_tag('div',{'class':'cont-inner'})
+                    if p_damage or p_protection:
+                        self.__open_tag('span',{'class':'rel','style':f'width: {span_w}%;'})
+                        label = "Physical Damage:"
+                        value = p_damage
+                        if p_protection:
+                            label = "Physical Protection:"
+                            value = p_protection
+                        self.__write(f"<strong>{label}</strong> {value}")
+                        self.__close_tag()
+                    if m_damage or m_protection:
+                        self.__open_tag('span',{'class':'rel','style':f'width: {span_w}%;'})
+                        label = "Magical Damage:"
+                        value = m_damage
+                        if m_protection:
+                            label = "Magical Protection:"
+                            value = m_protection
+                        self.__write(f"<strong>{label}</strong> {value}")
+                        self.__close_tag()
+                    self.__close_tag()
+                self.__open_tag('div',{'class':'cont-inner'})
+                self.__open_tag('span',{'class':'rel','style':'width: 92.85%'})
+                self.__write(f"{desc}")
+                self.__close_tag()
+                self.__close_tag()
+                if notes and len(notes):
+                    self.__open_tag('div',{'class':'cont-inner'})
+                    self.__open_tag('ul')
+                    for note in notes:
+                        self.__open_tag('li')
+                        self.__write(note)
+                        self.__close_tag()
+                    self.__close_tag()
+                    self.__close_tag()
+                self.__close_tag()
+            self.__page_break()
+
+    """
+    ============================================================================
     = Parse Spells Method                                                      =
     = ------------------------------------------------------------------------ =
     = description:                                                             =
@@ -1674,7 +1900,7 @@ class PDFGen:
                     0, 
                     base_cost - (2 if sp['ongoing'] else 0)
                 )
-                base_cost = max(0, base_cost + sp["bonus"])            # 8. GM may choose to increase/decrease MP cost for 
+                base_cost = max(0, base_cost + sp["bonus"])            # 8. DM may choose to increase/decrease MP cost for 
                                                                        #    a spell
                 
                 # Next, check to see if max level needs to be updated

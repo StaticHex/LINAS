@@ -64,12 +64,15 @@
                 ]
             },
             {
-                "name":"Death",
+                "name":"Broken Weapon",
                 "description":[
-                    "Entity is removed from the game until either Resurrect is cast or",
-                    "until the GM has decided a long enough time has passed that resurrection",
-                    "is no longer an option; at which point the entity is removed from the",
-                    "game permanently."
+                    "Entity's weapon deals 1/2 it's normal damage (rounded down)"
+                ]
+            },
+            {
+                "name":"Broken Armor",
+                "description":[
+                    "Entity's armor does not recover at the end of the round."
                 ]
             }
         ]
@@ -146,6 +149,15 @@
                 "description":[
                     "Entity's stats are augmented based on transformation. Transformed entities cannot",
                     "cast spells nor can they use items."
+                ]
+            },
+            {
+                "name":"Death",
+                "description":[
+                    "Entity is removed from the game until either Resurrect is cast or",
+                    "until the GM has decided a long enough time has passed that resurrection",
+                    "is no longer an option; at which point the entity is removed from the",
+                    "game permanently."
                 ]
             }
         ]
