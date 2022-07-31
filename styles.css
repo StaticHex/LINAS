@@ -1,0 +1,66 @@
+body {
+    font-family: Arial, Helvetica, Sans-Serif;
+    font-size: 105%;
+}
+div {
+    page-break-inside: avoid;
+}
+.title {
+    text-align: center;
+    padding-top: 50%;
+}
+.section {
+    text-align: left;
+    line-height: 150%;
+    page-break-before: always;
+}
+.cont-title {
+    background: #cccccc;
+    border-bottom: 1px solid #999999;
+    padding: 5px;
+}
+.a-abil-title {
+    background: #ffffcc;
+    border-bottom: 1px solid #999999;
+    padding: 5px;
+}
+.p-abil-title {
+    background: #cce5ff;
+    border-bottom: 1px solid #999999;
+    padding: 5px;
+}
+.cont-sub-title {
+    background: #cccccc;
+    border-top: 1px solid #999999;
+    border-bottom: 1px solid #999999;
+    padding: 5px;
+}
+.pop {
+    box-shadow:3px 3px 5px #cccccc;
+    margin: 20px 0px 0px 0px;
+}
+.cont-inner {
+    width: auto;
+    padding: 5px;
+    overflow: hidden;
+}
+.img-wrapped {
+    padding: 10px; 
+    float: right; 
+    width: 2.25in;
+    height: 4in;
+}
+.container {
+    border: 1px solid #999999;
+    margin-bottom: 5px;
+}
+.nopad {
+    padding:0px;
+    margin:0px;
+}
+.rel {
+    display: inline-block;
+    vertical-align: top;
+    padding-left: 5px;
+    padding-right: 5px;
+}
