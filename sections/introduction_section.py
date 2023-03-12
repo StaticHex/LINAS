@@ -59,6 +59,7 @@ class IntroductionSection:
             <br/>Sincerely,<br/>Joseph Bourque
             """
         )]
+        self.__html.append('</div>')
 
     def toHTMLList(
         self

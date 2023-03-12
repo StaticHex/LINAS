@@ -11,14 +11,17 @@ from   sections.player_setup_section       import NewPlayerSetupSection
 from   sections.lang_and_race_section      import LangRaceSection
 from   sections.ability_section            import AbilitySection
 from   sections.spell_section              import SpellSection
+from   sections.effect_section             import EffectSection
 from   sections.class_section              import ClassSection
 from   sections.item_section               import ItemSection
+from   sections.character_sheet            import CharacterSheet
 from   obj_classes.content_manager         import ContentManager
 from   obj_classes.data_manager            import DataManager
 from   obj_classes.linas_stat              import LINASStat
 from   obj_classes.linas_skill             import LINASSkill
 from   obj_classes.linas_lang              import LINASLanguage
 from   obj_classes.linas_abil              import LINASAbility
+from   obj_classes.linas_effect            import LINASEffect
 from   obj_classes.linas_race              import LINASRace
 from   obj_classes.linas_item              import LINASItem
 from   obj_classes.linas_spell             import LINASSpell
@@ -3489,6 +3492,189 @@ class Fantasy (ContentManager):
                         )
                     ]
                 )
+            ],
+            "effects":[
+                DataCollection(
+                    name="Effects",
+                    description="""
+                    Effects are similar to abilities; however, effects are only
+                    temporary and cannot always be removed by choice. Usually
+                    effects happen as a result of an action by the player or
+                    some other entity. However, the GM may also put an effect
+                    into play to balance out the game or to help bolster a
+                    character which would otherwise have a hard time completing
+                    the day's tasks.
+                    """,
+                    children=[
+                        LINASEffect(
+                            name="Berserk",
+                            description="""
+                            Damage dealt by physical melee attacks is doubled.
+                            Entity cannot be healed and cannot cast spells or
+                            use items until this condition is removed. Entity
+                            MUST attack each turn if able (if entity could move
+                            to attack a target they must move as well).
+                            """
+                        ),
+                        LINASEffect(
+                            name="Raining",
+                            description="""
+                            Entity's speed is reduced by 2. Add +1 to spell rolls
+                            involving electric type spells. Subtract -1 from rolls
+                            involving fire type spells. Subtract -1 to skill rolls
+                            involving ranged weapons and perception.
+                            """
+                        ),
+                        LINASEffect(
+                            name="Exhausted",
+                            description="""
+                            Entity gets -1 to all skill rolls
+                            """
+                        ),
+                        LINASEffect(
+                            name="Haunted",
+                            description="""
+                            At the start of the entity's combat turn, they roll
+                            1d6 and do the following based on result 1 = entity
+                            skips turn, 2 = entity is now mad, 3 = entity is
+                            paralyzed, 4 = entity loses 2 HP, 5 = entity gets
+                            -1 to attack roll, 6 = nothing happens
+                            (turn proceeds as normal)
+                            """
+                        ),
+                        LINASEffect(
+                            name="Inebriated",
+                            description="""
+                            Max MP cut by 1/2, immedately lose any MP over new
+                            max. -2 to INT Must roll to move (standard skill roll).
+                            -1 to all skill rolls and attack rolls. Cannot react.
+                            """
+                        ),
+                        LINASEffect(
+                            name="Well Rested",
+                            description="""
+                            Entity gets +1 to all skill rolls
+                            """
+                        ),
+                        LINASEffect(
+                            name="Snowing",
+                            description="""
+                            Entity's speed is reduced by 4. Add +1 to spell rolls
+                            involving ice type spells. Subtract -1 from rolls
+                            involving wood type spells.  Subtract -2 to skill
+                            rolls involving ranged weapons and perception.
+                            """
+                        ),
+                        LINASEffect(
+                            name="Broken Weapon",
+                            description="""
+                            Entity's weapon deals 1/2 it's normal damage
+                            (rounded down)
+                            """
+                        ),
+                        LINASEffect(
+                            name="Broken Armor",
+                            description="""
+                            Entity's armor does not recover at the end of the
+                            round.
+                            """
+                        ),
+                    ]
+                ),
+                DataCollection(
+                    name="Status Conditions",
+                    description="""
+                    Status conditions are generally only placed on a player
+                    during battle. However there may be some cases outside
+                    battle where the player is effected by a satus condition
+                    as well. However, generally speaking status effects go away
+                    once the battle ends. The main difference between effects and
+                    status conditions is that the player can remove status
+                    conditions using potions, magic, or some other means whereas
+                    effects are generally only removed by the GM or by fulfiling
+                    some obligatory condition.
+                    """,
+                    children=[
+                        LINASEffect(
+                            name="Poison",
+                            description="""
+                            Entity takes +1 damage at the beginning of their turn.
+                            """
+                        ),
+                        LINASEffect(
+                            name="Sleep",
+                            description="""
+                            Entity must roll to see if wake up at the beginning
+                            of their turn (standard skill roll). Entity also wakes
+                            up if hit with an attack. Sleeping entities cannot
+                            react when targeted with an attack and cannot attack
+                            or move on their turn while asleep.
+                            """
+                        ),
+                        LINASEffect(
+                            name="Paralyzed",
+                            description="""
+                            Entity must roll to see if they can move when moving
+                            and gets -2 added to attack and reaction rolls.
+                            """
+                        ),
+                        LINASEffect(
+                            name="Burn",
+                            description="""
+                            Entity receives +2 damage when moving, attacking,
+                            or reacting.
+                            """
+                        ),
+                        LINASEffect(
+                            name="Madness",
+                            description="""
+                            Entity rolls at -2 to see if they control their
+                            actions for the turn. If entity fails roll. GM
+                            determines what entity does that turn.
+                            """
+                        ),
+                        LINASEffect(
+                            name="Sealed",
+                            description="""
+                            Entity cannot cast spells. Any ongoing spells cast
+                            by the entity end immediately.
+                            """
+                        ),
+                        LINASEffect(
+                            name="Bind",
+                            description="""
+                            Entity cannot move, attack, or cast spells for 3 turns
+                            """
+                        ),
+                        LINASEffect(
+                            name="Charm",
+                            description="""
+                            Entity rolls at -1 to see if they control their
+                            actions for the turn. If entity fails roll, the
+                            entity who charmed this entity controls their
+                            actions instead.
+                            """
+                        ),
+                        LINASEffect(
+                            name="Transformed",
+                            description="""
+                            Entity's stats are augmented based on transformation.
+                            Transformed entities cannot cast spells nor can they
+                            use items.
+                            """
+                        ),
+                        LINASEffect(
+                            name="Death",
+                            description="""
+                            Entity is removed from the game until either
+                            Resurrect is cast or until the GM has decided a
+                            long enough time has passed that resurrection is
+                            no longer an option; at which point the entity is
+                            removed from the game permanently.
+                            """
+                        ),
+                    ]
+                ),
             ]
         })
         # ======================================================================
@@ -4136,8 +4322,9 @@ class Fantasy (ContentManager):
         self.addContent(ClassSection(self, self.__dataManager))
         self.addContent(SpellSection(self, self.__dataManager))
         self.addContent(AbilitySection(self, self.__dataManager))
-        # TODO: "Effects & Status Conditions",
+        self.addContent(EffectSection(self, self.__dataManager))
         self.addContent(ItemSection(self, self.__dataManager))
         # TODO: "Entities"
         # TODO: "Campaigns"
         # TODO: "DM Tools (Character Sheets, Quick References, etc.)"
+        self.addContent(CharacterSheet(self))
