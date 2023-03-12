@@ -10,6 +10,7 @@ from   sections.free_time_section          import FreeTimeSection
 from   sections.player_setup_section       import NewPlayerSetupSection
 from   sections.lang_and_race_section      import LangRaceSection
 from   sections.ability_section            import AbilitySection
+from   sections.spell_section              import SpellSection
 from   sections.class_section              import ClassSection
 from   sections.item_section               import ItemSection
 from   obj_classes.content_manager         import ContentManager
@@ -66,18 +67,6 @@ class Fantasy (ContentManager):
         #       are added to the data manager they are expanded out
         #       automatically
         self.__templates = {
-            'elements':[
-                {"name":"Earth", "elem":"earth", "weak":"wind"},
-                {"name":"Fire","elem":"fire", "weak":"water"},
-                {"name":"Wind","elem":"wind","weak":"earth"},
-                {"name":"Water","elem":"water","weak":"fire"},
-                {"name":"Light","elem":"light","weak":"dark"},
-                {"name":"Dark","elem":"dark","weak":"light"},
-                {"name":"Electricity","elem":"wind and light","weak":"earth and dark"},
-                {"name":"Ice","elem":"water and dark","weak":"fire and light"},
-                {"name":"Wood","elem":"water and wind","weak":"fire and earth"},
-                {"name":"Metal","elem":"earth and fire","weak":"wind and water"}                
-            ],
             'environments':[
                 {"name":"Forest", "adv":"forest", "dis":"prairie"},
                 {"name":"Mountain", "adv":"mountain", "dis":"swamp"},
@@ -265,22 +254,6 @@ class Fantasy (ContentManager):
                          from doing so.)  
                      """,
                      children=[
-                         LINASAbility(
-                            name="{name} Specialization",
-                            type="p",
-                            description="""
-                            When attacking with spells or weapons which
-                            are the {elem} element. Add +1 to any damage
-                            done by those attacks (on top of other
-                            bonuses). When attacking with spells or weapons
-                            which are the {weak} element. Add -1 to any
-                            damage done by those attacks (on top of other
-                            bonuses). Additionally, When taking damage from
-                            spells or weapons which are the {weak} element,
-                            add +1 to damage taken.
-                            """,
-                            template=self.__templates['elements']
-                         ),
                          LINASAbility(
                             name="{name} Walker",
                             type="p",
@@ -1916,12 +1889,18 @@ class Fantasy (ContentManager):
                         LINASSkill(
                             name = "Swordsmanship",
                             description = """
-                            This skill is a bit broad, encompassing both 
-                            European and Eastern sword styles. This skill is 
-                            used both for attacking with swords and axes as 
-                            well as for using abilities related to these 
-                            weapons 
+                            This skill is a bit broad, used both for attacking 
+                            with swords and axes as  well as for using abilities
+                            related to these weapons.
                             """,
+                        ),
+                        LINASSkill(
+                            name = "Bushido",
+                            description= """
+                            A specialized form of eastern swordsmanship focusing
+                            on speed rather than power. Unlike standards swordsmanship,
+                            the abilities for this skill can only be used with as sword.
+                            """
                         )
                     ]
                 ),
@@ -2069,9 +2048,8 @@ class Fantasy (ContentManager):
                             In order to keep LINAS's skill system from becoming 
                             too bloated; every form of magic has been 
                             consolidated into a single skill. That being said, 
-                            different schools of magic do exist and combined 
-                            with elemental specializations allow for a great 
-                            range of flexibility despite this. 
+                            different schools of magic do exist and allow for a 
+                            great range of flexibility despite this. 
                             """,
                         ),
                         LINASSkill(
@@ -2299,72 +2277,39 @@ class Fantasy (ContentManager):
                             description="""
                             Prevents the next X physical damage that would be 
                             done to the spell's target and then pops. Where X 
-                            is equal to this spell's damage
+                            is equal to this spell's damage. Barrier stays
+                            active until destroyed
                             """,
                             damage=1,
-                            cost=1,
-                            range=1,
-                            points=5,
+                            range=0,
                             numTargets=1,
-                            targetType="target",
-                            element="null",
-                            notes=[
-                            ]
+                            skill="magic",
+                            notes=[]
                         ),
                         LINASSpell(
                             name="Magic Barrier",
                             description="""
                             Prevents the next X magical damage that would be 
                             done to the spell's target and then pops. Where X 
-                            is equal to this spell's damage. Can take on an 
-                            elemental specialization
+                            is equal to this spell's damage. Barrier stays active
+                            until destroyed
                             """,
                             damage=1,
-                            cost=1,
-                            range=1,
-                            points=5,
+                            range=0,
                             numTargets=1,
-                            targetType="target",
-                            element="null",
-                            notes=[
-                                """
-                                If specialized, change element to chosen element 
-                                and add +1 to spell's damage and +1 to 
-                                spell's cost
-                                """
-                            ]
+                            skill="magic",
+                            notes=[]
                         ),
                         LINASSpell(
-                            name="Heal",
+                            name="Heal Wound",
                             description="""
                             Restores X HP to spell's target where X is equal 
                             to this spell's damage.
                             """,
                             damage=3,
-                            cost=2,
                             range=2,
-                            points=5,
                             numTargets=1,
-                            targetType="target",
-                            element="light",
-                            notes=[
-                            ]
-                        ),
-                        LINASSpell(
-                            name="Mend",
-                            description="""
-                            Stronger version of heal. Prevents the next X 
-                            magical damage that would be done to the spell's 
-                            target and then pops where X is equal to this 
-                            spell's damage.
-                            """,
-                            damage=10,
-                            cost=7,
-                            range=2,
-                            points=5,
-                            numTargets=1,
-                            targetType="target",
-                            element="light",
+                            skill="magic",
                             notes=[
                             ]
                         ),
@@ -2375,12 +2320,10 @@ class Fantasy (ContentManager):
                             equal to this spell's damage.
                             """,
                             damage=1,
-                            cost=2,
                             range=2,
-                            points=5,
                             numTargets=1,
-                            targetType="target",
-                            element="null",
+                            skill="magic",
+                            status=True,
                             notes=[
                                 """
                                 Can remove any status condition except for death
@@ -2394,14 +2337,10 @@ class Fantasy (ContentManager):
                             where X is equal to this spell's damage
                             """,
                             damage=2,
-                            cost=2,
                             range=2,
-                            points=5,
                             numTargets=1,
-                            targetType="target",
-                            element="null",
-                            notes=[
-                            ]
+                            skill="magic",
+                            notes=[]
                         ),
                         LINASSpell(
                             name="Resurrect",
@@ -2410,12 +2349,10 @@ class Fantasy (ContentManager):
                             equal to this spell's damage
                             """,
                             damage=5,
-                            cost=5,
                             range=1,
-                            points=5,
                             numTargets=1,
-                            targetType="target",
-                            element="light",
+                            skill="magic",
+                            status=True,
                             notes=[
                             ]
                         )
@@ -2436,23 +2373,13 @@ class Fantasy (ContentManager):
                         LINASSpell(
                             name="Magic Missile",
                             description="""
-                            Shoots a magical arrow at the target. Can take on an 
-                            elemental specialization.
+                            Shoots a magical arrow at the target.
                             """,
                             damage=2,
-                            cost=2,
-                            range=2,
-                            points=5,
+                            range=3,
                             numTargets=1,
-                            targetType="target",
-                            element="null",
-                            notes=[
-                                """
-                                If specialized, change element to chosen element 
-                                and add +1 to spell's damage and +1 to 
-                                spell's cost
-                                """
-                            ]
+                            skill="magic",
+                            notes=[]
                         ),
                         LINASSpell(
                             name="Fireball",
@@ -2461,16 +2388,13 @@ class Fantasy (ContentManager):
                             spell can be given burn as a status effect.
                             """,
                             damage=2,
-                            cost=3,
                             range=3,
-                            points=5,
                             numTargets=1,
-                            targetType="target",
-                            element="fire",
+                            skill="magic",
+                            status=True,
                             notes=[
                                 """
-                                If burn is applied, target is burned any time a 
-                                6 is rolled while casting this spell
+                                Target is burned if 6 is rolled while casting this spell
                                 """
                             ]
                         ),
@@ -2481,12 +2405,9 @@ class Fantasy (ContentManager):
                             Deals damage to multiple targets.
                             """,
                             damage=2,
-                            cost=4,
                             range=3,
-                            points=5,
                             numTargets=3,
-                            targetType="target",
-                            element="electricity",
+                            skill="magic",
                             notes=[
                                 """
                                 Each target rolls to see if attack hits
@@ -2503,16 +2424,19 @@ class Fantasy (ContentManager):
                             A ferocious snowstorm envelopes the caster and all 
                             nearby entities. Deals damage to all entities within 
                             X squares of the caster where X is equal to this 
-                            spell's range
+                            spell's range (both friend and foe)
                             """,
-                            damage=2,
-                            cost=5,
-                            range=3,
-                            points=5,
+                            damage=3,
+                            range=5,
                             numTargets=0,
-                            targetType="area",
-                            element="ice",
+                            fnf=True,
+                            skill="magic",
                             notes=[
+                                """
+                                Each entity on the battlefield rolls to see if 
+                                attack hits. Entities not on the ground aren't 
+                                effected by this spell
+                                """
                             ]
                         ),
                         LINASSpell(
@@ -2522,12 +2446,11 @@ class Fantasy (ContentManager):
                             (both friend and foe) are impacted by the spell
                             """,
                             damage=5,
-                            cost=7,
-                            range=0,
-                            points=2,
+                            range=-1,
                             numTargets=0,
-                            targetType="all",
-                            element="earth",
+                            aoe=True,
+                            fnf=True,
+                            skill="magic",
                             notes=[
                                 """
                                 Each entity on the battlefield rolls to see if 
@@ -2543,12 +2466,9 @@ class Fantasy (ContentManager):
                             position where X is equal to this spell's damage.
                             """,
                             damage=1,
-                            cost=1,
                             range=0,
-                            points=5,
                             numTargets=1,
-                            targetType="self",
-                            element="null",
+                            skill="magic",
                             notes=[
                                 """
                                 This does not count as movement roll for the 
@@ -2560,17 +2480,14 @@ class Fantasy (ContentManager):
                             name="Transform",
                             description="""
                             Caster transforms into an animal or monster of their 
-                            choice. To stay transformed, caster must pay X MP 
-                            each turn to keep the spell going where X is equal 
-                            to this spell's damage.
+                            choice. Spell must be re-cast every turn to keep it
+                            active. Re-casting can be taken as a bonus action.
                             """,
-                            damage=2,
-                            cost=5,
+                            damage=0,
                             range=0,
-                            points=5,
-                            numTargets=1,
-                            targetType="self",
-                            element="null",
+                            numTargets=0,
+                            skill="magic",
+                            points=1,
                             notes=[
                                 """
                                 While transformed, stats are equal to those of 
@@ -2580,9 +2497,6 @@ class Fantasy (ContentManager):
                                 If the chosen animal/monster has a higher HP/MP 
                                 than the caster, the caster keeps their current 
                                 HP/MP (do not scale HP/MP)
-                                """,
-                                """
-                                
                                 """,
                                 """
                                 Paying the continuation cost for this spell does 
@@ -2608,12 +2522,9 @@ class Fantasy (ContentManager):
                             Causes enemies in the air to return to the ground
                             """,
                             damage=0,
-                            cost=3,
                             range=1,
-                            points=5,
                             numTargets=1,
-                            targetType="target",
-                            element="dark",
+                            skill="magic",
                             notes=[
                             ]
                         ),
@@ -2624,12 +2535,9 @@ class Fantasy (ContentManager):
                             where X is equal to this spell's damage.
                             """,
                             damage=2,
-                            cost=2,
                             range=2,
-                            points=5,
                             numTargets=1,
-                            targetType="target",
-                            element="null",
+                            skill="magic",
                             notes=[
                                 """
                                 Damage from entity's next attack cannot be 
@@ -2640,19 +2548,16 @@ class Fantasy (ContentManager):
                         LINASSpell(
                             name="Animate Dead",
                             description="""
-                            Animates fallen corpse to fight for the user. Corpse 
-                            is reanimated with ½ it's original HP (rounded 
-                            down). Caster must pay X MP each turn to keep the 
-                            spell going where X is equal to this spell's 
-                            damage.
+                            Animates fallen corpse to fight for the user. Corpse
+                            animates with X+1 HP where X is equal to this spell's
+                            damage. Spell must be re-cast every turn to keep it
+                            active. Re-casting can be taken as a bonus action.
                             """,
                             damage=2,
-                            cost=3,
                             range=1,
-                            points=3,
                             numTargets=1,
-                            targetType="target",
-                            element="dark",
+                            skill="magic",
+                            status=True,
                             notes=[
                                 """
                                 Reanimated corpse's stats (aside from HP), 
@@ -2660,9 +2565,7 @@ class Fantasy (ContentManager):
                                 the original entity died
                                 """,
                                 """
-                                Animated corpses are considered to be undead and 
-                                obtain the dark element in addition to whatever 
-                                elements they originally had
+                                Animated corpses are given the 'zombie' status
                                 """
                             ]
                         ),
@@ -2674,12 +2577,9 @@ class Fantasy (ContentManager):
                             by X where X is equal to this spell's damage.
                             """,
                             damage=1,
-                            cost=1,
                             range=1,
-                            points=5,
                             numTargets=1,
-                            targetType="target",
-                            element="dark",
+                            skill="magic",
                             notes=[
                                 """
                                 This attack is not counted as direct damage and 
@@ -2696,12 +2596,10 @@ class Fantasy (ContentManager):
                             by X where X is equal to this spell's damage.
                             """,
                             damage=1,
-                            cost=1,
                             range=1,
-                            points=5,
+                            cost=0,
                             numTargets=1,
-                            targetType="target",
-                            element="dark",
+                            skill="magic",
                             notes=[
                                 """
                                 This attack is not counted as direct damage and 
@@ -2709,8 +2607,30 @@ class Fantasy (ContentManager):
                                 absorbed by armor, or redirected.
                                 """
                             ]
+                        ),
+                        LINASSpell(
+                            name="Summon",
+                            description="""
+                            Summons a monster or animal to help the caster.
+                            Spell must be recast each turn to keep going.
+                            Re-casting can be taken as a bonus action.
+                            )
+                            """,
+                            damage=0,
+                            range=1,
+                            numTargets=0,
+                            skill="magic",
+                            notes=[
+                                """
+                                In addition to the casting cost of this spell,
+                                must also pay X MP when first casting where X is
+                                1/2 of the target summoned entity's HP
+                                (rounded up)
+                                """
+                            ]
                         )
-                    ]
+                    ],
+                    
                 ),
                 DataCollection(
                     name="Status Spells",
@@ -2729,12 +2649,10 @@ class Fantasy (ContentManager):
                             Target entity is now poisoned
                             """,
                             damage=0,
-                            cost=2,
                             range=2,
-                            points=3,
                             numTargets=1,
-                            targetType="target",
-                            element="null",
+                            skill="magic",
+                            status=True,
                             notes=[
                             ]
                         ),
@@ -2744,12 +2662,10 @@ class Fantasy (ContentManager):
                             Target entity is now asleep
                             """,
                             damage=0,
-                            cost=2,
                             range=2,
-                            points=3,
                             numTargets=1,
-                            targetType="target",
-                            element="null",
+                            skill="magic",
+                            status=True,
                             notes=[
                             ]
                         ),
@@ -2759,12 +2675,10 @@ class Fantasy (ContentManager):
                             Target entity is now insane
                             """,
                             damage=0,
-                            cost=2,
                             range=2,
-                            points=3,
                             numTargets=1,
-                            targetType="target",
-                            element="null",
+                            skill="magic",
+                            status=True,
                             notes=[
                             ]
                         ),
@@ -2774,12 +2688,10 @@ class Fantasy (ContentManager):
                             Target entity is now charmed
                             """,
                             damage=0,
-                            cost=2,
                             range=2,
-                            points=3,
                             numTargets=1,
-                            targetType="target",
-                            element="null",
+                            skill="magic",
+                            status=True,
                             notes=[
                             ]
                         ),
@@ -2789,106 +2701,11 @@ class Fantasy (ContentManager):
                             Target entity is now sealed
                             """,
                             damage=0,
-                            cost=2,
                             range=2,
-                            points=3,
                             numTargets=1,
-                            targetType="target",
-                            element="null",
+                            skill="magic",
+                            status=True,
                             notes=[
-                            ]
-                        )
-                    ]
-                ),
-                DataCollection(
-                    name="Summoning Spells",
-                    description="""
-                    Summoning is generally considered to be a skill favored by 
-                    dark mages and as such, most of the spells listed in this 
-                    section are associated with dark magic. That being said, 
-                    there are other examples of summoning outside of dark magic 
-                    and so a mage interested in this section shouldn't feel 
-                    like it's off limits just because their specialty isn't 
-                    in the school of dark magic.
-                    """,
-                    children=[
-                        LINASSpell(
-                            name="Summon Daemon",
-                            description="""
-                            Summons a daemon to fight alongside the caster. 
-                            Costs X MP each turn to keep the spell going where X 
-                            is equal to this spell's damage
-                            """,
-                            damage=3,
-                            cost=5,
-                            range=1,
-                            points=2,
-                            numTargets=1,
-                            targetType="target",
-                            element="dark",
-                            notes=[
-                                """
-                                When killed, summoned entity leaves no corpse
-                                """
-                            ]
-                        ),
-                        LINASSpell(
-                            name="Summon Shogoth",
-                            description="""
-                            Summons a shogoth to fight alongside the caster. 
-                            Costs X MP each turn to keep the spell going where X 
-                            is equal to this spell's damage
-                            """,
-                            damage=2,
-                            cost=3,
-                            range=1,
-                            points=2,
-                            numTargets=1,
-                            targetType="target",
-                            element="dark",
-                            notes=[
-                                """
-                                When killed, summoned entity leaves no corpse
-                                """
-                            ]
-                        ),
-                        LINASSpell(
-                            name="Summon Skeleton",
-                            description="""
-                            Summons a skeleton to fight alongside the caster. 
-                            Costs X MP each turn to keep the spell going where X 
-                            is equal to this spell's damage
-                            """,
-                            damage=1,
-                            cost=2,
-                            range=1,
-                            points=2,
-                            numTargets=1,
-                            targetType="target",
-                            element="dark",
-                            notes=[
-                                """
-                                When killed, summoned entity leaves no corpse
-                                """
-                            ]
-                        ),
-                        LINASSpell(
-                            name="Summon Familiar",
-                            description="""
-                            Summons an animal to fight alongside the caster. 
-                            Animal type must be chosen when this spell is chosen
-                            """,
-                            damage=1,
-                            cost=2,
-                            range=1,
-                            points=2,
-                            numTargets=1,
-                            targetType="target",
-                            element="null",
-                            notes=[
-                                """
-                                When killed, summoned entity leaves no corpse
-                                """
                             ]
                         )
                     ]
@@ -2909,12 +2726,9 @@ class Fantasy (ContentManager):
                             damage, you take that damage instead
                             """,
                             damage=0,
-                            cost=1,
                             range=2,
-                            points=2,
                             numTargets=1,
-                            targetType="target",
-                            element="null",
+                            skill="none",
                             notes=[
                             ]
                         ),
@@ -2926,12 +2740,10 @@ class Fantasy (ContentManager):
                             the turn.
                             """,
                             damage=0,
-                            cost=2,
                             range=0,
-                            points=2,
-                            numTargets=1,
-                            targetType="self",
-                            element="null",
+                            numTargets=0,
+                            skill="none",
+                            points=1,
                             notes=[
                                 """
                                 Can no longer cast spells or use items
@@ -2955,12 +2767,11 @@ class Fantasy (ContentManager):
                             and foe)
                             """,
                             damage=2,
-                            cost=5,
                             range=0,
-                            points=2,
                             numTargets=0,
-                            targetType="area",
-                            element="wind",
+                            fnf=True,
+                            aoe=True,
+                            skill="swordsmanship",
                             notes=[
                             ]
                         ),
@@ -2970,12 +2781,9 @@ class Fantasy (ContentManager):
                             A fast slash which sends out a wave of wind ahead of it
                             """,
                             damage=2,
-                            cost=2,
                             range=3,
-                            points=2,
                             numTargets=1,
-                            targetType="target",
-                            element="wind",
+                            skill="swordsmanship",
                             notes=[
                             ]
                         ),
@@ -2985,16 +2793,14 @@ class Fantasy (ContentManager):
                             Powerful attack which has the potential to break armor
                             """,
                             damage=4,
-                            cost=5,
                             range=1,
-                            points=2,
                             numTargets=1,
-                            targetType="target",
-                            element="null",
+                            skill="swordsmanship",
                             notes=[
                                 """
-                                If 6 is rolled, target's armor is now broken (takes effect
-                                before dealing damage)
+                                If 6 is rolled, Reduce target's armor to 0 for
+                                the round. (This takes effect before dealing
+                                damage))
                                 """
                             ]
                         ),
@@ -3005,12 +2811,9 @@ class Fantasy (ContentManager):
                             target.
                             """,
                             damage=0,
-                            cost=2,
                             range=1,
-                            points=2,
                             numTargets=1,
-                            targetType="target",
-                            element="null",
+                            skill="fencing",
                             notes=[
                                 """
                                 Can only be used with knives and daggers
@@ -3047,12 +2850,12 @@ class Fantasy (ContentManager):
                             now asleep
                             """,
                             damage=0,
-                            cost=2,
                             range=0,
-                            points=0,
                             numTargets=0,
-                            targetType="all",
-                            element="null",
+                            status=True,
+                            aoe=True,
+                            fnf=True,
+                            skill="music",
                             notes=[
                                 """
                                 This targets the caster as well
@@ -3069,12 +2872,11 @@ class Fantasy (ContentManager):
                             is equal to this spell's damage
                             """,
                             damage=2,
-                            cost=2,
                             range=0,
-                            points=2,
                             numTargets=0,
-                            targetType="all",
-                            element="null",
+                            skill="music",
+                            aoe=True,
+                            fnf=True,
                             notes=[
                                 """
                                 This targets the caster as well
@@ -3087,15 +2889,14 @@ class Fantasy (ContentManager):
                             Causes a brutal melody to drift across the 
                             battlefield. All entities roll 1d6 to see if they 
                             avoid the attack. Any entities who fail this roll 
-                            take X damage
+                            take X damage where X is the damage of this spell.
                             """,
                             damage=2,
-                            cost=2,
                             range=0,
-                            points=2,
                             numTargets=0,
-                            targetType="all",
-                            element="null",
+                            aoe=True,
+                            fnf=True,
+                            skill="music",
                             notes=[
                                 """
                                 Any entities who roll 1 on this check are now 
@@ -3116,12 +2917,11 @@ class Fantasy (ContentManager):
                             spell's damage
                             """,
                             damage=2,
-                            cost=2,
                             range=0,
-                            points=2,
                             numTargets=0,
-                            targetType="all",
-                            element="null",
+                            skill="music",
+                            aoe=True,
+                            fnf=True,
                             notes=[
                                 """
                                 This targets the caster as well
@@ -3137,12 +2937,12 @@ class Fantasy (ContentManager):
                             are now insane
                             """,
                             damage=0,
-                            cost=2,
                             range=0,
-                            points=2,
                             numTargets=0,
-                            targetType="all",
-                            element="null",
+                            skill="music",
+                            status=True,
+                            aoe=True,
+                            fnf=True,
                             notes=[
                                 """
                                 This targets the caster as well
@@ -3158,12 +2958,12 @@ class Fantasy (ContentManager):
                             are now sealed
                             """,
                             damage=0,
-                            cost=2,
                             range=0,
-                            points=2,
                             numTargets=0,
-                            targetType="all",
-                            element="null",
+                            skill="music",
+                            status=True,
+                            aoe=True,
+                            fnf=True,
                             notes=[
                                 """
                                 This targets the caster as well
@@ -3180,12 +2980,12 @@ class Fantasy (ContentManager):
                             doubled until your next turn.
                             """,
                             damage=0,
-                            cost=2,
                             range=0,
-                            points=2,
                             numTargets=0,
-                            targetType="all",
-                            element="null",
+                            points=1,
+                            aoe=True,
+                            fnf=True,
+                            skill="magic",
                             notes=[
                                 """
                                 Can no longer cast spells or use items
@@ -3221,21 +3021,20 @@ class Fantasy (ContentManager):
                         LINASSpell(
                             name="Clone",
                             description="""
-                            Caster summons a clone of themselves. All stats of 
-                            summoned entity are the same as the caster's. 
-                            HP/MP equal to caster's current HP/MP (after 
-                            attack). Caster must pay X MP each turn to keep the 
-                            spell going where X is equal to this spell's 
-                            damage
+                            Summons a clone of caster with X HP where X is
+                            this spell's damage. Spell must be recast each
+                            turn to keep going. Re-casting can be taken as
+                            a bonus action.
                             """,
                             damage=2,
-                            cost=3,
                             range=1,
-                            points=2,
                             numTargets=1,
-                            targetType="target",
-                            element="null",
+                            skill="ninjitsu",
                             notes=[
+                                """
+                                HP of summoned entity cannot exceed remaining
+                                HP of caster
+                                """
                             ]
                         ),
                         LINASSpell(
@@ -3247,12 +3046,9 @@ class Fantasy (ContentManager):
                             spell's damage
                             """,
                             damage=2,
-                            cost=1,
                             range=0,
-                            points=2,
-                            numTargets=1,
-                            targetType="self",
-                            element="null",
+                            numTargets=0,
+                            skill="ninjitsu",
                             notes=[
                             ]
                         ),
@@ -3264,12 +3060,9 @@ class Fantasy (ContentManager):
                             copied; however this is counted as a new spell
                             """,
                             damage=1,
-                            cost=1,
                             range=0,
-                            points=0,
-                            numTargets=1,
-                            targetType="target",
-                            element="null",
+                            numTargets=0,
+                            skill="ninjitsu",
                             notes=[
                                 """
                                 Everything except for the mana cost of the 
@@ -3299,12 +3092,9 @@ class Fantasy (ContentManager):
                             speed
                             """,
                             damage=0,
-                            cost=1,
                             range=2,
-                            points=0,
                             numTargets=1,
-                            targetType="target",
-                            element="null",
+                            skill="bushido",
                             notes=[
                             ]
                         ),
@@ -3316,12 +3106,9 @@ class Fantasy (ContentManager):
                             that space.
                             """,
                             damage=3,
-                            cost=1,
                             range=2,
-                            points=2,
                             numTargets=1,
-                            targetType="target",
-                            element="null",
+                            skill="bushido",
                             notes=[
                                 """
                                 This attack ignores armor value
@@ -3339,12 +3126,9 @@ class Fantasy (ContentManager):
                             target and then move to a square adjacent to them.
                             """,
                             damage=3,
-                            cost=2,
                             range=3,
-                            points=2,
                             numTargets=1,
-                            targetType="target",
-                            element="null",
+                            skill="bushido",
                             notes=[
                             ]
                         )
@@ -3361,37 +3145,32 @@ class Fantasy (ContentManager):
                         LINASSpell(
                             name="Fighting Spirit",
                             description="""
-                            While unarmed caster gets +3 STR and +3 END where X 
+                            While unarmed caster gets +X STR and +X END where X 
                             are equal to the damage of this spell. These values 
-                            do not count towards the caster's stat caps. The 
-                            caster must pay X MP each turn to keep this going 
-                            where X is equal to this spell's damage
+                            do not count towards the caster's stat caps. 
+                            Spell must be recast each turn to keep going.
+                            Re-casting can be taken as a bonus action.
                             """,
                             damage=1,
-                            cost=1,
                             range=0,
-                            points=2,
                             numTargets=1,
-                            targetType="self",
-                            element="null",
+                            skill="martial arts",
                             notes=[
                             ]
                         ),
                         LINASSpell(
                             name="Calm Mind",
                             description="""
-                            Breathe in and prepare to strike|This does not count 
+                            Breathe in and prepare to strike. This does not count 
                             as the caster's action for the turn. During the 
                             next attack made by the caster a 5 or 6 counts as a 
                             critical hit
                             """,
                             damage=0,
-                            cost=1,
                             range=0,
-                            points=0,
-                            numTargets=1,
-                            targetType="self",
-                            element="null",
+                            numTargets=0,
+                            points=1,
+                            skill="martial arts",
                             notes=[
                                 """
                                 Snake School
@@ -3406,12 +3185,9 @@ class Fantasy (ContentManager):
                             space
                             """,
                             damage=2,
-                            cost=1,
                             range=1,
-                            points=2,
                             numTargets=1,
-                            targetType="target",
-                            element="null",
+                            skill="martial arts",
                             notes=[
                                 """
                                 Sumo school
@@ -3422,7 +3198,7 @@ class Fantasy (ContentManager):
                                 additional 1 damage from this attack
                                 """,
                                 """
-                                If caster's weight is 250lbs or higher, this 
+                                If user's weight is 250lbs or higher, this 
                                 attack is rolled at +1
                                 """
                             ]
@@ -3434,12 +3210,10 @@ class Fantasy (ContentManager):
                             slowing movement and leave the target vulnerable.
                             """,
                             damage=1,
-                            cost=1,
                             range=1,
-                            points=2,
                             numTargets=1,
-                            targetType="target",
-                            element="null",
+                            status=True,
+                            skill="martial arts",
                             notes=[
                                 """
                                 Dragon school
@@ -3457,17 +3231,14 @@ class Fantasy (ContentManager):
                             description="""
                             An attack where the caster balances on one foot and 
                             strikes swiftly and fluidly at their opponent. This 
-                            technique cannot be moved in the same turn the 
+                            technique cannot be used in the same turn the 
                             caster moved and the caster cannot move during the 
                             turn this technique was used
                             """,
                             damage=4,
-                            cost=3,
                             range=2,
-                            points=2,
                             numTargets=1,
-                            targetType="target",
-                            element="null",
+                            skill="martial arts",
                             notes=[
                                 """
                                 Crane school
@@ -3482,12 +3253,9 @@ class Fantasy (ContentManager):
                             Deals damage equal to the number rolled on the dice
                             """,
                             damage=0,
-                            cost=3,
                             range=1,
-                            points=0,
                             numTargets=1,
-                            targetType="target",
-                            element="null",
+                            skill="martial arts",
                             notes=[
                                 """
                                 Tiger school
@@ -3501,12 +3269,9 @@ class Fantasy (ContentManager):
                             opponents down as well as striking from a distance
                             """,
                             damage=2,
-                            cost=1,
                             range=2,
-                            points=2,
                             numTargets=1,
-                            targetType="target",
-                            element="null",
+                            skill="martial arts",
                             notes=[
                                 """
                                 Crane school
@@ -3526,12 +3291,10 @@ class Fantasy (ContentManager):
                             and in some cases temporary insanity
                             """,
                             damage=3,
-                            cost=3,
                             range=1,
-                            points=2,
                             numTargets=1,
-                            targetType="target",
-                            element="null",
+                            status=True,
+                            skill="martial arts",
                             notes=[
                                 """
                                 Dragon school
@@ -3551,12 +3314,9 @@ class Fantasy (ContentManager):
                             caster's speed
                             """,
                             damage=0,
-                            cost=3,
                             range=1,
-                            points=2,
                             numTargets=1,
-                            targetType="target",
-                            element="null",
+                            skill="martial arts",
                             notes=[
                                 """
                                 Snake School
@@ -3571,12 +3331,9 @@ class Fantasy (ContentManager):
                             opponent off guard
                             """,
                             damage=2,
-                            cost=1,
                             range=1,
-                            points=2,
                             numTargets=1,
-                            targetType="target",
-                            element="null",
+                            skill="martial arts",
                             notes=[
                                 """
                                 Tiger school
@@ -3593,12 +3350,9 @@ class Fantasy (ContentManager):
                             the ground.
                             """,
                             damage=2,
-                            cost=2,
                             range=1,
-                            points=2,
                             numTargets=1,
-                            targetType="target",
-                            element="null",
+                            skill="martial arts",
                             notes=[
                                 """
                                 Sumo school
@@ -3616,12 +3370,10 @@ class Fantasy (ContentManager):
                             deals no damage or instantly kills opponent
                             """,
                             damage=0,
-                            cost=5,
                             range=1,
-                            points=2,
                             numTargets=1,
-                            targetType="target",
-                            element="null",
+                            status=True,
+                            skill="martial arts",
                             notes=[
                                 """
                                 Dragon school
@@ -3629,6 +3381,10 @@ class Fantasy (ContentManager):
                                 """
                                 If a 6 is rolled target's HP is reduced to 0 
                                 and they receive the death status
+                                """,
+                                """
+                                Can only be used once per battle. Regardless of
+                                failure or success.
                                 """
                             ]
                         ),
@@ -3639,12 +3395,9 @@ class Fantasy (ContentManager):
                             and also causes the caster to move backwards 1 space
                             """,
                             damage=2,
-                            cost=1,
                             range=1,
-                            points=2,
                             numTargets=1,
-                            targetType="target",
-                            element="null",
+                            skill="martial arts",
                             notes=[
                                 """
                                 Crane school
@@ -3667,12 +3420,9 @@ class Fantasy (ContentManager):
                             momentum against them
                             """,
                             damage=1,
-                            cost=1,
                             range=1,
-                            points=2,
                             numTargets=1,
-                            targetType="target",
-                            element="null",
+                            skill="martial arts",
                             notes=[
                                 """
                                 Snake School
@@ -3688,17 +3438,14 @@ class Fantasy (ContentManager):
                             description="""
                             Technique where the bobs from side to side balancing 
                             on the balls of their feet. Makes movements 
-                            extremely hard to predict. Costs X MP per turn to 
-                            keep this spell going where X is equal to this 
-                            spells damage
+                            extremely hard to predict. Spell must be recast each
+                            turn to keep going.
+                            Re-casting can be taken as a bonus action.
                             """,
                             damage=1,
-                            cost=1,
                             range=0,
-                            points=2,
                             numTargets=1,
-                            targetType="self",
-                            element="null",
+                            skill="martial arts",
                             notes=[
                                 """
                                 Tiger School
@@ -3718,12 +3465,9 @@ class Fantasy (ContentManager):
                             and 1 turn to throw
                             """,
                             damage=5,
-                            cost=2,
                             range=1,
-                            points=2,
                             numTargets=1,
-                            targetType="target",
-                            element="null",
+                            skill="martial arts",
                             notes=[
                                 """
                                 Sumo school
@@ -4072,7 +3816,17 @@ class Fantasy (ContentManager):
                      """,
                     stats=[ ("Spr", 1), ("Str", 1) ],
                     abilities=[
-                        ("fire specialization", "passive"),
+                        LINASAbility(
+                            name="Fire Eater",
+                            type="p",
+                            description="""
+                            Fire spells used against the user are converted
+                            to HP instead of damage (they heal them). In
+                            return, ice spells used against the user deal 
+                            +2 damage to them, are rolled at +1, and cannot
+                            be countered or dodged.
+                            """
+                        ),
                          LINASAbility(
                             name="Fire Breath",
                             type="a",
@@ -4380,7 +4134,7 @@ class Fantasy (ContentManager):
         self.addContent(NewPlayerSetupSection(self))
         self.addContent(LangRaceSection(self, self.__dataManager))
         self.addContent(ClassSection(self, self.__dataManager))
-        # TODO: "Spells & Battle Skills",
+        self.addContent(SpellSection(self, self.__dataManager))
         self.addContent(AbilitySection(self, self.__dataManager))
         # TODO: "Effects & Status Conditions",
         self.addContent(ItemSection(self, self.__dataManager))
