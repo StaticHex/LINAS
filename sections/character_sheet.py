@@ -93,19 +93,15 @@ class CharacterSheet:
     
     def __stats_block(self):
         return [
-            '    <div class="container pop">',
+            '<i style="font-size: 8pt;">Start With Racial Stats (+2 in any stats for custom race), Then Set HP to 3, Then +7 divided between HP/TP, Finally +2 in any other stats</i>',
+            '    <div class="container pop nopad">',
             '        <div class="cont-title"">',
-            '            <span class="rel" style="width: 30%;">',
-            '                <h4 class="nopad">Stats</h4>',
-            '            </span>'
-            '            <span class="rel" style="width: 65%; text-align: right; font-size: 8pt;">',
-            '                <i class="nopad">STARTING STATS: Allocate Racial Stats. 3 HP + 7 divided between HP/TP, +1 in any other stat </i>',
-            '            </span>'
+            '            <h4 class="nopad">Stats</h4>',
             '        </div>',
             '        <div class="cont-inner">',
             '             <strong>HP:</strong>______/______',
             '             &emsp;&emsp;<strong>TP:</strong>______/______',
-            '             &emsp;&emsp;<i style="font-size: 10pt;">NOTE: HP + TP Cannot be > 25. Cap for all other stats is 5</i><br/>'
+            '             &emsp;&emsp;<i style="font-size: 10pt;">HP + TP Cannot be > 25. Cap for all other stats is 5</i><br/>'
             '             <strong>SPD:</strong>______',
             '             &nbsp;&nbsp;&emsp;<strong>STR:</strong>______',
             '             &nbsp;&nbsp;&emsp;<strong>INT:</strong>______',
@@ -118,21 +114,17 @@ class CharacterSheet:
             '                 &emsp;&emsp;<strong>Physical Attack (Weapon Atk + STR or DEX):</strong>_____<br/>',
             '                 <strong>Physical Defense (P. AR Value + END):</strong>_____',
             '                 &nbsp;&emsp;<strong>Magic Defense (M. AR Value + Spirit):</strong>_____',
-            '             </div>'
+            '             </div>',
             '        </div>',
             '    </div>',
         ]
 
     def __skills_block(self):
         html = [
-            '    <div class="container pop">',
+            '<i style="font-size: 8pt;">Start With Class Skills (+4 in any skills for custom class), Then +2 points in any other skills</i>',
+            '    <div class="container pop nopad">',
             '        <div class="cont-title"">',
-            '            <span class="rel" style="width: 30%;">',
-            '                <h4 class="nopad">Skills</h4>',
-            '            </span>'
-            '            <span class="rel" style="width: 65%; text-align: right; font-size: 8pt;">',
-            '                <i class="nopad">STARTING SKILLS: Allocate Class Skills +2 points in any</i>',
-            '            </span>'
+            '            <h4 class="nopad">Skills</h4>',
             '        </div>',
             '        <div class="cont-inner">',
             '            <span class="rel" style="width: 40%;">',
@@ -203,7 +195,7 @@ class CharacterSheet:
             '            <strong>Skill:</strong>__________________________',
             '            <strong>Damage:</strong>_____',
             '            <strong>Range:</strong>_____',
-            '            &emsp;&emsp;Physical&emsp;Magical&emsp;Dual Wielding&emsp;&emsp;',
+            '            &emsp;PHYS&emsp;MAG&emsp;DUAL&emsp;<strong>Stat:</strong>_______&emsp;',
             '            <strong>Speed Penalty:</strong> _____',
             '            <strong>Effect(s):</strong>________________________________________________________________________',
             '        </div>',
@@ -218,8 +210,9 @@ class CharacterSheet:
             '            <strong>Name:</strong>___________________________________________',
             '            <strong>Skill:</strong>__________________________<br/>',
             '            <strong>AR Value:</strong>_____',
-            '            &emsp;&emsp;Physical&emsp;Magical&emsp;&emsp;',
-            '            <strong>Speed Penalty:</strong> _____',
+            '            &emsp;&emsp;<strong>Physical:</strong>_____'
+            '            &emsp;&emsp;<strong>Magical:</strong>_____',
+            '            &emsp;&emsp;<strong>Speed Penalty:</strong> _____',
             '            <strong>Effect(s):</strong>________________________________________________________________________',
             '        </div>',
             '    </div>'

@@ -9,6 +9,7 @@ Main driver class used to run pdf generation
 from __future__ import print_function, division
 from obj_classes.content_manager import ContentManager
 from obj_classes.pdf_generator import PDFGenerator
+from sections.character_sheet import CharacterSheet
 from systems.fantasy import Fantasy
 import os
 
@@ -32,5 +33,12 @@ if __name__ == "__main__":
             debug=True
         )
 
+        charSheetGenerator = PDFGenerator(
+            outputPath=f"{os.getcwd()}/pdfs/character_sheet.pdf",
+            cm=CharacterSheet(contentManagers[system]),
+            debug=True
+        )
+
         # Write out to file
         generator.writeOutToPDF()
+        charSheetGenerator.writeOutToPDF()
