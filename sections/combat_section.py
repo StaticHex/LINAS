@@ -71,11 +71,11 @@ class CombatSystem:
              would be the next entity's turn; they take their turn immediately
              instead.
 
-             <i>Example: An entity who has an initiative score of 5 has a spell
-             cast on them by an ally which boosts their speed by 3 points giving
-             them an initiative score of 8 and causing the entity to move earlier
-             in the turn order. The next entity after the caster, only has an
-             initiative score of 7. The boosted entity will take their turn
+             <i>Example: An entity who has an initiative score of 5 has a magic
+             technique used on them by an ally which boosts their speed by 3 points 
+             giving them an initiative score of 8 and causing the entity to move 
+             earlier in the turn order. The next entity after the user, only has
+             an initiative score of 7. The boosted entity will take their turn
              immediately interrupting the entity with a score of 7; even though
              their turn was next.</i>
             """
@@ -121,18 +121,18 @@ class CombatSystem:
         self.__html += [ f'    {x}' for x in system.collapse(
             """
             Attacking is very similar to skill usage and uses the same flow
-            regardless of whether using a spell or physical weapon.
+            regardless of whether using a technique or physical weapon.
             Once again this is done to keep thesystem simple and battle flow itself
             unfolds in the following manner.
             <ol><li>
-            Attacking entity chooses a weapon (or spell) and a skill to attack with
+            Attacking entity chooses a weapon (or technique) and a skill to attack with
             as well as a target to attack (or targets if applicable)
             </li><li>
             Attacking entity rolls 1d6 against the chosen skill to see if attack
             succeeds
             </li><li>
             If the attack was successful, the attacking entity adds any stat
-            points theyhave to the weapon's (or spell's) damage and then deals
+            points theyhave to the weapon's (or technique's) damage and then deals
             that much damage totheir target (or targets).
             <ul><li>
             If the target entity's speed is higher than the attacking entity's
@@ -152,8 +152,8 @@ class CombatSystem:
             round.
             <ul><li>
             Note: Unless specifically stated, armor values typically are only
-            for physical attacks, not magic. This means that spell damage is not
-            absorbedunless the armor specifically mentions preventing magic
+            for physical attacks, not magic. This means that technique damage is not
+            prevented unless the armor specifically mentions preventing magic
             damage.
             </li></ul></li><li>
             Damaged entities take any damage not absorbed by armor as damage
@@ -168,19 +168,19 @@ class CombatSystem:
             of the next round.</i>
 
             It should also be noted that the only difference between attacking
-            with a spell and a physical weapon is that spells have an MP cost
-            which is consumed when the spell is used. This means that the MP is
-            lost regardless of whether the spell is successful or not.
-            Additionally, spells are not absorbed by physical armormeaning
+            with a technique and a physical weapon is that techniques have an TP cost
+            which is consumed when the technique is used. This means that the TP is
+            lost regardless of whether the technique is successful or not.
+            Additionally, techniques are not absorbed by physical armor meaning
             unless an entity has some sort of magic protection they take the
-            full brunt of magic attacks.
+            full brunt of the attack.
 
             <i>Example: A mage with 2 intelligence chooses a fireball attack to
-            attack a goblinwith 1 armor. The fireball attack consumes 1 MP and
+            attack a goblin with 1 armor. The fireball attack consumes 1 TP and
             deals 2 fire damage. The mage rolls a 2 which is a fail. The mage
             would normally have done 4 damage (2intelligence + 2 damage) to the
             goblin. However, since they failed, no damage is done. The mage still
-            loses 1 MP for attempting the spell however.</i>
+            loses 1 TP for attempting the technique however.</i>
             """
         )]
         self.__html.append('    <u><h3>Reacting To Attacks</h3></u>')
@@ -189,9 +189,9 @@ class CombatSystem:
             If the target's speed is higher than the attacker's speed, they have
             the option to react to the attack. They can either guard, in which
             case the damage taken is cut by the difference in speed; or they may
-            use a spell or ability to counter the attack. One important note on
+            use a technique or ability to counter the attack. One important note on
             countering is that the target entity still takes the initial damage
-            from the attack unless the spell or ability either moves the target
+            from the attack unless the technique or ability either moves the target
             out of the way of the attack or somehow redirects the damage. Also,
             redirecting damage does not negate any other effects of the attack
             (such as status conditions).
@@ -249,7 +249,7 @@ class CombatSystem:
         self.__html += [ f'    {x}' for x in system.collapse(
             """
             As a general rule; rocks, trees, and other obstacles can be destroyed
-            by attacking them as well as by certain spells and abilities. Also
+            by attacking them as well as by certain techniques and abilities. Also
             as a general rule, obstacles usually have 5 HP unless the DM declares
             otherwise. The two most common classes of obstacles are wooden and
             stone. Wooden obstacles take double damage from earth and fire magic.
@@ -262,8 +262,8 @@ class CombatSystem:
             nearby log. The log takes 10 damage the ninja would have taken
             otherwise and is destroyed. The ninja switches places with where the
             log was and the log ceases to be an obstacle. During the following
-            round a mage casts a fire spell. The DM declares the wood chips from
-            the log are still on the targeted space resulting in the fire spell
+            round a mage uses a fire technique. The DM declares the wood chips from
+            the log are still on the targeted space resulting in the fire technique
             dealing an additional point of damage. It should be noted the above
             example is just that, an example at as with most things in the system
             what happens is largely up to the DM</i>
@@ -276,7 +276,7 @@ class CombatSystem:
             some way or willingly surrenders (in some cases this isn't an option).
             In the case of immobilization, this usually means that all entities on
             one side of battle have their HP reach 0. This could also happen as the
-            result of a spell or ability such as petrification. 
+            result of a technique or ability such as petrification. 
 
             After combat is finished, the DM determines what loot (if any) the
             defeated party leaves behind. If the players' party is defeated, the

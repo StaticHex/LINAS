@@ -71,7 +71,7 @@ class NewPlayerSetupSection:
         self.__html += [ f'    {x}' for x in system.collapse(
             """
             By default, each player gets 3 points in HP + 7 points to divide out
-            among HP  and MP in any way they choose. Additionally, each player
+            among HP  and TP in any way they choose. Additionally, each player
             gets gets 1 stat points and up to 2 skill points. These points are
             given in addition to any stats or  skills provided by their race and
             class by default. The DM may modify these amounts,  especially if

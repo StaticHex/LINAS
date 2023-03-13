@@ -38,7 +38,7 @@ class CharacterSheet:
         self.__html += self.__skills_block()
         self.__html += self.__abilities_block()
         self.__html += self.__equipment_block()
-        self.__html += self.__spell_section()
+        self.__html += self.__technique_section()
         self.__html += self.__notes_section()
         self.__html.append('</div>')
 
@@ -99,13 +99,13 @@ class CharacterSheet:
             '                <h4 class="nopad">Stats</h4>',
             '            </span>'
             '            <span class="rel" style="width: 65%; text-align: right; font-size: 8pt;">',
-            '                <i class="nopad">STARTING STATS: Allocate Racial Stats. 3 HP + 7 divided between HP/MP, +1 in any other stat </i>',
+            '                <i class="nopad">STARTING STATS: Allocate Racial Stats. 3 HP + 7 divided between HP/TP, +1 in any other stat </i>',
             '            </span>'
             '        </div>',
             '        <div class="cont-inner">',
             '             <strong>HP:</strong>______/______',
-            '             &emsp;&emsp;<strong>MP:</strong>______/______',
-            '             &emsp;&emsp;<i style="font-size: 10pt;">NOTE: HP + MP Cannot be > 25. Cap for all other stats is 5</i><br/>'
+            '             &emsp;&emsp;<strong>TP:</strong>______/______',
+            '             &emsp;&emsp;<i style="font-size: 10pt;">NOTE: HP + TP Cannot be > 25. Cap for all other stats is 5</i><br/>'
             '             <strong>SPD:</strong>______',
             '             &nbsp;&nbsp;&emsp;<strong>STR:</strong>______',
             '             &nbsp;&nbsp;&emsp;<strong>INT:</strong>______',
@@ -247,11 +247,11 @@ class CharacterSheet:
         html.append('    </div>')
         return html
     
-    def __spell_section(self):
+    def __technique_section(self):
         html=[
             '    <div class="container pop">',
             '        <div class="cont-title"">',
-            '            <h4 class="nopad">Spells</h4>',
+            '            <h4 class="nopad">Techniques</h4>',
             '        </div>',
         ]
         for _ in range(7):
@@ -259,7 +259,7 @@ class CharacterSheet:
                 '        <div class="container" style="margin: 5px; padding: 5px;">',
                 '            <strong>Name:</strong>__________________________________________',
                 '            <strong>Skill:</strong>____________________________'
-                '            <strong>MP Cost:</strong>_____',
+                '            <strong>TP Cost:</strong>_____',
                 '            &nbsp;&emsp;&emsp;&emsp;&emsp;<strong>Range:</strong>_____',
                 '            &nbsp;&emsp;&emsp;&emsp;&emsp;<strong>Targets:</strong>_____',
                 '            &nbsp;&emsp;&emsp;&emsp;&emsp;<strong>Points:</strong>_____/_____',

@@ -1,6 +1,6 @@
 """
 Super class used to initialize classes responsible for holding and managing the
-data for a given system (spells, items, enemies, etc.)
+data for a given system (techniques, items, enemies, etc.)
 """
 from __future__ import print_function, division
 from sections.title_section import TitleSection
@@ -10,7 +10,7 @@ from typing import List
 class ContentManager:
     """
     Super class used to initialize classes responsible for holding and managing
-    the data for a given system (spells, items, enemies, etc.)
+    the data for a given system (techniques, items, enemies, etc.)
 
     Parameters
     ----------

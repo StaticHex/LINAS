@@ -6,7 +6,7 @@ from typing import List, Dict
 import re
 from math import ceil
 
-class LINASSpell:
+class LinasTechnique:
     def __init__(
         self,
         name        : str,
@@ -35,13 +35,13 @@ class LINASSpell:
         damage : `int`
             The amount of damage the spell does
         cost : `int`
-            The MP cost for the spell
+            The TP cost for the spell
         range : `int`
             The range of the spell
         points : `int`
             The number of points the spell has available for upgrades
         numTargets : `int`
-            The number of entities a single casting of the spell can target at
+            The number of entities a single use of the technique can target at
             once
         targetType : `int`
             The type of target the spell can target. Valid values are entity, 
@@ -132,7 +132,7 @@ class LINASSpell:
             '            <strong>Damage</strong>',
             '        </span>',
             '        <span class="rel" style="width: 10%;">',
-            '            <strong>MP Cost</strong>',
+            '            <strong>TP Cost</strong>',
             '        </span>',
             '        <span class="rel" style="width: 10%;">',
             '            <strong>Range</strong>',

@@ -10,7 +10,7 @@ from   sections.free_time_section          import FreeTimeSection
 from   sections.player_setup_section       import NewPlayerSetupSection
 from   sections.lang_and_race_section      import LangRaceSection
 from   sections.ability_section            import AbilitySection
-from   sections.spell_section              import SpellSection
+from   sections.technique_section          import TechniqueSection
 from   sections.effect_section             import EffectSection
 from   sections.class_section              import ClassSection
 from   sections.item_section               import ItemSection
@@ -24,7 +24,7 @@ from   obj_classes.linas_abil              import LINASAbility
 from   obj_classes.linas_effect            import LINASEffect
 from   obj_classes.linas_race              import LINASRace
 from   obj_classes.linas_item              import LINASItem
-from   obj_classes.linas_spell             import LINASSpell
+from   obj_classes.linas_technique         import LinasTechnique
 from   obj_classes.linas_class             import LINASClass, ItemRecord
 from   obj_classes.data_collection         import DataCollection
 
@@ -46,7 +46,7 @@ class Fantasy (ContentManager):
                 "New Player Setup",
                 "Languages & Races",
                 "Classes",
-                "Spells & Battle Skills",
+                "Techniques",
                 "Abilities",
                 "Effects & Status Conditions",
                 "Items",
@@ -105,11 +105,10 @@ class Fantasy (ContentManager):
                              type="a",
                              description="""
                                  This ability can only be used once per full 
-                                 rest period. An ancient form of  magic where 
-                                 the caster uses their own lifeforce to cast 
-                                 magic in lieu of MP.  Cast a single spell 
-                                 using HP in place of MP. All other 
-                                 requirements of the  spell such as stat 
+                                 rest period. An ancient form of magic where 
+                                 the user expends their own lifeforce to use 
+                                 techniques in lieu of TP. All other 
+                                 requirements of the technique such as stat 
                                  requirements or required items are still 
                                  required.  
                              """
@@ -119,10 +118,9 @@ class Fantasy (ContentManager):
                              type="a",
                              description="""
                                  This ability can only be used once per full 
-                                 rest period and is only learnable  by the High 
-                                 Elf race. An advanced magic technique which 
+                                 rest period. An advanced magic technique which 
                                  binds the user's body  and mind. Target entity 
-                                 is now sealed (cannot cast magic), and bound.  
+                                 is now sealed (cannot use techniques), and bound.  
                              """
                          ),
                          LINASAbility(
@@ -130,14 +128,13 @@ class Fantasy (ContentManager):
                              type="a",
                              description="""
                                  This ability can only be used once per full 
-                                 rest period and is only learnable  by the Ice 
-                                 Elf race. The user cloaks themselves in a 
-                                 mixture of snow and ice.  Until the beginning 
+                                 rest period. The user cloaks themselves in a 
+                                 mixture of snow and ice. Until the beginning 
                                  of the user's next turn, the user is cloaked 
                                  in a veil of  snow and ice. All attack made 
                                  against the user are rolled at -2, any entity  
                                  within 2 squares of the user takes 2 ice 
-                                 damage per turn.  
+                                 damage at the beginning of their turn.  
                              """
                          ),
                          LINASAbility(
@@ -193,13 +190,13 @@ class Fantasy (ContentManager):
                              description="""
                                  This ability can only be used once per full 
                                  rest period. The user uses both  hands to 
-                                 weave magical ruins allowing them to cast two 
-                                 spells simultaneously.  The user may cast an 
-                                 additional spell this turn. Any other 
-                                 requirements of the  spell such as MP cost, 
+                                 weave magical ruins allowing them to use two 
+                                 techniques simultaneously.  The user may use an 
+                                 additional technique this turn. Any other 
+                                 requirements of the technique such as TP cost, 
                                  required items, stat requirements, etc. still 
-                                 count. The  user may choose a new target for 
-                                 the second spell.  
+                                 count. The user may choose a new target for 
+                                 the second technique.  
                              """
                          ),
                          LINASAbility(
@@ -321,7 +318,7 @@ class Fantasy (ContentManager):
                              description="""
                                  Meditation and focus training have made it to 
                                  where the user can control their  spirit more 
-                                 efficiently. MP cost for all spells is reduced 
+                                 efficiently. TP cost for all techniques is reduced 
                                  by 2.  
                              """
                          ),
@@ -402,7 +399,7 @@ class Fantasy (ContentManager):
                         LINASItem(
                             name="Blue Potion",
                             description="""
-                                Target entity recovers 5MP
+                                Target entity recovers 5TP
                             """,
                             cost=20,
                             range=1,
@@ -411,7 +408,7 @@ class Fantasy (ContentManager):
                         LINASItem(
                             name="Greater Blue Potion",
                             description="""
-                                Target entity recovers 10MP
+                                Target entity recovers 10TP
                             """,
                             cost=35,
                             range=1,
@@ -576,11 +573,11 @@ class Fantasy (ContentManager):
                         LINASItem(
                             name="Skull Necklace",
                             description="""
-                                -1MP Cost to all dark magic spells
+                                -1TP Cost to all dark magic techniques
                             """,
                             cost=100,
                             notes=[
-                                "MP cost for spells cannot drop below 1"
+                                "TP cost for techniques cannot drop below 1"
                             ]
                         )
                     ]
@@ -623,7 +620,7 @@ class Fantasy (ContentManager):
                                 If dual wielding add +1 to damage and +1 to
                                 speed penalty""",
                                 """
-                                Cannot use items or cast spells in battle while
+                                Cannot use items or use techniques in battle while
                                 dual wielding.
                                 """,
                                 "Range is only 3 if being thrown, otherwise it's 1",
@@ -648,7 +645,7 @@ class Fantasy (ContentManager):
                                 speed penalty
                                 """,
                                 """\
-                                Cannot use items or cast spells in battle while
+                                Cannot use items or use techniques in battle while
                                 dual wielding.
                                 """                            
                             ]
@@ -670,7 +667,7 @@ class Fantasy (ContentManager):
                                 speed penalty
                                 """,
                                 """
-                                Cannot use items or cast spells in battle while
+                                Cannot use items or use techniques in battle while
                                 dual wielding.
                                 """
                             ]
@@ -690,7 +687,7 @@ class Fantasy (ContentManager):
                             notes=[
                                 "Cannot be dual wielded",
                                 """
-                                Cannot use items or cast spells in battle while
+                                Cannot use items or use techniques in battle while
                                 wielding this weapon.
                                 """
                             ]
@@ -729,7 +726,7 @@ class Fantasy (ContentManager):
                                 speed penalty
                                 """,
                                 """
-                                Cannot use items or cast spells in battle while
+                                Cannot use items or use techniques in battle while
                                 dual wielding.
                                 """,
                                 """
@@ -757,7 +754,7 @@ class Fantasy (ContentManager):
                                 speed penalty
                                 """,
                                 """
-                                Cannot use items or cast spells in battle while
+                                Cannot use items or use techniques in battle while
                                 dual wielding.
                                 """
                             ]
@@ -777,7 +774,7 @@ class Fantasy (ContentManager):
                             notes=[
                                 "Cannot be dual wielded",
                                 """
-                                Cannot use items or cast spells in battle while
+                                Cannot use items or use techniques in battle while
                                 wielding this weapon.
                                 """                                
                             ]
@@ -799,7 +796,7 @@ class Fantasy (ContentManager):
                                 Cannot be dual wielded
                                 """,
                                 """
-                                Cannot cast spells or use items while wielding
+                                Cannot use techniques or use items while wielding
                                 """
                             ]
                         ),
@@ -820,7 +817,7 @@ class Fantasy (ContentManager):
                                 Cannot be dual wielded
                                 """,
                                 """
-                                Cannot cast spells or use items while wielding
+                                Cannot use techniques or use items while wielding
                                 """
                             ]
                         ),
@@ -841,7 +838,7 @@ class Fantasy (ContentManager):
                                 Cannot be dual wielded
                                 """,
                                 """
-                                Cannot cast spells or use items while wielding
+                                Cannot use techniques or use items while wielding
                                 """
                             ]
                         ),
@@ -879,7 +876,7 @@ class Fantasy (ContentManager):
                                 Cannot be dual wielded
                                 """,
                                 """
-                                Cannot cast spells or use items while wielding
+                                Cannot use techniques or use items while wielding
                                 """
                             ]
                         ),
@@ -919,7 +916,7 @@ class Fantasy (ContentManager):
                                 Cannot be dual wielded
                                 """,
                                 """
-                                Cannot cast spells or use items while wielding
+                                Cannot use techniques or use items while wielding
                                 """,
                                 """
                                 1 turn to load 1 turn to fire
@@ -948,7 +945,7 @@ class Fantasy (ContentManager):
                                 Can select multiple targets if dual wielding
                                 """,
                                 """
-                                Cannot cast spells or use items while wielding
+                                Cannot use techniques or use items while wielding
                                 """,
                                 """
                                 1 turn to load 1 turn to fire
@@ -975,7 +972,7 @@ class Fantasy (ContentManager):
                                 Cannot be dual wielded
                                 """,
                                 """
-                                Cannot cast spells or use items while wielding
+                                Cannot use techniques or use items while wielding
                                 """,
                                 """
                                 1 turn to load 1 turn to fire
@@ -1306,7 +1303,7 @@ class Fantasy (ContentManager):
                             speedPenalty=0,
                             notes=[
                                 """
-                                Cannot cast spells or use items while wielding
+                                Cannot use techniques or use items while wielding
                                 """
                             ]
                         ),
@@ -1322,7 +1319,7 @@ class Fantasy (ContentManager):
                             speedPenalty=2,
                             notes=[
                                 """
-                                Cannot cast spells or use items while wielding
+                                Cannot use techniques or use items while wielding
                                 """
                             ]
                         ),
@@ -1344,7 +1341,7 @@ class Fantasy (ContentManager):
                                 dragon = fire protection)
                                 """,
                                 """
-                                Cannot cast spells or use items while wielding
+                                Cannot use techniques or use items while wielding
                                 """
                             ]
                         ),
@@ -1360,7 +1357,7 @@ class Fantasy (ContentManager):
                             speedPenalty=3,
                             notes=[
                                 """
-                                Cannot cast spells or use items while wielding
+                                Cannot use techniques or use items while wielding
                                 """
                             ]
                         ),
@@ -1377,20 +1374,20 @@ class Fantasy (ContentManager):
                             speedPenalty=0,
                             notes=[
                                 """
-                                Cannot cast spells or use items while wielding
+                                Cannot use techniques or use items while wielding
                                 """,
                                 """
                                 Breaks if used to block physical damage (is 
                                 removed from inventory)
                                 """,
                                 """
-                                If used to block magic damage, reflect back 1/2 
-                                of damage done back on the caster
+                                If used to block energy damage, reflect back 1/2 
+                                of damage (rounded up) done back on the user
                                 """,
                                 """
-                                If used to block a status effect spell, negate 
-                                the effect of the spell on your self and reflect 
-                                the effect back on the caster
+                                If used to block a status effect technique, negate 
+                                the effect of the technique on your self and reflect 
+                                the effect back on the user
                                 """
                             ]
                         ),
@@ -1399,7 +1396,7 @@ class Fantasy (ContentManager):
                             description="""
                             Lightweight armor made from woven mithrill wire. 
                             Provides a great amount of magic protection; and 
-                            leaves the hands free for casting spells.
+                            leaves the hands free for using techniques.
                             """,
                             cost=130,
                             protection=3,
@@ -1414,7 +1411,7 @@ class Fantasy (ContentManager):
                             Lightweight shield made from a polished plate of 
                             mithrill. Provides decent magic protection and 
                             floats around the user keeping the hands free for 
-                            casting spells
+                            casting techniques
                             """,
                             cost=70,
                             protection=3,
@@ -1453,7 +1450,7 @@ class Fantasy (ContentManager):
                         LINASItem(
                             name="Novice Instrument",
                             description="""
-                            Required to cast spells from the music school.  A 
+                            Required to use techniques from the music school.  A 
                             musical instrument with many years of experience. 
                             Perfect for beginners but definitely shows it's 
                             age.
@@ -1462,7 +1459,7 @@ class Fantasy (ContentManager):
                             uses=0,
                             notes=[
                                 """
-                                Holds 2 spells (music school only)
+                                Holds 2 techniques (music school only)
                                 """,
                                 """
                                 Can be any instrument of the player's choosing 
@@ -1474,7 +1471,7 @@ class Fantasy (ContentManager):
                         LINASItem(
                             name="Bardic Instrument",
                             description="""
-                            Required to cast spells from the music school.  A 
+                            Required to use techniques from the music school.  A 
                             professional level instrument capable of producing a 
                             clear and rich sound.
                             """,
@@ -1482,7 +1479,7 @@ class Fantasy (ContentManager):
                             uses=0,
                             notes=[
                                 """
-                                Holds 3 spells (music school only)
+                                Holds 3 techniques (music school only)
                                 """,
                                 """
                                 Can be any instrument of the player's choosing 
@@ -1494,7 +1491,7 @@ class Fantasy (ContentManager):
                         LINASItem(
                             name="Antique Instrument",
                             description="""
-                            Required to cast spells from the music school.  An 
+                            Required to use techniques from the music school.  An 
                             extremely well taken care of instrument with no 
                             parallel. Sought after the world over.
                             """,
@@ -1502,7 +1499,7 @@ class Fantasy (ContentManager):
                             uses=0,
                             notes=[
                                 """
-                                Holds 4 spells (music school only)
+                                Holds 4 techniques (music school only)
                                 """,
                                 """
                                 Can be any instrument of the player's choosing 
@@ -1514,15 +1511,15 @@ class Fantasy (ContentManager):
                         LINASItem(
                             name="Novice Spellbook",
                             description="""
-                            Required to cast non-music spells. A small, short 
-                            spell book with extra large margins for taking 
+                            Required to use non-music techniques. A small, short 
+                            technique book with extra large margins for taking 
                             notes.
                             """,
                             cost=50,
                             uses=0,
                             notes=[
                                 """
-                                Holds 2 spells (Light, arcane, dark, and 
+                                Holds 2 techniques (Light, arcane, dark, and 
                                 summoning magic only)
                                 """
                             ]
@@ -1530,15 +1527,15 @@ class Fantasy (ContentManager):
                         LINASItem(
                             name="Mage's Spellbook",
                             description="""
-                            Required to cast non-music spells. A professional 
-                            level spell book with  sections for spells, recipes, 
+                            Required to use non-music techniques. A professional 
+                            level technique book with  sections for techniques, recipes, 
                             and notes.
                             """,
                             cost=100,
                             uses=0,
                             notes=[
                                 """
-                                Holds 3 spells  (Light, arcane, dark, and 
+                                Holds 3 techniques  (Light, arcane, dark, and 
                                 summoning magic only)
                                 """
                             ]
@@ -1546,7 +1543,7 @@ class Fantasy (ContentManager):
                         LINASItem(
                             name="Arcane Spellbook",
                             description="""
-                            Required to cast non-music spells. An extremely 
+                            Required to use non-music techniques. An extremely 
                             powerful spellbook meant for experienced mages. The 
                             pages can only be viewed by the owner and it's 
                             even said owning one of these can amplify a mage's 
@@ -1556,11 +1553,11 @@ class Fantasy (ContentManager):
                             uses=0,
                             notes=[
                                 """
-                                Holds 4 spells  (Light, arcane, dark, and 
+                                Holds 4 techniques  (Light, arcane, dark, and 
                                 summoning magic only)
                                 """,
                                 """
-                                -1 MP cost when casting spells (MP cost cannot 
+                                -1 TP cost when using techniques (TP cost cannot 
                                 drop below 1)
                                 """
                             ]
@@ -1568,7 +1565,7 @@ class Fantasy (ContentManager):
                         LINASItem(
                             name="Novice Gauntlet",
                             description="""
-                            Required to cast combat, ninjitsu, and bushido 
+                            Required to use combat, ninjitsu, and bushido 
                             skills. A plated glove with magic runes etched into 
                             it
                             """,
@@ -1576,7 +1573,7 @@ class Fantasy (ContentManager):
                             uses=0,
                             notes=[
                                 """
-                                Holds 2 spells (combat, ninjitsu, and bushido 
+                                Holds 2 techniques (combat, ninjitsu, and bushido 
                                 only)
                                 """
                             ]
@@ -1584,7 +1581,7 @@ class Fantasy (ContentManager):
                         LINASItem(
                             name="Warrior's Gauntlet",
                             description="""
-                            Required to cast combat, ninjitsu, and bushido 
+                            Required to use combat, ninjitsu, and bushido 
                             skills. An ornate glove with a mysterious gem 
                             embedded into the palm
                             """,
@@ -1592,7 +1589,7 @@ class Fantasy (ContentManager):
                             uses=0,
                             notes=[
                                 """
-                                Holds 3 spells  (combat, ninjitsu, and bushido 
+                                Holds 3 techniques  (combat, ninjitsu, and bushido 
                                 only)
                                 """
                             ]
@@ -1600,7 +1597,7 @@ class Fantasy (ContentManager):
                         LINASItem(
                             name="Daimyo's Gauntlet",
                             description="""
-                            Required to cast combat, ninjitsu, and bushido 
+                            Required to use combat, ninjitsu, and bushido 
                             skills. An ornate gauntlet with attached arm guard 
                             with an enormous gem embedded onto the back of the 
                             glove resembling an eye.
@@ -1609,7 +1606,7 @@ class Fantasy (ContentManager):
                             uses=0,
                             notes=[
                                 """
-                                Holds 4 spells (combat, ninjitsu, and bushido 
+                                Holds 4 techniques (combat, ninjitsu, and bushido 
                                 only)
                                 """
                             ]
@@ -1764,11 +1761,11 @@ class Fantasy (ContentManager):
                     """
                 ),
                 LINASStat(
-                    name = "Magic Points",
-                    abbr = "MP",
+                    name = "Technical Points",
+                    abbr = "TP",
                     description = """
-                    This represents the amount of magical energy an entity is
-                    able to utilize to cast spells or use special abilities.
+                    This represents the amount of energy an entity is
+                    able to utilize towards battle skills and techniques.
                     """
                 ),
                 LINASStat(
@@ -1796,10 +1793,9 @@ class Fantasy (ContentManager):
                     name = "Intelligence",
                     abbr = "INT",
                     description = """
-                    Represents how easily an entity can understand spells and
+                    Represents how easily an entity can understand techniques and
                     other forms of magic. This is added to the attack roll for
-                    most magic attacks. This is also a required stat in order to
-                    use some high level arcane items and spells.
+                    most non-physical attacks.
                     """
                 ),
                 LINASStat(
@@ -2115,7 +2111,7 @@ class Fantasy (ContentManager):
                             description = """
                             This skill is a bit limited and generally is used 
                             to create meals which can be eaten immediately to 
-                            heal status conditions or HP/MP outside battle. 
+                            heal status conditions or HP/TP outside battle. 
                             Usually cooks have a set menu of things they can 
                             prepare; although this menu is subject to change 
                             depending on whether the cook chooses variety over 
@@ -2263,24 +2259,24 @@ class Fantasy (ContentManager):
                     ]
                 )
             ],
-            "spells":[
+            "techniques":[
                 DataCollection(
-                    name="Light Magic Spells",
+                    name="Light Magic Techniques",
                     description="""
-                    The spells in this category are generally defensive and 
+                    The techniques in this category are generally defensive and 
                     restorative in nature. Even if your character isn't 
                     specializing in healing or magic in general; picking up one 
-                    or two of these spells can be extremely helpful; especially 
+                    or two of these techniques can be extremely helpful; especially 
                     if you don't feel like spending a huge amount of money on 
                     potions..
                     """,
                     children=[
-                        LINASSpell(
+                        LinasTechnique(
                             name="Barrier",
                             description="""
                             Prevents the next X physical damage that would be 
-                            done to the spell's target and then pops. Where X 
-                            is equal to this spell's damage. Barrier stays
+                            done to the technique's target and then pops. Where X 
+                            is equal to this technique's damage. Barrier stays
                             active until destroyed
                             """,
                             damage=1,
@@ -2289,12 +2285,12 @@ class Fantasy (ContentManager):
                             skill="magic",
                             notes=[]
                         ),
-                        LINASSpell(
+                        LinasTechnique(
                             name="Magic Barrier",
                             description="""
                             Prevents the next X magical damage that would be 
-                            done to the spell's target and then pops. Where X 
-                            is equal to this spell's damage. Barrier stays active
+                            done to the technique's target and then pops. Where X 
+                            is equal to this technique's damage. Barrier stays active
                             until destroyed
                             """,
                             damage=1,
@@ -2303,11 +2299,11 @@ class Fantasy (ContentManager):
                             skill="magic",
                             notes=[]
                         ),
-                        LINASSpell(
+                        LinasTechnique(
                             name="Heal Wound",
                             description="""
-                            Restores X HP to spell's target where X is equal 
-                            to this spell's damage.
+                            Restores X HP to technique's target where X is equal 
+                            to this technique's damage.
                             """,
                             damage=3,
                             range=2,
@@ -2316,11 +2312,11 @@ class Fantasy (ContentManager):
                             notes=[
                             ]
                         ),
-                        LINASSpell(
+                        LinasTechnique(
                             name="Cure",
                             description="""
                             Removes X status conditions from target where X is 
-                            equal to this spell's damage.
+                            equal to this technique's damage.
                             """,
                             damage=1,
                             range=2,
@@ -2333,11 +2329,11 @@ class Fantasy (ContentManager):
                                 """
                             ]
                         ),
-                        LINASSpell(
+                        LinasTechnique(
                             name="Bless",
                             description="""
                             Increases the damage of target's next attack by X 
-                            where X is equal to this spell's damage
+                            where X is equal to this technique's damage
                             """,
                             damage=2,
                             range=2,
@@ -2345,11 +2341,11 @@ class Fantasy (ContentManager):
                             skill="magic",
                             notes=[]
                         ),
-                        LINASSpell(
+                        LinasTechnique(
                             name="Resurrect",
                             description="""
                             Returns target back to life with X HP where X is 
-                            equal to this spell's damage
+                            equal to this technique's damage
                             """,
                             damage=5,
                             range=1,
@@ -2362,10 +2358,10 @@ class Fantasy (ContentManager):
                     ]
                 ),
                 DataCollection(
-                    name="Arcane Magic Spells",
+                    name="Arcane Magic Technique",
                     description="""
-                    The spells in this category tend to focus on dealing direct 
-                    damage to enemies. However, there are also a few spells 
+                    The techniques in this category tend to focus on dealing direct 
+                    damage to enemies. However, there are also a few techniques 
                     which don't fit the pattern as well. Generally speaking, 
                     this school of magic tends to focus on elemental magic; and 
                     in order to keep things simple. Many classic specialized 
@@ -2373,7 +2369,7 @@ class Fantasy (ContentManager):
                     this category as well.
                     """,
                     children=[
-                        LINASSpell(
+                        LinasTechnique(
                             name="Magic Missile",
                             description="""
                             Shoots a magical arrow at the target.
@@ -2384,11 +2380,11 @@ class Fantasy (ContentManager):
                             skill="magic",
                             notes=[]
                         ),
-                        LINASSpell(
+                        LinasTechnique(
                             name="Fireball",
                             description="""
                             Shoots a magical fireball at target entity. This 
-                            spell can be given burn as a status effect.
+                            technique can be given burn as a status effect.
                             """,
                             damage=2,
                             range=3,
@@ -2397,11 +2393,11 @@ class Fantasy (ContentManager):
                             status=True,
                             notes=[
                                 """
-                                Target is burned if 6 is rolled while casting this spell
+                                Target is burned if 6 is rolled while using this technique
                                 """
                             ]
                         ),
-                        LINASSpell(
+                        LinasTechnique(
                             name="Lightning",
                             description="""
                             A forked bolt of lightning cracks through the air. 
@@ -2421,13 +2417,13 @@ class Fantasy (ContentManager):
                                 """
                             ]
                         ),
-                        LINASSpell(
+                        LinasTechnique(
                             name="Blizzard",
                             description="""
-                            A ferocious snowstorm envelopes the caster and all 
+                            A ferocious snowstorm envelopes the user and all 
                             nearby entities. Deals damage to all entities within 
-                            X squares of the caster where X is equal to this 
-                            spell's range (both friend and foe)
+                            X squares of the user where X is equal to this 
+                            technique's range (both friend and foe)
                             """,
                             damage=3,
                             range=5,
@@ -2438,15 +2434,15 @@ class Fantasy (ContentManager):
                                 """
                                 Each entity on the battlefield rolls to see if 
                                 attack hits. Entities not on the ground aren't 
-                                effected by this spell
+                                effected by this technique
                                 """
                             ]
                         ),
-                        LINASSpell(
+                        LinasTechnique(
                             name="Earthquake",
                             description="""
                             A massive earthquake shakes the area. All entities 
-                            (both friend and foe) are impacted by the spell
+                            (both friend and foe) are impacted by the technique
                             """,
                             damage=5,
                             range=-1,
@@ -2458,15 +2454,15 @@ class Fantasy (ContentManager):
                                 """
                                 Each entity on the battlefield rolls to see if 
                                 attack hits. Entities not on the ground aren't 
-                                effected by this spell
+                                effected by this technique
                                 """
                             ]
                         ),
-                        LINASSpell(
+                        LinasTechnique(
                             name="Teleport",
                             description="""
                             User teleports up to X squares away from current 
-                            position where X is equal to this spell's damage.
+                            position where X is equal to this technique's damage.
                             """,
                             damage=1,
                             range=0,
@@ -2479,12 +2475,12 @@ class Fantasy (ContentManager):
                                 """
                             ]
                         ),
-                        LINASSpell(
+                        LinasTechnique(
                             name="Transform",
                             description="""
-                            Caster transforms into an animal or monster of their 
-                            choice. Spell must be re-cast every turn to keep it
-                            active. Re-casting can be taken as a bonus action.
+                            User transforms into an animal or monster of their 
+                            choice. Technique must be reused every turn to keep it
+                            active. Reusing a technique can be taken as a bonus action.
                             """,
                             damage=0,
                             range=0,
@@ -2497,12 +2493,12 @@ class Fantasy (ContentManager):
                                 the chosen animal/monster
                                 """,
                                 """
-                                If the chosen animal/monster has a higher HP/MP 
-                                than the caster, the caster keeps their current 
-                                HP/MP (do not scale HP/MP)
+                                If the chosen animal/monster has a higher HP/TP 
+                                than the user, the user keeps their current 
+                                HP/TP (do not scale HP/TP)
                                 """,
                                 """
-                                Paying the continuation cost for this spell does 
+                                Paying the continuation cost for this technique does 
                                 not count as the entity's action for the turn.
                                 """
                             ]
@@ -2510,15 +2506,15 @@ class Fantasy (ContentManager):
                     ]
                 ),
                 DataCollection(
-                    name="Dark Magic Spells",
+                    name="Dark Magic Techniques",
                     description="""
-                    Dark magic spells tend to focus on weakening opponents, 
+                    Dark magic techniques tend to focus on weakening opponents, 
                     attacking indirectly and summoning. Many dark mages also 
-                    employ a mixture of status spells and poisons to make life 
+                    employ a mixture of status techniques and poisons to make life 
                     as hard as possible for their adversaries.
                     """,
                     children=[
-                        LINASSpell(
+                        LinasTechnique(
                             name="Gravity",
                             description="""
                             Deals damage to entity equal to their armor value. 
@@ -2531,11 +2527,11 @@ class Fantasy (ContentManager):
                             notes=[
                             ]
                         ),
-                        LINASSpell(
+                        LinasTechnique(
                             name="Curse",
                             description="""
                             Decreases the damage of target's next attack by X 
-                            where X is equal to this spell's damage.
+                            where X is equal to this technique's damage.
                             """,
                             damage=2,
                             range=2,
@@ -2548,13 +2544,13 @@ class Fantasy (ContentManager):
                                 """
                             ]
                         ),
-                        LINASSpell(
+                        LinasTechnique(
                             name="Animate Dead",
                             description="""
                             Animates fallen corpse to fight for the user. Corpse
-                            animates with X+1 HP where X is equal to this spell's
-                            damage. Spell must be re-cast every turn to keep it
-                            active. Re-casting can be taken as a bonus action.
+                            animates with X+1 HP where X is equal to this technique's
+                            damage. Technique must be reused every turn to keep it
+                            active. Reusing a technique can be taken as a bonus action.
                             """,
                             damage=2,
                             range=1,
@@ -2572,12 +2568,12 @@ class Fantasy (ContentManager):
                                 """
                             ]
                         ),
-                        LINASSpell(
+                        LinasTechnique(
                             name="Drain HP",
                             description="""
                             Absorbs life energy from target entity. Reduces 
-                            target entity's HP by X and restores caster's HP 
-                            by X where X is equal to this spell's damage.
+                            target entity's HP by X and restores user's HP 
+                            by X where X is equal to this technique's damage.
                             """,
                             damage=1,
                             range=1,
@@ -2591,12 +2587,12 @@ class Fantasy (ContentManager):
                                 """
                             ]
                         ),
-                        LINASSpell(
-                            name="Drain MP",
+                        LinasTechnique(
+                            name="Drain TP",
                             description="""
-                            Absorbs magical energies from target entity. Reduces 
-                            target entity's MP by X and restores caster's MP 
-                            by X where X is equal to this spell's damage.
+                            Absorbs energy from target entity. Reduces 
+                            target entity's TP by X and restores user's TP 
+                            by X where X is equal to this technique's damage.
                             """,
                             damage=1,
                             range=1,
@@ -2611,12 +2607,12 @@ class Fantasy (ContentManager):
                                 """
                             ]
                         ),
-                        LINASSpell(
+                        LinasTechnique(
                             name="Summon",
                             description="""
-                            Summons a monster or animal to help the caster.
-                            Spell must be recast each turn to keep going.
-                            Re-casting can be taken as a bonus action.
+                            Summons a monster or animal to help the user.
+                            Technique must be reused each turn to keep going.
+                            Reusing a technique can be taken as a bonus action.
                             )
                             """,
                             damage=0,
@@ -2625,8 +2621,8 @@ class Fantasy (ContentManager):
                             skill="magic",
                             notes=[
                                 """
-                                In addition to the casting cost of this spell,
-                                must also pay X MP when first casting where X is
+                                In addition to the using cost of this technique,
+                                must also pay X TP when first using where X is
                                 1/2 of the target summoned entity's HP
                                 (rounded up)
                                 """
@@ -2636,17 +2632,17 @@ class Fantasy (ContentManager):
                     
                 ),
                 DataCollection(
-                    name="Status Spells",
+                    name="Status Techniques",
                     description="""
-                    The spells in this category don't cause any direct damage 
-                    nor are they aligned with any element. Instead, these spells 
+                    The techniques in this category don't cause any direct damage 
+                    nor are they aligned with any element. Instead, these techniques
                     focus on inflicting special conditions on the target. These 
-                    spells are usually taken in combination with the spells from 
+                    techniques are usually taken in combination with the techniques from 
                     other schools as a way to control the flow of battle or as 
                     part of a larger more complex strategy.
                     """,
                     children=[
-                        LINASSpell(
+                        LinasTechnique(
                             name="Poison",
                             description="""
                             Target entity is now poisoned
@@ -2659,7 +2655,7 @@ class Fantasy (ContentManager):
                             notes=[
                             ]
                         ),
-                        LINASSpell(
+                        LinasTechnique(
                             name="Sleep",
                             description="""
                             Target entity is now asleep
@@ -2672,7 +2668,7 @@ class Fantasy (ContentManager):
                             notes=[
                             ]
                         ),
-                        LINASSpell(
+                        LinasTechnique(
                             name="Madness",
                             description="""
                             Target entity is now insane
@@ -2685,7 +2681,7 @@ class Fantasy (ContentManager):
                             notes=[
                             ]
                         ),
-                        LINASSpell(
+                        LinasTechnique(
                             name="Charm",
                             description="""
                             Target entity is now charmed
@@ -2698,7 +2694,7 @@ class Fantasy (ContentManager):
                             notes=[
                             ]
                         ),
-                        LINASSpell(
+                        LinasTechnique(
                             name="Seal",
                             description="""
                             Target entity is now sealed
@@ -2714,15 +2710,15 @@ class Fantasy (ContentManager):
                     ]
                 ),
                 DataCollection(
-                    name="Combat Spells",
+                    name="Combat Techniques",
                     description="""
-                    The spells in this section are unique in the aspect that 
+                    The techniques in this section are unique in the aspect that 
                     they are more geared towards physical combat vs. magical. 
-                    These spells tend to have fairly low MP costs but are also 
+                    These techniques tend to have fairly low TP costs but are also 
                     much more limited in terms of improvement.
                     """,
                     children=[
-                        LINASSpell(
+                        LinasTechnique(
                             name="Protect",
                             description="""
                             Until your next turn if target entity would take 
@@ -2735,7 +2731,7 @@ class Fantasy (ContentManager):
                             notes=[
                             ]
                         ),
-                        LINASSpell(
+                        LinasTechnique(
                             name="Berserk",
                             description="""
                             Physical melee damage dealt is doubled until your 
@@ -2749,7 +2745,7 @@ class Fantasy (ContentManager):
                             points=1,
                             notes=[
                                 """
-                                Can no longer cast spells or use items
+                                Can no longer use techniques or use items
                                 """,
                                 """
                                 Can no longer counter or defend
@@ -2763,7 +2759,7 @@ class Fantasy (ContentManager):
                                 """
                             ]
                         ),
-                        LINASSpell(
+                        LinasTechnique(
                             name="Whirlwind Cut",
                             description="""
                             Deals damage to all adjacent entities (both friend 
@@ -2778,7 +2774,7 @@ class Fantasy (ContentManager):
                             notes=[
                             ]
                         ),
-                        LINASSpell(
+                        LinasTechnique(
                             name="Aero Cut",
                             description="""
                             A fast slash which sends out a wave of wind ahead of it
@@ -2790,7 +2786,7 @@ class Fantasy (ContentManager):
                             notes=[
                             ]
                         ),
-                        LINASSpell(
+                        LinasTechnique(
                             name="Cleave",
                             description="""
                             Powerful attack which has the potential to break armor
@@ -2807,7 +2803,7 @@ class Fantasy (ContentManager):
                                 """
                             ]
                         ),
-                        LINASSpell(
+                        LinasTechnique(
                             name="Backstab",
                             description="""
                             Attack with equipped weapon ignoring armor value of 
@@ -2833,18 +2829,18 @@ class Fantasy (ContentManager):
                     ]
                 ),
                 DataCollection(
-                    name="Music Spells",
+                    name="Music Techniques",
                     description="""
-                    Music spells are special songs which when played on a 
+                    Music techniques are special songs which when played on a 
                     musical instrument cause unpredictable effects in and 
                     outside of battle.In the true spirit of bardship, many of 
-                    these spells and effects are random and have the chance to 
+                    these techniques and effects are random and have the chance to 
                     hit either friend or foe. However, when used at the right 
-                    time; these spells can also turn the tides of battle as 
+                    time; these techniques can also turn the tides of battle as 
                     their effects are usually widespread.
                     """,
                     children=[
-                        LINASSpell(
+                        LinasTechnique(
                             name="Lullaby",
                             description="""
                             Causes a soft melody to drift across the 
@@ -2861,18 +2857,18 @@ class Fantasy (ContentManager):
                             skill="music",
                             notes=[
                                 """
-                                This targets the caster as well
+                                This targets the user as well
                                 """
                             ]
                         ),
-                        LINASSpell(
+                        LinasTechnique(
                             name="Battle March",
                             description="""
                             Causes an upbeat melody to drift across the 
                             battlefield. All entities roll 1d6 to see if they 
                             are effected by the attack. All entities who pass 
                             this roll get X added to their next attack where X 
-                            is equal to this spell's damage
+                            is equal to this techniques's damage
                             """,
                             damage=2,
                             range=0,
@@ -2882,17 +2878,17 @@ class Fantasy (ContentManager):
                             fnf=True,
                             notes=[
                                 """
-                                This targets the caster as well
+                                This targets the user as well
                                 """
                             ]
                         ),
-                        LINASSpell(
+                        LinasTechnique(
                             name="Heavy Metal",
                             description="""
                             Causes a brutal melody to drift across the 
                             battlefield. All entities roll 1d6 to see if they 
                             avoid the attack. Any entities who fail this roll 
-                            take X damage where X is the damage of this spell.
+                            take X damage where X is the damage of this techniques.
                             """,
                             damage=2,
                             range=0,
@@ -2906,18 +2902,18 @@ class Fantasy (ContentManager):
                                 paralyzed in addition to taking damage
                                 """,
                                 """
-                                This targets the caster as well
+                                This targets the user as well
                                 """
                             ]
                         ),
-                        LINASSpell(
+                        LinasTechnique(
                             name="Holy Chorus",
                             description="""
                             Causes an uplifting melody to drift across the 
                             battlefield. All entities roll 1d6 to see if they 
                             are effected by the attack. All entities who pass 
                             this roll get X HP restored where X is equal to this 
-                            spell's damage
+                            techniques's damage
                             """,
                             damage=2,
                             range=0,
@@ -2927,11 +2923,11 @@ class Fantasy (ContentManager):
                             fnf=True,
                             notes=[
                                 """
-                                This targets the caster as well
+                                This targets the user as well
                                 """
                             ]
                         ),
-                        LINASSpell(
+                        LinasTechnique(
                             name="Freestyle Jazz",
                             description="""
                             Causes a chaotic melody to drift across the 
@@ -2948,11 +2944,11 @@ class Fantasy (ContentManager):
                             fnf=True,
                             notes=[
                                 """
-                                This targets the caster as well
+                                This targets the user as well
                                 """
                             ]
                         ),
-                        LINASSpell(
+                        LinasTechnique(
                             name="Song of Silence",
                             description="""
                             Causes a stifling melody to drift across the 
@@ -2969,11 +2965,11 @@ class Fantasy (ContentManager):
                             fnf=True,
                             notes=[
                                 """
-                                This targets the caster as well
+                                This targets the user as well
                                 """
                             ]
                         ),
-                        LINASSpell(
+                        LinasTechnique(
                             name="Song of Provocation",
                             description="""
                             Causes a raucous melody to drift across the 
@@ -2991,7 +2987,7 @@ class Fantasy (ContentManager):
                             skill="magic",
                             notes=[
                                 """
-                                Can no longer cast spells or use items
+                                Can no longer use techniques or use items
                                 """,
                                 """
                                 Can no longer counter or defend
@@ -3004,29 +3000,29 @@ class Fantasy (ContentManager):
                                 Can no longer recover HP
                                 """,
                                 """
-                                This targets the caster as well
+                                This targets the user as well
                                 """
                             ]
                         )
                     ]
                 ),
                 DataCollection(
-                    name="Ninjitsu Spells",
+                    name="Ninjitsu Techniques",
                     description="""
-                    Ninjitsu is one of three spell categories inspired by 
-                    eastern culture. Ninjitsu spells focus on surprising the 
+                    Ninjitsu is one of three technique categories inspired by 
+                    eastern culture. Ninjitsu techniques focus on surprising the 
                     enemy and attacking from the shadows. Ninjitsu is strongest 
                     when paired up with items and combat abilities allowing 
                     characters to attack from close range while staying just out 
                     of their opponent's reach
                     """,
                     children=[
-                        LINASSpell(
+                        LinasTechnique(
                             name="Clone",
                             description="""
-                            Summons a clone of caster with X HP where X is
-                            this spell's damage. Spell must be recast each
-                            turn to keep going. Re-casting can be taken as
+                            Summons a clone of user with X HP where X is
+                            this technique's damage. Technique must be reused each
+                            turn to keep going. Reusing a technique can be taken as
                             a bonus action.
                             """,
                             damage=2,
@@ -3036,17 +3032,17 @@ class Fantasy (ContentManager):
                             notes=[
                                 """
                                 HP of summoned entity cannot exceed remaining
-                                HP of caster
+                                HP of user
                                 """
                             ]
                         ),
-                        LINASSpell(
+                        LinasTechnique(
                             name="Substitute",
                             description="""
-                            The next time the caster is attacked they may trade 
+                            The next time the user is attacked they may trade 
                             places with an inanimate object on the battlefield 
                             up to X squares away where X is equal to this 
-                            spell's damage
+                            technique's damage
                             """,
                             damage=2,
                             range=0,
@@ -3055,12 +3051,12 @@ class Fantasy (ContentManager):
                             notes=[
                             ]
                         ),
-                        LINASSpell(
+                        LinasTechnique(
                             name="Mimic",
                             description="""
-                            Caster copies the last attack cast before this one. 
+                            User copies the last attack used before this one. 
                             All damage and effects of the previous attack are 
-                            copied; however this is counted as a new spell
+                            copied; however this is counted as a new technique
                             """,
                             damage=1,
                             range=0,
@@ -3069,29 +3065,29 @@ class Fantasy (ContentManager):
                             notes=[
                                 """
                                 Everything except for the mana cost of the 
-                                previous spell is copied
+                                previous technique is copied
                                 """
                             ]
                         )
                     ]
                 ),
                 DataCollection(
-                    name="Bushido Spells",
+                    name="Bushido Techniques",
                     description="""
-                    The second spell category based on eastern culture. Bushido 
-                    spells are similar to combat spells but focus more on speed 
+                    The second technique category based on eastern culture. Bushido 
+                    techniques are similar to combat techniques but focus more on speed 
                     rather than strength for cutting enemies down. Additionally, 
-                    many bushido spells tend to be linked to a specific weapon 
+                    many bushido techniques tend to be linked to a specific weapon 
                     so finding a weapon and mastering it is more important in 
-                    bushido than simply learning a larger variety of spells. 
-                    However, there are a few spells which can be used 
+                    bushido than simply learning a larger variety of techniques. 
+                    However, there are a few techniques which can be used 
                     independent of weapons which are listed below
                     """,
                     children=[
-                        LINASSpell(
+                        LinasTechnique(
                             name="Draw",
                             description="""
-                            This attack deals damage equal to the caster's 
+                            This attack deals damage equal to the user's 
                             speed
                             """,
                             damage=0,
@@ -3101,10 +3097,10 @@ class Fantasy (ContentManager):
                             notes=[
                             ]
                         ),
-                        LINASSpell(
+                        LinasTechnique(
                             name="Vacuum Cut",
                             description="""
-                            Creates a negative space between the caster and 
+                            Creates a negative space between the user and 
                             their target and then lashes out from the center of 
                             that space.
                             """,
@@ -3122,7 +3118,7 @@ class Fantasy (ContentManager):
                                 """
                             ]
                         ),
-                        LINASSpell(
+                        LinasTechnique(
                             name="Step Cut",
                             description="""
                             Move and attack in one fluid motion. Deal damage to 
@@ -3138,21 +3134,21 @@ class Fantasy (ContentManager):
                     ]
                 ),
                 DataCollection(
-                    name="Martial Arts Spells",
+                    name="Martial Arts Techniques",
                     description="""
-                    The third spell category based on eastern culture, Martial 
+                    The third technique category based on eastern culture, Martial 
                     arts techniques are generally tied to a specific school and 
                     are geared towards physical (unarmed) combat vs. armed.
                     """,
                     children=[
-                        LINASSpell(
+                        LinasTechnique(
                             name="Fighting Spirit",
                             description="""
-                            While unarmed caster gets +X STR and +X END where X 
-                            are equal to the damage of this spell. These values 
-                            do not count towards the caster's stat caps. 
-                            Spell must be recast each turn to keep going.
-                            Re-casting can be taken as a bonus action.
+                            While unarmed user gets +X STR and +X END where X 
+                            are equal to the damage of this technique. These values 
+                            do not count towards the user's stat caps. 
+                            Technique must be reused each turn to keep going.
+                            Reusing a technique can be taken as a bonus action.
                             """,
                             damage=1,
                             range=0,
@@ -3161,12 +3157,12 @@ class Fantasy (ContentManager):
                             notes=[
                             ]
                         ),
-                        LINASSpell(
+                        LinasTechnique(
                             name="Calm Mind",
                             description="""
                             Breathe in and prepare to strike. This does not count 
-                            as the caster's action for the turn. During the 
-                            next attack made by the caster a 5 or 6 counts as a 
+                            as the user's action for the turn. During the 
+                            next attack made by the user a 5 or 6 counts as a 
                             critical hit
                             """,
                             damage=0,
@@ -3180,10 +3176,10 @@ class Fantasy (ContentManager):
                                 """
                             ]
                         ),
-                        LINASSpell(
+                        LinasTechnique(
                             name="Dosukoii",
                             description="""
-                            The caster uses their weight to shove their target 
+                            The user uses their weight to shove their target 
                             backwards. Target entity is moved backwards one 
                             space
                             """,
@@ -3206,7 +3202,7 @@ class Fantasy (ContentManager):
                                 """
                             ]
                         ),
-                        LINASSpell(
+                        LinasTechnique(
                             name="Vital Jab",
                             description="""
                             Quick powerful strikes hit vital pressure points 
@@ -3229,13 +3225,13 @@ class Fantasy (ContentManager):
                                 """
                             ]
                         ),
-                        LINASSpell(
+                        LinasTechnique(
                             name="Crane Kick",
                             description="""
-                            An attack where the caster balances on one foot and 
+                            An attack where the user balances on one foot and 
                             strikes swiftly and fluidly at their opponent. This 
                             technique cannot be used in the same turn the 
-                            caster moved and the caster cannot move during the 
+                            user moved and the user cannot move during the 
                             turn this technique was used
                             """,
                             damage=4,
@@ -3248,7 +3244,7 @@ class Fantasy (ContentManager):
                                 """
                             ]
                         ),
-                        LINASSpell(
+                        LinasTechnique(
                             name="Flurry",
                             description="""
                             A high speed volley of punches barrages the 
@@ -3265,7 +3261,7 @@ class Fantasy (ContentManager):
                                 """
                             ]
                         ),
-                        LINASSpell(
+                        LinasTechnique(
                             name="Sweeping Kick",
                             description="""
                             A powerful circular kick capable of knocking 
@@ -3286,7 +3282,7 @@ class Fantasy (ContentManager):
                                 """
                             ]
                         ),
-                        LINASSpell(
+                        LinasTechnique(
                             name="Dragon's Roar",
                             description="""
                             A high speed punch which causes disruption of the 
@@ -3310,11 +3306,11 @@ class Fantasy (ContentManager):
                                 """
                             ]
                         ),
-                        LINASSpell(
+                        LinasTechnique(
                             name="Cobra strike",
                             description="""
                             A fluid punch which deals damage equal to the 
-                            caster's speed
+                            user's speed
                             """,
                             damage=0,
                             range=1,
@@ -3326,7 +3322,7 @@ class Fantasy (ContentManager):
                                 """
                             ]
                         ),
-                        LINASSpell(
+                        LinasTechnique(
                             name="Afterimage",
                             description="""
                             User attacks with a false punch first and then 
@@ -3346,10 +3342,10 @@ class Fantasy (ContentManager):
                                 """
                             ]
                         ),
-                        LINASSpell(
+                        LinasTechnique(
                             name="Suplex",
                             description="""
-                            The caster grabs their opponent and slams them into 
+                            The user grabs their opponent and slams them into 
                             the ground.
                             """,
                             damage=2,
@@ -3366,7 +3362,7 @@ class Fantasy (ContentManager):
                                 """
                             ]
                         ),
-                        LINASSpell(
+                        LinasTechnique(
                             name="Dragon's Fangs",
                             description="""
                             An extremely risky all or nothing attack. Either 
@@ -3391,11 +3387,11 @@ class Fantasy (ContentManager):
                                 """
                             ]
                         ),
-                        LINASSpell(
+                        LinasTechnique(
                             name="Flip kick",
                             description="""
                             A high powered kick that knocks down the opponent 
-                            and also causes the caster to move backwards 1 space
+                            and also causes the user to move backwards 1 space
                             """,
                             damage=2,
                             range=1,
@@ -3410,13 +3406,13 @@ class Fantasy (ContentManager):
                                 and must spend 1 turn to recover
                                 """,
                                 """
-                                Caster moves backwards 1 space after casting 
+                                User moves backwards 1 space after using 
                                 this. This does not count as movement for the 
                                 turn
                                 """
                             ]
                         ),
-                        LINASSpell(
+                        LinasTechnique(
                             name="Flowing strike",
                             description="""
                             A quick and fluid punch which uses an opponents 
@@ -3436,14 +3432,14 @@ class Fantasy (ContentManager):
                                 """
                             ]
                         ),
-                        LINASSpell(
+                        LinasTechnique(
                             name="Fancy Footwork",
                             description="""
                             Technique where the bobs from side to side balancing 
                             on the balls of their feet. Makes movements 
-                            extremely hard to predict. Spell must be recast each
-                            turn to keep going.
-                            Re-casting can be taken as a bonus action.
+                            extremely hard to predict. Technique must be reused each
+                            turn to keep going. Reusing a technique can be taken
+                            as a bonus action.
                             """,
                             damage=1,
                             range=0,
@@ -3460,7 +3456,7 @@ class Fantasy (ContentManager):
                                 """
                             ]
                         ),
-                        LINASSpell(
+                        LinasTechnique(
                             name="Heavy Toss",
                             description="""
                             Technique where the user picks up and throws their 
@@ -3510,7 +3506,7 @@ class Fantasy (ContentManager):
                             name="Berserk",
                             description="""
                             Damage dealt by physical melee attacks is doubled.
-                            Entity cannot be healed and cannot cast spells or
+                            Entity cannot be healed and cannot use techniques or
                             use items until this condition is removed. Entity
                             MUST attack each turn if able (if entity could move
                             to attack a target they must move as well).
@@ -3519,9 +3515,9 @@ class Fantasy (ContentManager):
                         LINASEffect(
                             name="Raining",
                             description="""
-                            Entity's speed is reduced by 2. Add +1 to spell rolls
-                            involving electric type spells. Subtract -1 from rolls
-                            involving fire type spells. Subtract -1 to skill rolls
+                            Entity's speed is reduced by 2. Add +1 to technique rolls
+                            involving electric type techniques. Subtract -1 from rolls
+                            involving fire type techniques. Subtract -1 to skill rolls
                             involving ranged weapons and perception.
                             """
                         ),
@@ -3545,7 +3541,7 @@ class Fantasy (ContentManager):
                         LINASEffect(
                             name="Inebriated",
                             description="""
-                            Max MP cut by 1/2, immedately lose any MP over new
+                            Max TP cut by 1/2, immedately lose any TP over new
                             max. -2 to INT Must roll to move (standard skill roll).
                             -1 to all skill rolls and attack rolls. Cannot react.
                             """
@@ -3559,9 +3555,9 @@ class Fantasy (ContentManager):
                         LINASEffect(
                             name="Snowing",
                             description="""
-                            Entity's speed is reduced by 4. Add +1 to spell rolls
-                            involving ice type spells. Subtract -1 from rolls
-                            involving wood type spells.  Subtract -2 to skill
+                            Entity's speed is reduced by 4. Add +1 to technique rolls
+                            involving ice type techniques. Subtract -1 from rolls
+                            involving wood type techniques.  Subtract -2 to skill
                             rolls involving ranged weapons and perception.
                             """
                         ),
@@ -3636,14 +3632,14 @@ class Fantasy (ContentManager):
                         LINASEffect(
                             name="Sealed",
                             description="""
-                            Entity cannot cast spells. Any ongoing spells cast
+                            Entity cannot use techniques. Any ongoing techniques use
                             by the entity end immediately.
                             """
                         ),
                         LINASEffect(
                             name="Bind",
                             description="""
-                            Entity cannot move, attack, or cast spells for 3 turns
+                            Entity cannot move, attack, or use techniques for 3 turns
                             """
                         ),
                         LINASEffect(
@@ -3659,7 +3655,7 @@ class Fantasy (ContentManager):
                             name="Transformed",
                             description="""
                             Entity's stats are augmented based on transformation.
-                            Transformed entities cannot cast spells nor can they
+                            Transformed entities cannot use techniques nor can they
                             use items.
                             """
                         ),
@@ -3667,7 +3663,7 @@ class Fantasy (ContentManager):
                             name="Death",
                             description="""
                             Entity is removed from the game until either
-                            Resurrect is cast or until the GM has decided a
+                            Resurrect is use or until the GM has decided a
                             long enough time has passed that resurrection is
                             no longer an option; at which point the entity is
                             removed from the game permanently.
@@ -3722,8 +3718,8 @@ class Fantasy (ContentManager):
                     description="""
                     Bards use musical instruments both inside and outside 
                     battle. In battle they can use their instruments directly 
-                    for smacking enemies around as well as for casting powerful 
-                    spells which effect all who hear them. Outside battler bards 
+                    for smacking enemies around as well as for using powerful 
+                    techniques which effect all who hear them. Outside battler bards 
                     use their weapons for entertainment purposes as well as to 
                     make some extra money on the side.
                     """,
@@ -3739,7 +3735,7 @@ class Fantasy (ContentManager):
                     ],
                     notes=[
                         """
-                        For instrument, choose 2 spells from the music school
+                        For instrument, choose 2 techniques from the music school
                         """
                     ],
                     data=self.__dataManager
@@ -3775,7 +3771,7 @@ class Fantasy (ContentManager):
                 LINASClass(
                     name="Mage",
                     description="""
-                    Mages cast a variety of spells in order to deal damage, 
+                    Mages use a wide variety of magic techniques in order to deal damage, 
                     create illusions and control the flow of battle, as well as 
                     summon powerful enemies to fight alongside them. Mages are 
                     one of the more flexible and complex classes to set up and 
@@ -3784,7 +3780,7 @@ class Fantasy (ContentManager):
                     And whether the mage is going to align themselves with a 
                     single element or be a jack of all trades so to speak. 
                     Before choosing to become a mage it’s recommended the 
-                    player read the section on spells to understand how magic 
+                    player read the section on techniques to understand how magic 
                     works. It is also recommended first time mages work with the 
                     DM to ensure they have everything they need to play their 
                     class effectively.
@@ -3805,7 +3801,7 @@ class Fantasy (ContentManager):
                     ],
                     notes=[
                         """
-                        For spell book, choose 2 spells from one of the schools 
+                        For technique book, choose 2 techniques from one of the schools 
                         of magic which best fits the type of mage the player is 
                         striving to be
                         """
@@ -3818,10 +3814,10 @@ class Fantasy (ContentManager):
                     Martial artists use unarmed attacks to fight and through 
                     training are able to increase their physical attack and 
                     defense to a point which can rival armed combatants. 
-                    Additionally, many martial artists are able to utilize MP to 
+                    Additionally, many martial artists are able to utilize TP to 
                     perform advanced techniques. However, unlike other classes, 
                     martial artists store their techniques in their bodies vs. 
-                    items and spell slots/abilities are unlocked through 
+                    items and technique slots/abilities are unlocked through 
                     training vs. buying items
                     """,
                     skills=[
@@ -3866,7 +3862,7 @@ class Fantasy (ContentManager):
                     ],
                     notes=[
                         """
-                        For novice gauntlet, choose 2 spells from the ninjitsu 
+                        For novice gauntlet, choose 2 techniques from the ninjitsu 
                         school
                         """
                     ],
@@ -4006,9 +4002,9 @@ class Fantasy (ContentManager):
                             name="Fire Eater",
                             type="p",
                             description="""
-                            Fire spells used against the user are converted
+                            Fire techniques used against the user are converted
                             to HP instead of damage (they heal them). In
-                            return, ice spells used against the user deal 
+                            return, ice techniques used against the user deal 
                             +2 damage to them, are rolled at +1, and cannot
                             be countered or dodged.
                             """
@@ -4192,8 +4188,8 @@ class Fantasy (ContentManager):
                             rest period and is only learnable  by the Mu 
                             race. The user temporarily gains knowledge 
                             past their own  understanding allowing them to 
-                            cast a single spell not known. Any 
-                            requirements  to cast the spell such as MP 
+                            use a single magic based technique not known. Any 
+                            requirements  to use the technique such as TP 
                             cost, stat requirements, required items, etc.  
                             still apply.  
                             """
@@ -4320,7 +4316,7 @@ class Fantasy (ContentManager):
         self.addContent(NewPlayerSetupSection(self))
         self.addContent(LangRaceSection(self, self.__dataManager))
         self.addContent(ClassSection(self, self.__dataManager))
-        self.addContent(SpellSection(self, self.__dataManager))
+        self.addContent(TechniqueSection(self, self.__dataManager))
         self.addContent(AbilitySection(self, self.__dataManager))
         self.addContent(EffectSection(self, self.__dataManager))
         self.addContent(ItemSection(self, self.__dataManager))

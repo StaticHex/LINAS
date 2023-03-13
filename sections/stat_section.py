@@ -56,14 +56,14 @@ class StatSection:
             For the most part, a player can put points into whichever stats they
             see fit. However, that being said; there are a few restrictions:<br/>
             <ul><p><li>
-            A user can only have a maximum of 25 points in HP and MP combined.
+            A user can only have a maximum of 25 points in HP and TP combined.
             Meaning, if the user already has 15HP, they can only have a maximum
-            of 10MP.
+            of 10TP.
             </li></p><p><li>
-            Excluding HP and MP, the maximum number of points a user can have in
+            Excluding HP and TP, the maximum number of points a user can have in
             any other stat is 5.
             </li></p><p><li>
-            Excluding HP and MP, an entity can only have a total of 10 points
+            Excluding HP and TP, an entity can only have a total of 10 points
             among all other stats. Once again this means the total number of
             points in Strength, Intelligence, Dexterity, Spirit, Endurance, and
             Speed combined cannot be greater than 10.

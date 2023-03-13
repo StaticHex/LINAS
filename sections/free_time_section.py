@@ -60,9 +60,9 @@ class FreeTimeSection:
         self.__html.append("    <h3><u>Studying</u></h3>")
         self.__html += [ f'    {x}' for x in system.collapse(
             """            
-            Similar to training; studying can learn new skills or spells either by
+            Similar to training; studying can learn new skills or techniques either by
             reading books or by training with an NPC who specializes in the
-            skill/spell required. This is especially useful if a particular skill
+            skill/technique required. This is especially useful if a particular skill
             chosen by a player for their character hasn't really come up much
             during the campaign. By improving the negative skill related to the
             unwanted one, both will disappear, freeing up the skill points for

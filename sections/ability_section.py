@@ -44,17 +44,17 @@ class AbilitySection:
             with at least 2 abilities due to their race. As a general rule and
             to keep any one character from getting too overpowered A character
             is limited to 3 abilities. However, in an effort to keep characters
-            dynamic, abilities can be forgotten similar to spells. For more on
+            dynamic, abilities can be forgotten similar to techniques. For more on
             this see the section labeled "Forgetting Abilities" at the end of
             this section
             <h3>Forgetting Abilities</h3>
 
-            Like spells, abilities can be forgotten by striking through them,
+            Like techniques, abilities can be forgotten by striking through them,
             crossing them out or otherwise marking them as forgotten in some way.
-            This is done to keep characters flexible. Additionally, unlike spells;
+            This is done to keep characters flexible. Additionally, unlike techniques;
             abilities don't really level up so there's less of a penalty for
             forgetting them. This being said, the DM may attach conditions to
-            learning certain abilities and so like spells, when an ability is
+            learning certain abilities and so like techniques, when an ability is
             forgotten it should be assumed that re-learning that ability will result
             in relearning from scratch.
             <h3>Creating Custom Abilities</h3>

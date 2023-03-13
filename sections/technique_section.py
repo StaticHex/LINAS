@@ -7,7 +7,7 @@ from obj_classes.data_manager import DataManager
 from typing import List
 import os
 
-class SpellSection:
+class TechniqueSection:
     def __init__(
         self,
         system : ContentManager,
@@ -15,7 +15,7 @@ class SpellSection:
 
     ) -> None:
         """
-        Class used to create a section explaining and listing out spells and 
+        Class used to create a section explaining and listing out techniques and 
         battle abilities for a system
 
         Parameters
@@ -36,7 +36,7 @@ class SpellSection:
         # = Spell Section
         # ======================================================================
         self.__html.append('<div class="section">') 
-        self.__html.append(f'    {self.__contents.single("spells & battle skills")}')
+        self.__html.append(f'    {self.__contents.single("techniques")}')
         self.__html += [ f'    {x}' for x in system.collapse(
             """
             Spells and battle skills can be thought of as special abilities which entities
@@ -56,7 +56,7 @@ class SpellSection:
             </i>
 
             <i>Example 2:
-            The party has been caught in a thunder storm. The party's mage casts thunder.
+            The party has been caught in a thunder storm. The party's mage uses a thunder technique.
             The mage asks the DM if there's a bonus for using thunder in a thunderstorm. The
             DM allows the mage to target 2 additional people with the spell as a bonus
             </i>
@@ -76,11 +76,11 @@ class SpellSection:
                 </div>
                 <div class="cont-inner">
                     <span class="rel" style="width: 10%;"><strong>Damage</strong></span>
-                    <span class="rel" style="width: 10%;"><strong>MP Cost</strong></span>
+                    <span class="rel" style="width: 10%;"><strong>TP Cost</strong></span>
                     <span class="rel" style="width: 20%;"><strong>Req. Skill</strong></span>
                     <span class="rel" style="width: 50%; text-align: right;"><strong>Effect(s)</strong></span>
                     <span class="rel" style="width: 10%;">#</span>
-                    <span class="rel" style="width: 10%;"># MP</span>
+                    <span class="rel" style="width: 10%;"># TP</span>
                     <span class="rel" style="width: 20%;">Skill Name</span>
                     <span class="rel" style="width: 50%; text-align: right;">The effect the spell has</span>
                 </div>
@@ -98,7 +98,7 @@ class SpellSection:
             aspects of a spell can be modified.
             <ul>
                 <li><b>Damage</b> - 1 point = damage +1 (cannot modifiy a damage of -)</li>
-                <li><b>MP Cost</b> - 1 point = MP Cost -1 (can go down to 0)</li>
+                <li><b>TP Cost</b> - 1 point = TP Cost -1 (can go down to 0)</li>
                 <li><b>Range</b> - 1 point = range +1 (cannot modify a range of -)</li>
                 <li><b>Targets</b> - 1 point = targets +1 (cannot modify, self, or -)</i>
             </ul>
@@ -138,9 +138,9 @@ class SpellSection:
             the DM are unsure of how to go about creating a custom spell, these are certainly
             good guidelines to follow.
             
-            <h4>Guidelines for Calculating Custom Spell MP</h4>
+            <h4>Guidelines for Calculating Custom Spell TP</h4>
 
-            The set of guidelines below were used to calculate the MP cost for all the spells
+            The set of guidelines below were used to calculate the TP cost for all the spells
             in this guidebook. Keeping close to these guidelines should ensure your spells
             are fairly balanced as a large amount of testing went into refining them. However,
             as always these are just in fact guidelines not hard set rules and the players and
@@ -152,20 +152,20 @@ class SpellSection:
                     (rounded up) 
                 </li>
                 <li>
-                    +1 MP if the spell causes or heals a status effect. To keep things simple
+                    +1 TP if the spell causes or heals a status effect. To keep things simple
                     it's suggested limiting each spell to a single status effect.
                 </li>
                 <li>
-                    +1 MP for each square of range > 3 and -1 MP for each square of range < 3.
+                    +1 TP for each square of range > 3 and -1 TP for each square of range < 3.
                 </li>
                 <li>
-                    +1 MP for every target past the first
+                    +1 TP for every target past the first
                 </li>
                 <li>
-                    -1 MP if spell targets both friends and foes alike
+                    -1 TP if spell targets both friends and foes alike
                 </li>
                 <li>
-                    +3 MP if spell targets entire field or targets an area
+                    +3 TP if spell targets entire field or targets an area
                 </li>
             </ol>
 
