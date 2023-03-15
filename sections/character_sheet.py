@@ -40,6 +40,8 @@ class CharacterSheet:
         self.__html += self.__equipment_block()
         self.__html += self.__technique_section()
         self.__html += self.__notes_section()
+        self.__html += self.__extra_item_section()
+        self.__html += self.__extra_technique_section()
         self.__html.append('</div>')
 
     def __char_info_block(self):
@@ -163,14 +165,10 @@ class CharacterSheet:
 
     def __abilities_block(self):
         html = [
-            '    <div class="container pop">',
+            '    <i style="font-size: 8pt;">Allocate Abilities Here (1 active and 1 passive if building custom class)</i>',
+            '    <div class="container pop nopad">',
             '        <div class="cont-title"">',
-            '            <span class="rel" style="width: 30%;">',
-            '                <h4 class="nopad">Abilities</h4>',
-            '            </span>'
-            '            <span class="rel" style="width: 65%; text-align: right; font-size: 8pt;">',
-            '                <i class="nopad">STARTING ABILITIES: Allocate Racial Abilities</i>',
-            '            </span>'
+            '            <h4 class="nopad">Abilities</h4>',
             '        </div>',
         ]
         for _ in range(3):
@@ -186,23 +184,26 @@ class CharacterSheet:
 
     def __equipment_block(self):
         html=[
-            '    <div class="container pop">',
+            '    <i style="font-size: 8pt;">Can only check 1 out of PHYS or MAG. Cannot Check DUAL if SHLD is checked or if using 2-handed weapons.</i>',
+            '    <div class="container pop nopad">',
             '        <div class="cont-title"">',
             '            <h4 class="nopad">Weapon</h4>',
             '        </div>',
             '        <div class="cont-inner">',
             '            <strong>Name:</strong>___________________________________________',
             '            <strong>Skill:</strong>__________________________',
-            '            <strong>Damage:</strong>_____',
-            '            <strong>Range:</strong>_____',
-            '            &emsp;PHYS&emsp;MAG&emsp;DUAL&emsp;<strong>Stat:</strong>_______&emsp;',
-            '            <strong>Speed Penalty:</strong> _____',
+            '            <strong>Damage:</strong>____',
+            '            <strong>Range:</strong>____',
+            '            &emsp;&#9744;&nbsp;PHYS&emsp;&#9744;&nbsp;MAG&emsp;&#9744;&nbsp;DUAL'
+            '            &emsp;<strong>Stat:</strong>_____&emsp;',
+            '            <strong>SPD. Penalty:</strong> ____',
             '            <strong>Effect(s):</strong>________________________________________________________________________',
             '        </div>',
             '    </div>'
         ]
         html+=[
-            '    <div class="container pop">',
+            '    <i style="font-size: 8pt;">Cannot check SHLD if DUAL is checked or if using a 2-handed weapon.</i>',
+            '    <div class="container pop nopad">',
             '        <div class="cont-title"">',
             '            <h4 class="nopad">Armor</h4>',
             '        </div>',
@@ -210,15 +211,17 @@ class CharacterSheet:
             '            <strong>Name:</strong>___________________________________________',
             '            <strong>Skill:</strong>__________________________<br/>',
             '            <strong>AR Value:</strong>_____',
-            '            &emsp;&emsp;<strong>Physical:</strong>_____'
+            '            &emsp;<strong>Physical:</strong>_____'
             '            &emsp;&emsp;<strong>Magical:</strong>_____',
-            '            &emsp;&emsp;<strong>Speed Penalty:</strong> _____',
+            '            &emsp;&#9744;&nbsp;SHLD',
+            '            &emsp;<strong>SPD. Penalty:</strong> _____',
             '            <strong>Effect(s):</strong>________________________________________________________________________',
             '        </div>',
             '    </div>'
         ]
         html+=[
-            '    <div class="container pop">',
+            '    <i style="font-size: 8pt;">Can only have 2 items equipped at a time by default, DM may allow more or less.</i>',
+            '    <div class="container pop nopad">',
             '        <div class="cont-title"">',
             '            <span class="rel" style="width: 65%;">',
             '                <h4 class="nopad">Items</h4>',
@@ -228,18 +231,67 @@ class CharacterSheet:
             '            </span>'
             '        </div>',
         ]
-        for _ in range(8):
+        for _ in range(6):
             html += [
-                '        <div class="cont-inner">',
-                '            <strong>Name:</strong>_____________________________________________',
-                '            <strong>Uses:</strong>________',
-                '            <strong>Amount:</strong>________<br/>',
+                '        <div class="container" style="margin: 5px; padding: 5px;">',
+                '            <strong>Name:</strong>________________________________________&emsp;',
+                '            <strong>Uses:</strong>______&emsp;',
+                '            <strong>#:</strong>______&emsp;',
+                '            <strong>Equip:</strong>&#9744;<br/>'
                 '            <strong>Effect(s):</strong>________________________________________________________________________',
                 '        </div>',
             ]
         html.append('    </div>')
         return html
     
+    def __extra_item_section(self):
+        html=[
+            '    <i style="font-size: 8pt;">Can only have 2 items equipped at a time by default, DM may allow more or less.</i>',
+            '    <div class="container pop nopad">',
+            '        <div class="cont-title"">',
+            '            <span class="rel" style="width: 65%;">',
+            '                <h4 class="nopad">Backpack (Extra Items)</h4>',
+            '            </span>'
+            '            <span class="rel" style="width: 30%; text-align: right;">',
+            '                <h4 class="nopad">Gold: _________</h4>',
+            '            </span>'
+            '        </div>',
+        ]
+        for _ in range(15):
+            html += [
+                '        <div class="container" style="margin: 5px; padding: 5px;">',
+                '            <strong>Name:</strong>________________________________________&emsp;',
+                '            <strong>Uses:</strong>______&emsp;',
+                '            <strong>#:</strong>______&emsp;',
+                '            <strong>Equip:</strong>&#9744;<br/>'
+                '            <strong>Effect(s):</strong>________________________________________________________________________',
+                '        </div>',
+            ]
+        html.append('    </div>')
+        return html
+    
+    def __extra_technique_section(self):
+        html=[
+            '    <div class="container pop">',
+            '        <div class="cont-title"">',
+            '            <h4 class="nopad">Skill Book (Extra Techniques)</h4>',
+            '        </div>',
+        ]
+        for _ in range(11):
+            html += [
+                '        <div class="container" style="margin: 5px; padding: 5px;">',
+                '            <strong>Name:</strong>__________________________________________',
+                '            <strong>Skill:</strong>____________________________'
+                '            <strong>TP Cost:</strong>_____',
+                '            &nbsp;&emsp;&emsp;&emsp;&emsp;<strong>Range:</strong>_____',
+                '            &nbsp;&emsp;&emsp;&emsp;&emsp;<strong>Targets:</strong>_____',
+                '            &nbsp;&emsp;&emsp;&emsp;&emsp;<strong>Points:</strong>_____/_____',
+                '            <strong>Effect(s):</strong>________________________________________________________________________',
+                '        </div>',
+            ]
+        html.append('    </div>')
+        return html
+            
     def __technique_section(self):
         html=[
             '    <div class="container pop">',

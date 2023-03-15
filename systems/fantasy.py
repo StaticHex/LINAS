@@ -383,7 +383,7 @@ class Fantasy (ContentManager):
                             description="""
                                 Target entity recovers 5HP
                             """,
-                            cost=15,
+                            cost=30,
                             range=1,
                             uses=1
                         ),
@@ -392,7 +392,7 @@ class Fantasy (ContentManager):
                             description="""
                                 Target entity recovers 10HP
                             """,
-                            cost=25,
+                            cost=60,
                             range=1,
                             uses=1
                         ),
@@ -401,7 +401,7 @@ class Fantasy (ContentManager):
                             description="""
                                 Target entity recovers 5TP
                             """,
-                            cost=20,
+                            cost=40,
                             range=1,
                             uses=1
                         ),
@@ -410,7 +410,7 @@ class Fantasy (ContentManager):
                             description="""
                                 Target entity recovers 10TP
                             """,
-                            cost=35,
+                            cost=70,
                             range=1,
                             uses=1
                         ),
@@ -428,7 +428,7 @@ class Fantasy (ContentManager):
                             description="""
                                 Removes poisoned status from target entity
                             """,
-                            cost=15,
+                            cost=30,
                             range=1,
                             uses=1
                         ),
@@ -438,7 +438,7 @@ class Fantasy (ContentManager):
                                 Removes all status conditions except for death
                                 from target entity.
                             """,
-                            cost=50,
+                            cost=75,
                             uses=1
                         ),
                         LINASItem(
@@ -453,11 +453,9 @@ class Fantasy (ContentManager):
                         LINASItem(
                             name="Grenade",
                             description="""
-                                Deals 5 fire damage to target square (if entity
-                                is in that square they take 5 damage) and deals
-                                1 fire damage to all squares adjacent to the
-                                target (if entities are in that square they
-                                take 1 damage)
+                                Deals 5 fire damage to target square and deals
+                                1 fire damage to all squares adjacent to that
+                                square
                             """,
                             cost=75,
                             uses=1,
@@ -577,7 +575,7 @@ class Fantasy (ContentManager):
                             """,
                             cost=100,
                             notes=[
-                                "TP cost for techniques cannot drop below 1"
+                                "TP cost for techniques cannot drop below 0"
                             ]
                         )
                     ]
@@ -611,9 +609,9 @@ class Fantasy (ContentManager):
                                 directly or thrown
                             """,
                             cost=15,
-                            damage=1,
-                            damageType="Physical",
-                            range=3,
+                            p_damage=1,
+                            range=1,
+                            stat="dex",
                             linkedSkill="Fencing",
                             notes=[
                                 """
@@ -623,8 +621,7 @@ class Fantasy (ContentManager):
                                 Cannot use items or use techniques in battle while
                                 dual wielding.
                                 """,
-                                "Range is only 3 if being thrown, otherwise it's 1",
-                                "Once thrown, item may be retrieved"
+                                "Can be thrown, increases range to 3, once thrown item may be retrieved"
                             ]
                         ),
                         LINASItem(
@@ -634,11 +631,10 @@ class Fantasy (ContentManager):
                                 A short bladed weapon which favors speed over
                                 power
                             """,
-                            damage=2,
-                            damageType="Physical",
+                            p_damage=2,
                             range=1,
-                            linkedSkill="Swordsmanship",
-                            speedPenalty=1,
+                            stat="dex",
+                            linkedSkill="Fencing",
                             notes=[
                                 """
                                 If dual wielding add +1 to damage and +1 to
@@ -656,11 +652,11 @@ class Fantasy (ContentManager):
                                 Standard bladed weapon used for armed combat
                             """,
                             cost=40,
-                            damage=3,
-                            damageType="Physical",
+                            p_damage=3,
                             range=1,
+                            stat="str",
                             linkedSkill="Swordsmanship",
-                            speedPenalty=2,
+                            speedPenalty=1,
                             notes=[
                                 """
                                 If dual wielding add +1 to damage and +1 to
@@ -679,11 +675,11 @@ class Fantasy (ContentManager):
                             sharpness to tear through armor and flesh
                             """,
                             cost=65,
-                            damage=5,
-                            damageType="Physical",
+                            p_damage=5,
                             range=1,
+                            stat="str",
                             linkedSkill="Swordsmanship",
-                            speedPenalty=4,
+                            speedPenalty=2,
                             notes=[
                                 "Cannot be dual wielded",
                                 """
@@ -699,11 +695,11 @@ class Fantasy (ContentManager):
                             battle or for chopping wood
                             """,
                             cost=50,
-                            damage=4,
-                            damageType="Physical",
+                            p_damage=4,
                             range=1,
+                            stat="str",
                             linkedSkill="Swordsmanship",
-                            speedPenalty=3,
+                            speedPenalty=2,
                             notes=[
                                 "Cannot be dual wielded"
                             ]
@@ -715,11 +711,10 @@ class Fantasy (ContentManager):
                             or thrown
                             """,
                             cost=35,
-                            damage=2,
-                            damageType="Physical",
+                            p_damage=2,
                             range=3,
+                            stat="str",
                             linkedSkill="Swordsmanship",
-                            speedPenalty=1,
                             notes=[
                                 """
                                 If dual wielding add +1 to damage and +1 to
@@ -743,10 +738,10 @@ class Fantasy (ContentManager):
                             A heavy metal weapon covered in spikes.
                             """,
                             cost=60,
-                            damage=3,
-                            damageType="Physical",
+                            p_damage=3,
                             speedPenalty=2,
                             linkedSkill="Bashing",
+                            stat="str",
                             range=1,
                             notes=[
                                 """
@@ -766,11 +761,11 @@ class Fantasy (ContentManager):
                             damage but is extremely slow and unwieldy to use
                             """,
                             cost=75,
-                            damage=7,
-                            damageType="Physical",
+                            p_damage=5,
                             range=1,
+                            stat="str",
                             linkedSkill="Bashing",
-                            speedPenalty=5,
+                            speedPenalty=3,
                             notes=[
                                 "Cannot be dual wielded",
                                 """
@@ -786,10 +781,10 @@ class Fantasy (ContentManager):
                             hikers
                             """,
                             cost=35,
-                            damage=2,
-                            damageType="Physical",
+                            p_damage=2,
                             range=2,
-                            linkedSkill="Bashing",
+                            stat="str",
+                            linkedSkill="Fencing",
                             speedPenalty=1,
                             notes=[
                                 """
@@ -807,11 +802,11 @@ class Fantasy (ContentManager):
                             ground and on horseback
                             """,
                             cost=45,
-                            damage=2,
-                            damageType="Physical",
+                            p_damage=2,
                             range=2,
+                            stat="str",
                             linkedSkill="Fencing",
-                            speedPenalty=2,
+                            speedPenalty=1,
                             notes=[
                                 """
                                 Cannot be dual wielded
@@ -828,11 +823,11 @@ class Fantasy (ContentManager):
                             traditionally used from horseback.
                             """,
                             cost=70,
-                            damage=5,
-                            damageType="Physical",
+                            p_damage=5,
                             range=2,
+                            stat="str",
                             linkedSkill="Fencing",
-                            speedPenalty=4,
+                            speedPenalty=3,
                             notes=[
                                 """
                                 Cannot be dual wielded
@@ -849,11 +844,10 @@ class Fantasy (ContentManager):
                             and elastic draw string
                             """,
                             cost=30,
-                            damage=2,
-                            damageType="Physical",
+                            p_damage=2,
                             range=4,
+                            stat="dex",
                             linkedSkill="Archery",
-                            speedPenalty=1,
                             notes=[
                                 """
                                 Cannot be dual wielded
@@ -866,11 +860,11 @@ class Fantasy (ContentManager):
                             An enormous bow used for taking down large prey
                             """,
                             cost=50,
-                            damage=4,
-                            damageType="Physical",
+                            p_damage=3,
                             range=4,
+                            stat="dex",
                             linkedSkill="Archery",
-                            speedPenalty=2,
+                            speedPenalty=1,
                             notes=[
                                 """
                                 Cannot be dual wielded
@@ -887,9 +881,9 @@ class Fantasy (ContentManager):
                             sharpness over weight
                             """,
                             cost=20,
-                            damage=2,
-                            damageType="Physical",
+                            p_damage=2,
                             range=1,
+                            stat="dex",
                             linkedSkill="Archery",
                             speedPenalty=0,
                             notes=[
@@ -906,11 +900,11 @@ class Fantasy (ContentManager):
                             bow
                             """,
                             cost=60,
-                            damage=4,
-                            damageType="Physical",
+                            p_damage=4,
                             range=5,
+                            stat="dex",
                             linkedSkill="Archery",
-                            speedPenalty=3,
+                            speedPenalty=2,
                             notes=[
                                 """
                                 Cannot be dual wielded
@@ -932,11 +926,10 @@ class Fantasy (ContentManager):
                             A small high power pistol which fires iron pellets
                             """,
                             cost=50,
-                            damage=4,
-                            damageType="Physical",
+                            p_damage=4,
                             range=4,
+                            stat="dex",
                             linkedSkill="Marksmanship",
-                            speedPenalty=0,
                             notes=[
                                 """
                                 Add +1 to damage if dual wielding
@@ -962,9 +955,9 @@ class Fantasy (ContentManager):
                             fires iron pellets
                             """,
                             cost=70,
-                            damage=5,
-                            damageType="Physical",
+                            p_damage=5,
                             range=5,
+                            stat="dex",
                             linkedSkill="Marksmanship",
                             speedPenalty=1,
                             notes=[
@@ -990,11 +983,10 @@ class Fantasy (ContentManager):
                             map during combat situations
                             """,
                             cost=0,
-                            damage=7,
-                            damageType="Physical",
+                            p_damage=7,
                             range=5,
+                            stat="int",
                             linkedSkill="Marksmanship",
-                            speedPenalty=0,
                             notes=[
                                 """
                                 This weapon cannot be moved from it's location 
@@ -1023,11 +1015,10 @@ class Fantasy (ContentManager):
                             map during combat situations
                             """,
                             cost=0,
-                            damage=5,
-                            damageType="Physical",
+                            p_damage=5,
                             range=6,
+                            stat="int",
                             linkedSkill="Marksmanship",
-                            speedPenalty=0,
                             notes=[
                                 """
                                 This weapon cannot be moved from it's location 
@@ -1056,11 +1047,10 @@ class Fantasy (ContentManager):
                             map during combat situations
                             """,
                             cost=0,
-                            damage=7,
-                            damageType="Physical",
+                            p_damage=7,
                             range=7,
+                            stat="int",
                             linkedSkill="Marksmanship",
-                            speedPenalty=0,
                             notes=[
                                 """
                                 This weapon cannot be moved from it's location 
@@ -1090,11 +1080,10 @@ class Fantasy (ContentManager):
                             during combat situations
                             """,
                             cost=0,
-                            damage=7,
-                            damageType="Physical",
+                            p_damage=7,
                             range=5,
+                            stat="int",
                             linkedSkill="Archery",
-                            speedPenalty=0,
                             notes=[
                                 """
                                 This weapon cannot be moved from it's location 
@@ -1122,11 +1111,10 @@ class Fantasy (ContentManager):
                             knuckles while fighting
                             """,
                             cost=15,
-                            damage=1,
-                            damageType="Physical",
+                            p_damage=1,
                             range=1,
+                            stat="dex",
                             linkedSkill="Martial Arts",
-                            speedPenalty=0,
                             notes=[
                                 """
                                 This weapon cannot be dual wielded
@@ -1140,11 +1128,10 @@ class Fantasy (ContentManager):
                             acceptable to use during tournaments
                             """,
                             cost=25,
-                            damage=2,
-                            damageType="Physical",
+                            p_damage=2,
                             range=1,
+                            stat="dex",
                             linkedSkill="Martial Arts",
-                            speedPenalty=0,
                             notes=[
                                 """
                                 This weapon cannot be dual wielded
@@ -1159,11 +1146,10 @@ class Fantasy (ContentManager):
                             abilities
                             """,
                             cost=85,
-                            damage=1,
-                            damageType="Physical",
+                            p_damage=1,
                             range=1,
+                            stat="str",
                             linkedSkill="Bashing",
-                            speedPenalty=0,
                             notes=[
                                 """
                                 Adds +1 to INT, this does not count towards the
@@ -1203,9 +1189,8 @@ class Fantasy (ContentManager):
                             any way.
                             """,
                             cost=10,
-                            protection=2,
-                            protectionType="Magical",
-                            speedPenalty=0,
+                            p_protection=1,
+                            m_protection=2,
                             notes=[
                                 """
                                 Can restrict the protection type to a specific
@@ -1223,9 +1208,7 @@ class Fantasy (ContentManager):
                             also be dyed a variety of colors
                             """,
                             cost=15,
-                            protection=2,
-                            protectionType="Physical",
-                            speedPenalty=0,
+                            p_protection=2,
                             notes=[
                             ]
                         ),
@@ -1237,9 +1220,8 @@ class Fantasy (ContentManager):
                             lightweight
                             """,
                             cost=40,
-                            protection=3,
-                            protectionType="Physical",
-                            speedPenalty=2,
+                            p_protection=3,
+                            speedPenalty=1,
                             notes=[
                             ]
                         ),
@@ -1251,8 +1233,7 @@ class Fantasy (ContentManager):
                             heavy.
                             """,
                             cost=65,
-                            protection=4,
-                            protectionType="Physical",
+                            p_protection=4,
                             speedPenalty=3,
                             notes=[
                             ]
@@ -1263,9 +1244,9 @@ class Fantasy (ContentManager):
                             Lightweight armor made from the scales of a dragon. 
                             Provides fairly decent magical protection.
                             """,
-                            cost=120,
-                            protection=5,
-                            protectionType="Magical",
+                            cost=480,
+                            p_protection=2,
+                            m_protection=3,
                             speedPenalty=1,
                             notes=[
                                 """
@@ -1283,112 +1264,11 @@ class Fantasy (ContentManager):
                             durable, however also extremely heavy. Protects 
                             against both magical and physical damage
                             """,
-                            cost=250,
-                            protection=7,
-                            protectionType="Any",
-                            speedPenalty=4,
-                            notes=[
-                            ]
-                        ),
-                        LINASItem(
-                            name="Wooden Shield",
-                            description="""
-                            A small lightweight shield made of wood; 
-                            suspiciously resembling the lid of a large pot. 
-                            Provides a small amount of physical protection
-                            """,
-                            cost=10,
-                            protection=1,
-                            protectionType="Physical",
-                            speedPenalty=0,
-                            notes=[
-                                """
-                                Cannot use techniques or use items while wielding
-                                """
-                            ]
-                        ),
-                        LINASItem(
-                            name="Plate Shield",
-                            description="""
-                            A heavy shield made out of plates of metal. Provides 
-                            fairly decent protection against physical damage.
-                            """,
-                            cost=35,
-                            protection=3,
-                            protectionType="Physical",
-                            speedPenalty=2,
-                            notes=[
-                                """
-                                Cannot use techniques or use items while wielding
-                                """
-                            ]
-                        ),
-                        LINASItem(
-                            name="Dragon Scale Shield",
-                            description="""
-                            Lightweight shield made from the scales of a dragon. 
-                            Protects against magical damage fairly well
-                            """,
-                            cost=80,
-                            protection=2,
-                            protectionType="Magical",
-                            speedPenalty=1,
-                            notes=[
-                                """
-                                Magical protection is usually aligned to a 
-                                specific element corresponding to the element of 
-                                the dragon the scales came from (e.g. fire 
-                                dragon = fire protection)
-                                """,
-                                """
-                                Cannot use techniques or use items while wielding
-                                """
-                            ]
-                        ),
-                        LINASItem(
-                            name="Dragon Bone Shield",
-                            description="""
-                            Durable shield made from the bones of a dragon. 
-                            Protects against both magical and physical damage
-                            """,
-                            cost=150,
-                            protection=3,
-                            protectionType="Any",
+                            cost=1000,
+                            p_protection=4,
+                            m_protection=5,
                             speedPenalty=3,
                             notes=[
-                                """
-                                Cannot use techniques or use items while wielding
-                                """
-                            ]
-                        ),
-                        LINASItem(
-                            name="Mirrored Shield",
-                            description="""
-                            Lightweight shield made from polished metal. Not 
-                            that great at protecting against physical damage but 
-                            protects against magic extremely well
-                            """,
-                            cost=100,
-                            protection=0,
-                            protectionType="Physical",
-                            speedPenalty=0,
-                            notes=[
-                                """
-                                Cannot use techniques or use items while wielding
-                                """,
-                                """
-                                Breaks if used to block physical damage (is 
-                                removed from inventory)
-                                """,
-                                """
-                                If used to block energy damage, reflect back 1/2 
-                                of damage (rounded up) done back on the user
-                                """,
-                                """
-                                If used to block a status effect technique, negate 
-                                the effect of the technique on your self and reflect 
-                                the effect back on the user
-                                """
                             ]
                         ),
                         LINASItem(
@@ -1399,29 +1279,13 @@ class Fantasy (ContentManager):
                             leaves the hands free for using techniques.
                             """,
                             cost=130,
-                            protection=3,
-                            protectionType="Magical",
+                            p_protection=2,
+                            m_protection=3,
                             speedPenalty=1,
                             notes=[
                             ]
                         ),
-                        LINASItem(
-                            name="Mithrill Shield",
-                            description="""
-                            Lightweight shield made from a polished plate of 
-                            mithrill. Provides decent magic protection and 
-                            floats around the user keeping the hands free for 
-                            casting techniques
-                            """,
-                            cost=70,
-                            protection=3,
-                            protectionType="Magical",
-                            speedPenalty=1,
-                            notes=[
-                            ]
-                        )
                     ]
-
                 ),
                 DataCollection(
                     name="Specialized",
@@ -1445,170 +1309,6 @@ class Fantasy (ContentManager):
                             cost=5,
                             uses=1,
                             notes=[
-                            ]
-                        ),
-                        LINASItem(
-                            name="Novice Instrument",
-                            description="""
-                            Required to use techniques from the music school.  A 
-                            musical instrument with many years of experience. 
-                            Perfect for beginners but definitely shows it's 
-                            age.
-                            """,
-                            cost=40,
-                            uses=0,
-                            notes=[
-                                """
-                                Holds 2 techniques (music school only)
-                                """,
-                                """
-                                Can be any instrument of the player's choosing 
-                                and can also be used in non-combat situations 
-                                such as at pubs/festivals to earn money.
-                                """
-                            ]
-                        ),
-                        LINASItem(
-                            name="Bardic Instrument",
-                            description="""
-                            Required to use techniques from the music school.  A 
-                            professional level instrument capable of producing a 
-                            clear and rich sound.
-                            """,
-                            cost=80,
-                            uses=0,
-                            notes=[
-                                """
-                                Holds 3 techniques (music school only)
-                                """,
-                                """
-                                Can be any instrument of the player's choosing 
-                                and can also be used in non-combat situations 
-                                such as at pubs/festivals to earn money. A
-                                """
-                            ]
-                        ),
-                        LINASItem(
-                            name="Antique Instrument",
-                            description="""
-                            Required to use techniques from the music school.  An 
-                            extremely well taken care of instrument with no 
-                            parallel. Sought after the world over.
-                            """,
-                            cost=160,
-                            uses=0,
-                            notes=[
-                                """
-                                Holds 4 techniques (music school only)
-                                """,
-                                """
-                                Can be any instrument of the player's choosing 
-                                and can also be used in non-combat situations 
-                                such as at pubs/festivals to earn money.
-                                """
-                            ]
-                        ),
-                        LINASItem(
-                            name="Novice Spellbook",
-                            description="""
-                            Required to use non-music techniques. A small, short 
-                            technique book with extra large margins for taking 
-                            notes.
-                            """,
-                            cost=50,
-                            uses=0,
-                            notes=[
-                                """
-                                Holds 2 techniques (Light, arcane, dark, and 
-                                summoning magic only)
-                                """
-                            ]
-                        ),
-                        LINASItem(
-                            name="Mage's Spellbook",
-                            description="""
-                            Required to use non-music techniques. A professional 
-                            level technique book with  sections for techniques, recipes, 
-                            and notes.
-                            """,
-                            cost=100,
-                            uses=0,
-                            notes=[
-                                """
-                                Holds 3 techniques  (Light, arcane, dark, and 
-                                summoning magic only)
-                                """
-                            ]
-                        ),
-                        LINASItem(
-                            name="Arcane Spellbook",
-                            description="""
-                            Required to use non-music techniques. An extremely 
-                            powerful spellbook meant for experienced mages. The 
-                            pages can only be viewed by the owner and it's 
-                            even said owning one of these can amplify a mage's 
-                            power
-                            """,
-                            cost=150,
-                            uses=0,
-                            notes=[
-                                """
-                                Holds 4 techniques  (Light, arcane, dark, and 
-                                summoning magic only)
-                                """,
-                                """
-                                -1 TP cost when using techniques (TP cost cannot 
-                                drop below 1)
-                                """
-                            ]
-                        ),
-                        LINASItem(
-                            name="Novice Gauntlet",
-                            description="""
-                            Required to use combat, ninjitsu, and bushido 
-                            skills. A plated glove with magic runes etched into 
-                            it
-                            """,
-                            cost=60,
-                            uses=0,
-                            notes=[
-                                """
-                                Holds 2 techniques (combat, ninjitsu, and bushido 
-                                only)
-                                """
-                            ]
-                        ),
-                        LINASItem(
-                            name="Warrior's Gauntlet",
-                            description="""
-                            Required to use combat, ninjitsu, and bushido 
-                            skills. An ornate glove with a mysterious gem 
-                            embedded into the palm
-                            """,
-                            cost=120,
-                            uses=0,
-                            notes=[
-                                """
-                                Holds 3 techniques  (combat, ninjitsu, and bushido 
-                                only)
-                                """
-                            ]
-                        ),
-                        LINASItem(
-                            name="Daimyo's Gauntlet",
-                            description="""
-                            Required to use combat, ninjitsu, and bushido 
-                            skills. An ornate gauntlet with attached arm guard 
-                            with an enormous gem embedded onto the back of the 
-                            glove resembling an eye.
-                            """,
-                            cost=180,
-                            uses=0,
-                            notes=[
-                                """
-                                Holds 4 techniques (combat, ninjitsu, and bushido 
-                                only)
-                                """
                             ]
                         ),
                         LINASItem(
@@ -3727,12 +3427,7 @@ class Fantasy (ContentManager):
                         ("Music",0),
                         ("bashing",-1)
                     ],
-                    items=[
-                        ItemRecord(
-                            item=("Novice Instrument","Specialized"),
-                            qty=1
-                        )
-                    ],
+                    items=[],
                     notes=[
                         """
                         For instrument, choose 2 techniques from the music school
@@ -3793,15 +3488,11 @@ class Fantasy (ContentManager):
                         ItemRecord(
                             item=("Robe","Armor & Clothing"),
                             qty=1
-                        ),
-                        ItemRecord(
-                            item=("Novice Spellbook","Specialized"),
-                            qty=1
                         )
                     ],
                     notes=[
                         """
-                        For technique book, choose 2 techniques from one of the schools 
+                        Choose 2 techniques from one of the schools 
                         of magic which best fits the type of mage the player is 
                         striving to be
                         """
@@ -3852,11 +3543,7 @@ class Fantasy (ContentManager):
                     ],
                     items=[
                         ItemRecord(
-                            item=("Knife","Weapons"),
-                            qty=1
-                        ),
-                        ItemRecord(
-                            item=("Novice Gauntlet","Specialized"),
+                            item=("Dagger","Weapons"),
                             qty=1
                         )
                     ],
@@ -3887,10 +3574,6 @@ class Fantasy (ContentManager):
                         ItemRecord(
                             item=("Knife","Weapons"),
                             qty=1
-                        ),
-                        ItemRecord(
-                            item=("Lockpick","Specialized"),
-                            qty=5
                         )
                     ],
                     notes=[
@@ -4323,4 +4006,3 @@ class Fantasy (ContentManager):
         # TODO: "Entities"
         # TODO: "Campaigns"
         # TODO: "DM Tools (Character Sheets, Quick References, etc.)"
-        self.addContent(CharacterSheet(self))

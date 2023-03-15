@@ -174,6 +174,3 @@ class LinasTechnique:
             '</div>'
         ]
         return html
-        #return [
-        #    f'<p><u><strong>{self.name}</strong></u> -- {self.desc}<p>'
-        #]
