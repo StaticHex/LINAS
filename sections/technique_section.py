@@ -40,25 +40,25 @@ class TechniqueSection:
         self.__html += [ f'    {x}' for x in system.collapse(
             """
             Spells and battle skills can be thought of as special abilities which entities
-            can use to attack with in lieu of weapons. Additionally, spells can be
+            can use to attack with in lieu of weapons. Additionally, techniques can be
             improved by studying or training and provide an additional way to strengthen 
             one's character. 
 
-            Like most of the system, the spell system has been purposely kept fairly
+            Like most of the system, the technique system has been purposely kept fairly
             barebones and there are no formal weaknesses or resistances. That being said,
             the players and the DM should definitely discuss if a scenario arises which
             could constitute an advantage for extra damage
 
             <i>Example 1:
             The party is fighting a tree monster. One of the players is a mage and unleashes
-            a fire spell. The mage points out that they're using fire on a tree. The DM
+            a fire technique. The mage points out that they're using fire on a tree. The DM
             agrees this would be effective and awards and extra 2 points of damage
             </i>
 
             <i>Example 2:
             The party has been caught in a thunder storm. The party's mage uses a thunder technique.
             The mage asks the DM if there's a bonus for using thunder in a thunderstorm. The
-            DM allows the mage to target 2 additional people with the spell as a bonus
+            DM allows the mage to target 2 additional people with the technique as a bonus
             </i>
 
             <h3>Spell Format</h3>
@@ -82,20 +82,20 @@ class TechniqueSection:
                     <span class="rel" style="width: 10%;">#</span>
                     <span class="rel" style="width: 10%;"># TP</span>
                     <span class="rel" style="width: 20%;">Skill Name</span>
-                    <span class="rel" style="width: 50%; text-align: right;">The effect the spell has</span>
+                    <span class="rel" style="width: 50%; text-align: right;">The effect the technique has</span>
                 </div>
             </div>
             <h3>Leveling Up Spells</h3>
 
             Spells are typically leveled up through training or studying. The exact
-            amount of time needed for a spell to level up is up to the DM.
+            amount of time needed for a technique to level up is up to the DM.
             Additionally, the DM can decide to have the player roll to level up.
             one nice idea when rolling to level up and to keep things from getting
             to stale is to add a bonus of some kind if the player rolls a 6. 
 
-            Each spell has a certain maximum level associated with it denoted by a series of &#9734;. 
-            This level denotes the maximum number of modifications a spell can have. The following
-            aspects of a spell can be modified.
+            Each technique has a certain maximum level associated with it denoted by a series of &#9734;. 
+            This level denotes the maximum number of modifications a technique can have. The following
+            aspects of a technique can be modified.
             <ul>
                 <li><b>Damage</b> - 1 point = damage +1 (cannot modifiy a damage of -)</li>
                 <li><b>TP Cost</b> - 1 point = TP Cost -1 (can go down to 0)</li>
@@ -109,51 +109,51 @@ class TechniqueSection:
             good guidelines if you're not sure where to start.
             <h3>Forgetting Spells</h3>
 
-            Forgetting spells is much less involved than forgetting skills. You simply strike
-            through or cross out the spell from your spellbook (something to indicate you no
-            longer know that spell). However, before forgetting a spell it should be noted that
-            once forgotten, all the time spent training that spell will be lost. If you decide
-            to re-learn the spell at a later time; you will have to start from scratch.
+            Forgetting techniques is much less involved than forgetting skills. You simply strike
+            through or cross out the technique from your skill book (something to indicate you no
+            longer know that technique). However, before forgetting a technique it should be noted that
+            once forgotten, all the time spent training that technique will be lost. If you decide
+            to re-learn the technique at a later time; you will have to start from scratch.
             """
         )]
         
         # Page break
         self.__html.append(f'    {system.pageBreak()}')
         
-        # Load in spells
+        # Load in techniques
         self.__html += [ f'    {x}' for x in 
-            data.typeToHTMLList('spells')
+            data.typeToHTMLList('techniques')
         ]
 
         # Suffix
         self.__html += [ f'    {x}' for x in system.collapse(
             """
-            <h3>Creating Custom Spells</h3>
+            <h3>Creating Custom Techniques</h3>
 
-            Like most aspects of the system, spell creation is completely open and the system
-            kind of assumes that at some point there will be a need to create some spell the
+            Like most aspects of the system, technique creation is completely open and the system
+            kind of assumes that at some point there will be a need to create some technique the
             system doesn't support. With that in mind, there are a few recommended guidelines
-            designed to keep spells from becoming too powerful. It is largely up to the DM
+            designed to keep techniques from becoming too powerful. It is largely up to the DM
             to enforce these and they are certainly not mandatory. However, if a player or
-            the DM are unsure of how to go about creating a custom spell, these are certainly
+            the DM are unsure of how to go about creating a custom technique, these are certainly
             good guidelines to follow.
             
-            <h4>Guidelines for Calculating Custom Spell TP</h4>
+            <h4>Guidelines for Calculating Custom Technique TP</h4>
 
-            The set of guidelines below were used to calculate the TP cost for all the spells
-            in this guidebook. Keeping close to these guidelines should ensure your spells
+            The set of guidelines below were used to calculate the TP cost for all the techniques
+            in this guidebook. Keeping close to these guidelines should ensure your techniques
             are fairly balanced as a large amount of testing went into refining them. However,
             as always these are just in fact guidelines not hard set rules and the players and
-            DM should feel free to tweak custom spells as needed.
+            DM should feel free to tweak custom techniques as needed.
 
             <ol>
                 <li>
-                    Start by computing base spell cost by taking 1/2 of damage done by spell 
+                    Start by computing base technique cost by taking 1/2 of damage done by technique 
                     (rounded up) 
                 </li>
                 <li>
-                    +1 TP if the spell causes or heals a status effect. To keep things simple
-                    it's suggested limiting each spell to a single status effect.
+                    +1 TP if the technique causes or heals a status effect. To keep things simple
+                    it's suggested limiting each technique to a single status effect.
                 </li>
                 <li>
                     +1 TP for each square of range > 3 and -1 TP for each square of range < 3.
@@ -162,19 +162,19 @@ class TechniqueSection:
                     +1 TP for every target past the first
                 </li>
                 <li>
-                    -1 TP if spell targets both friends and foes alike
+                    -1 TP if technique targets both friends and foes alike
                 </li>
                 <li>
-                    +3 TP if spell targets entire field or targets an area
+                    +3 TP if technique targets entire field or targets an area
                 </li>
             </ol>
 
             <h4>Guidelines for Calculating Custom Spell Max Level</h4>
 
-            Spell levels are used to denote the maximum number of times a spell can be
-            modified. For more information on what spell modifications are check the
-            guide at the beginning of the spell section. The guidelines below are the
-            guidelines all the spells in this guide where generated with. It is recommended
+            Spell levels are used to denote the maximum number of times a technique can be
+            modified. For more information on what technique modifications are check the
+            guide at the beginning of the technique section. The guidelines below are the
+            guidelines all the techniques in this guide where generated with. It is recommended
             to try and stay as close as possible to said guidelines. However, if the
             number of modifications doesn't make sense or feels under or overwhelming, 
             feel free to modify it.            
@@ -182,13 +182,13 @@ class TechniqueSection:
             <ol>
                 <li>Start by assigning a base max level of 5</li>
                 <li>-1 level for every 2 damage</li>
-                <li>-1 level if spell causes a status effect or heals a status effect</li>
+                <li>-1 level if technique causes a status effect or heals a status effect</li>
                 <li>-3 levels if range targets entire field or an area</li>
                 <li>
                     -1 level for each square of range > 3 and +1 level for each square of
                     range < 3. <i>Number of levels cannot exceed 5</i>
                 </li>
-                <li>+1 level if spell targets friend and foe</li>
+                <li>+1 level if technique targets friend and foe</li>
             </ol>
             """
         )]

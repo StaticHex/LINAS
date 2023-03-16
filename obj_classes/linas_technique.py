@@ -18,6 +18,7 @@ class LinasTechnique:
         status      : bool = False, # inflicts status condition
         aoe         : bool = False, # Targets whole field
         fnf         : bool = False, # Targets friend and foe
+        stat        : str  = None, # Required stat
         points      : int = -1,
         cost        : int = -1,
         notes       : List[str] = [],
@@ -63,6 +64,7 @@ class LinasTechnique:
         self.numTargets = numTargets
         self.notes      = notes
         self.template   = template
+        self.stat       = stat
 
         if self.cost == -1:
             self.cost = ceil(self.damage / 2)
@@ -101,7 +103,15 @@ class LinasTechnique:
 
     
     def __formatField(self, value : int, replacement : str = '-'):
-        return value if value > 0 else replacement
+        if value == None:
+            return replacement
+        elif isinstance(value,int):
+            return value if value > 0 else replacement
+        elif isinstance(value,str):
+            upper = str(value).upper()
+            if upper == "" or upper == "NONE":
+                return '-'
+            return value.title()
     
     def toHTMLList(
         self
@@ -117,14 +127,17 @@ class LinasTechnique:
         html = [
             '<div class="container pop">',
             '    <div class="cont-title">',
-            '        <span class="rel" style="width: 45%;">',
+            '        <span class="rel" style="width: 30%;">',
             f'            <h4 class="nopad">{self.name}</h4>',
             '        </span>',
-            '        <span class="rel" style="width: 30%">',
+            '        <span class="rel" style="width: 25%">',
             f'            <strong> Req. Skill:</strong> {self.skill.title()}',
             '        </span>',
-            '        <span class="rel" style="width: 17.85%; padding-top: 0px; text-align: right;">',
-            '            {points}'.format(points=self.points*"&nbsp;&#9734;"),
+            '        <span class="rel" style="width: 20%">',
+            f'            <strong> Req. Stat:</strong> {self.__formatField(self.stat).title()}',
+            '        </span>',
+            '        <span class="rel" style="width: 15%; padding-top: 0px; text-align: right;">',
+            f'            <strong>Max Points:</strong>{self.__formatField(self.points)}',
             '        </span>',            
             '    </div>',
             '    <div class="cont-inner">',

@@ -1600,6 +1600,13 @@ class Fantasy (ContentManager):
                             on speed rather than power. Unlike standards swordsmanship,
                             the abilities for this skill can only be used with as sword.
                             """
+                        ),
+                        LINASSkill(
+                            name = "Assassination",
+                            description = """
+                            A specialized form of combat using speed, dexterity, and
+                            stealth to dispatch opponents. 
+                            """
                         )
                     ]
                 ),
@@ -1983,6 +1990,7 @@ class Fantasy (ContentManager):
                             range=0,
                             numTargets=1,
                             skill="magic",
+                            stat='int',
                             notes=[]
                         ),
                         LinasTechnique(
@@ -1997,6 +2005,7 @@ class Fantasy (ContentManager):
                             range=0,
                             numTargets=1,
                             skill="magic",
+                            stat='int',
                             notes=[]
                         ),
                         LinasTechnique(
@@ -2009,6 +2018,7 @@ class Fantasy (ContentManager):
                             range=2,
                             numTargets=1,
                             skill="magic",
+                            stat='int',
                             notes=[
                             ]
                         ),
@@ -2022,6 +2032,7 @@ class Fantasy (ContentManager):
                             range=2,
                             numTargets=1,
                             skill="magic",
+                            stat='int',
                             status=True,
                             notes=[
                                 """
@@ -2039,6 +2050,7 @@ class Fantasy (ContentManager):
                             range=2,
                             numTargets=1,
                             skill="magic",
+                            stat='int',
                             notes=[]
                         ),
                         LinasTechnique(
@@ -2051,6 +2063,7 @@ class Fantasy (ContentManager):
                             range=1,
                             numTargets=1,
                             skill="magic",
+                            stat='int',
                             status=True,
                             notes=[
                             ]
@@ -2078,6 +2091,7 @@ class Fantasy (ContentManager):
                             range=3,
                             numTargets=1,
                             skill="magic",
+                            stat='int',
                             notes=[]
                         ),
                         LinasTechnique(
@@ -2090,6 +2104,7 @@ class Fantasy (ContentManager):
                             range=3,
                             numTargets=1,
                             skill="magic",
+                            stat='int',
                             status=True,
                             notes=[
                                 """
@@ -2107,6 +2122,7 @@ class Fantasy (ContentManager):
                             range=3,
                             numTargets=3,
                             skill="magic",
+                            stat='int',
                             notes=[
                                 """
                                 Each target rolls to see if attack hits
@@ -2130,6 +2146,7 @@ class Fantasy (ContentManager):
                             numTargets=0,
                             fnf=True,
                             skill="magic",
+                            stat='int',
                             notes=[
                                 """
                                 Each entity on the battlefield rolls to see if 
@@ -2150,6 +2167,7 @@ class Fantasy (ContentManager):
                             aoe=True,
                             fnf=True,
                             skill="magic",
+                            stat='int',
                             notes=[
                                 """
                                 Each entity on the battlefield rolls to see if 
@@ -2168,6 +2186,7 @@ class Fantasy (ContentManager):
                             range=0,
                             numTargets=1,
                             skill="magic",
+                            stat='int',
                             notes=[
                                 """
                                 This does not count as movement roll for the 
@@ -2186,6 +2205,7 @@ class Fantasy (ContentManager):
                             range=0,
                             numTargets=0,
                             skill="magic",
+                            stat='int',
                             points=1,
                             notes=[
                                 """
@@ -2224,6 +2244,7 @@ class Fantasy (ContentManager):
                             range=1,
                             numTargets=1,
                             skill="magic",
+                            stat='int',
                             notes=[
                             ]
                         ),
@@ -2237,6 +2258,7 @@ class Fantasy (ContentManager):
                             range=2,
                             numTargets=1,
                             skill="magic",
+                            stat='int',
                             notes=[
                                 """
                                 Damage from entity's next attack cannot be 
@@ -2256,6 +2278,7 @@ class Fantasy (ContentManager):
                             range=1,
                             numTargets=1,
                             skill="magic",
+                            stat='int',
                             status=True,
                             notes=[
                                 """
@@ -2279,6 +2302,7 @@ class Fantasy (ContentManager):
                             range=1,
                             numTargets=1,
                             skill="magic",
+                            stat='int',
                             notes=[
                                 """
                                 This attack is not counted as direct damage and 
@@ -2299,6 +2323,7 @@ class Fantasy (ContentManager):
                             cost=0,
                             numTargets=1,
                             skill="magic",
+                            stat='int',
                             notes=[
                                 """
                                 This attack is not counted as direct damage and 
@@ -2319,6 +2344,7 @@ class Fantasy (ContentManager):
                             range=1,
                             numTargets=0,
                             skill="magic",
+                            stat='int',
                             notes=[
                                 """
                                 In addition to the using cost of this technique,
@@ -2351,6 +2377,7 @@ class Fantasy (ContentManager):
                             range=2,
                             numTargets=1,
                             skill="magic",
+                            stat='int',
                             status=True,
                             notes=[
                             ]
@@ -2364,6 +2391,7 @@ class Fantasy (ContentManager):
                             range=2,
                             numTargets=1,
                             skill="magic",
+                            stat='int',
                             status=True,
                             notes=[
                             ]
@@ -2377,6 +2405,7 @@ class Fantasy (ContentManager):
                             range=2,
                             numTargets=1,
                             skill="magic",
+                            stat='int',
                             status=True,
                             notes=[
                             ]
@@ -2390,6 +2419,7 @@ class Fantasy (ContentManager):
                             range=2,
                             numTargets=1,
                             skill="magic",
+                            stat='int',
                             status=True,
                             notes=[
                             ]
@@ -2403,6 +2433,7 @@ class Fantasy (ContentManager):
                             range=2,
                             numTargets=1,
                             skill="magic",
+                            stat='int',
                             status=True,
                             notes=[
                             ]
@@ -2427,7 +2458,7 @@ class Fantasy (ContentManager):
                             damage=0,
                             range=2,
                             numTargets=1,
-                            skill="none",
+                            skill="Any combat skill",
                             notes=[
                             ]
                         ),
@@ -2441,7 +2472,7 @@ class Fantasy (ContentManager):
                             damage=0,
                             range=0,
                             numTargets=0,
-                            skill="none",
+                            skill="any combat",
                             points=1,
                             notes=[
                                 """
@@ -2460,6 +2491,58 @@ class Fantasy (ContentManager):
                             ]
                         ),
                         LinasTechnique(
+                            name="Flip thrust",
+                            description="""
+                            Flips the opponent onto the ground and stabs them in one fluid motion.
+                            """,
+                            damage=2,
+                            range=1,
+                            numTargets=1,
+                            skill="assassination",
+                            stat="dex",
+                            notes=[
+                                """
+                                If 6 is rolled, target is now prone and must
+                                spend 1 turn picking themselves up off the ground
+                                """,
+                                """
+                                Can only be used with knives and daggers
+                                """,
+                                """
+                                Can only be used while in stealth
+                                """,
+                                """
+                                target is no longer in stealth after combat 
+                                resolves
+                                """
+                            ]
+                        ),
+                        LinasTechnique(
+                            name="Pressure Point",
+                            description="""
+                            A quick sharp thrust is used to hit vital pressure points on
+                            the opponent and incapacitate them.
+                            """,
+                            damage=0,
+                            range=1,
+                            numTargets=1,
+                            status=True,
+                            skill="assassination",
+                            notes=[
+                                """
+                                Deals damage to opponent equal to user's speed
+                                """,
+                                """
+                                If 6 is rolled, target is now paralyzed
+                                """,
+                                """
+                                Upgrade: Can be upgraded such that
+                                If 6 is rolled, target is now sealed
+                                IF 3 is rolled, target is now paralyzed
+                                """
+                            ]
+                        ),
+                        LinasTechnique(
                             name="Whirlwind Cut",
                             description="""
                             Deals damage to all adjacent entities (both friend 
@@ -2471,6 +2554,7 @@ class Fantasy (ContentManager):
                             fnf=True,
                             aoe=True,
                             skill="swordsmanship",
+                            stat="str",
                             notes=[
                             ]
                         ),
@@ -2483,6 +2567,7 @@ class Fantasy (ContentManager):
                             range=3,
                             numTargets=1,
                             skill="swordsmanship",
+                            stat="str",
                             notes=[
                             ]
                         ),
@@ -2495,6 +2580,7 @@ class Fantasy (ContentManager):
                             range=1,
                             numTargets=1,
                             skill="swordsmanship",
+                            stat="str",
                             notes=[
                                 """
                                 If 6 is rolled, Reduce target's armor to 0 for
@@ -2574,6 +2660,7 @@ class Fantasy (ContentManager):
                             range=0,
                             numTargets=0,
                             skill="music",
+                            stat="int",
                             aoe=True,
                             fnf=True,
                             notes=[
@@ -2596,6 +2683,7 @@ class Fantasy (ContentManager):
                             aoe=True,
                             fnf=True,
                             skill="music",
+                            stat="int",
                             notes=[
                                 """
                                 Any entities who roll 1 on this check are now 
@@ -2619,6 +2707,7 @@ class Fantasy (ContentManager):
                             range=0,
                             numTargets=0,
                             skill="music",
+                            stat="int",
                             aoe=True,
                             fnf=True,
                             notes=[
@@ -2684,7 +2773,7 @@ class Fantasy (ContentManager):
                             points=1,
                             aoe=True,
                             fnf=True,
-                            skill="magic",
+                            skill="music",
                             notes=[
                                 """
                                 Can no longer use techniques or use items
@@ -2729,6 +2818,7 @@ class Fantasy (ContentManager):
                             range=1,
                             numTargets=1,
                             skill="ninjitsu",
+                            stat="int",
                             notes=[
                                 """
                                 HP of summoned entity cannot exceed remaining
@@ -2748,6 +2838,7 @@ class Fantasy (ContentManager):
                             range=0,
                             numTargets=0,
                             skill="ninjitsu",
+                            stat="spd",
                             notes=[
                             ]
                         ),
@@ -2762,6 +2853,7 @@ class Fantasy (ContentManager):
                             range=0,
                             numTargets=0,
                             skill="ninjitsu",
+                            stat="int",
                             notes=[
                                 """
                                 Everything except for the mana cost of the 
@@ -2808,6 +2900,7 @@ class Fantasy (ContentManager):
                             range=2,
                             numTargets=1,
                             skill="bushido",
+                            stat="spd",
                             notes=[
                                 """
                                 This attack ignores armor value
@@ -2828,6 +2921,7 @@ class Fantasy (ContentManager):
                             range=3,
                             numTargets=1,
                             skill="bushido",
+                            stat="spd",
                             notes=[
                             ]
                         )
@@ -2854,6 +2948,7 @@ class Fantasy (ContentManager):
                             range=0,
                             numTargets=1,
                             skill="martial arts",
+                            stat="dex",
                             notes=[
                             ]
                         ),
@@ -2887,6 +2982,7 @@ class Fantasy (ContentManager):
                             range=1,
                             numTargets=1,
                             skill="martial arts",
+                            stat="str",
                             notes=[
                                 """
                                 Sumo school
@@ -2913,6 +3009,7 @@ class Fantasy (ContentManager):
                             numTargets=1,
                             status=True,
                             skill="martial arts",
+                            stat="spd",
                             notes=[
                                 """
                                 Dragon school
@@ -2938,6 +3035,7 @@ class Fantasy (ContentManager):
                             range=2,
                             numTargets=1,
                             skill="martial arts",
+                            stat="dex",
                             notes=[
                                 """
                                 Crane school
@@ -2971,6 +3069,7 @@ class Fantasy (ContentManager):
                             range=2,
                             numTargets=1,
                             skill="martial arts",
+                            stat="dex",
                             notes=[
                                 """
                                 Crane school
@@ -2994,6 +3093,7 @@ class Fantasy (ContentManager):
                             numTargets=1,
                             status=True,
                             skill="martial arts",
+                            stat="spd",
                             notes=[
                                 """
                                 Dragon school
@@ -3033,6 +3133,7 @@ class Fantasy (ContentManager):
                             range=1,
                             numTargets=1,
                             skill="martial arts",
+                            stat="spd",
                             notes=[
                                 """
                                 Tiger school
@@ -3052,6 +3153,7 @@ class Fantasy (ContentManager):
                             range=1,
                             numTargets=1,
                             skill="martial arts",
+                            stat="str",
                             notes=[
                                 """
                                 Sumo school
@@ -3097,6 +3199,7 @@ class Fantasy (ContentManager):
                             range=1,
                             numTargets=1,
                             skill="martial arts",
+                            stat="dex",
                             notes=[
                                 """
                                 Crane school
@@ -3122,6 +3225,7 @@ class Fantasy (ContentManager):
                             range=1,
                             numTargets=1,
                             skill="martial arts",
+                            stat="dex",
                             notes=[
                                 """
                                 Snake School
@@ -3145,6 +3249,7 @@ class Fantasy (ContentManager):
                             range=0,
                             numTargets=1,
                             skill="martial arts",
+                            stat="dex",
                             notes=[
                                 """
                                 Tiger School
@@ -3167,6 +3272,7 @@ class Fantasy (ContentManager):
                             range=1,
                             numTargets=1,
                             skill="martial arts",
+                            stat="str",
                             notes=[
                                 """
                                 Sumo school
