@@ -28,8 +28,7 @@ class LINASItem:
         artifact        : bool                = False,
         notes           : List[str]           = [],
         template        : List[Dict[str,str]] = None,
-        points          : int                 = -1,
-        equippable      : bool                = False
+        points          : int                 = -1
     ) -> None:
         """
         Class used to hold and modify data for LINAS' items
@@ -83,7 +82,6 @@ class LINASItem:
         self.notes           = notes
         self.template        = template
         self.points          = points
-        self.equippable      = equippable
 
         if self.points == -1:
             if artifact or not self.equipment():
@@ -91,7 +89,7 @@ class LINASItem:
             else:
                 self.points = 5
                 self.points -= self.equipment() // 2
-                if self.m_damage or m_protection:
+                if self.m_damage:
                     self.points -= 1
                 if enchanted:
                     self.points -= 2
@@ -117,7 +115,7 @@ class LINASItem:
     
     def protection(self):
         if self.p_protection and self.m_protection:
-            return max(self.p_protection, self.m_protection)
+            return self.p_protection + self.m_protection
         return self.p_protection or self.m_protection
     
     def equipment(self):
@@ -148,7 +146,7 @@ class LINASItem:
             '    </div>',
             '    <div class="cont-inner">',
             '        <span class="rel" style="width: 10%; text-align:center;">',
-            f'            <img src="{LINASItem.__am.get("atk")}" {LINASItem.__image_style}/>',
+            f'            {LINASItem.__am.tag("patk")}',
             '        </span>',
             '        <span class="rel" style="width: 10%; text-align:center;">',
             '            <strong>Range</strong>',
@@ -157,7 +155,7 @@ class LINASItem:
             '            <strong>Stat</strong>',
             '        </span>',
             '        <span class="rel" style="width: 15%; text-align:center;">',
-            f'            <img src="{LINASItem.__am.get("pen")}" {LINASItem.__image_style}/>',
+            f'            {LINASItem.__am.tag("pen")}',
             '        </span>',
             '        <span class="rel" style="width: 45%;">',
             '            <strong>Effect(s)</strong>',
@@ -210,13 +208,13 @@ class LINASItem:
             '    </div>',
             '    <div class="cont-inner">',
             '        <span class="rel" style="width: 10%; text-align: center;">',
-            f'            <strong>PHYS <img src="{LINASItem.__am.get("def")}" {LINASItem.__image_style}/></strong>',
+            f'            <strong>{LINASItem.__am.tag("pdef")}</strong>',
             '        </span>',
             '        <span class="rel" style="width: 10%; text-align: center;">',
-            f'            <strong>MAG <img src="{LINASItem.__am.get("def")}" {LINASItem.__image_style}/></strong>',
+            f'            <strong>{LINASItem.__am.tag("mdef")}</strong>',
             '        </span>',
             '        <span class="rel" style="width: 10%; text-align: center; overflow: hidden;">',
-            f'            &nbsp;<img src="{LINASItem.__am.get("pen")}" {LINASItem.__image_style}/>&nbsp;',
+            f'            &nbsp;{LINASItem.__am.tag("pen")}&nbsp;',
             '        </span>',
             '        <span class="rel" style="width: 60%;">',
             '            <strong>Effect(s)</strong>',
@@ -268,10 +266,7 @@ class LINASItem:
             '        <span class="rel" style="width: 10%; text-align: center;">',
             '            <strong>Range</strong>',
             '        </span>',
-            '        <span class="rel" style="width: 15%; text-align: center;">',
-            '            <strong>Equippable</strong>',
-            '        </span>',
-            '        <span class="rel" style="width: 55%; text-align: left;">',
+            '        <span class="rel" style="width: 70%; text-align: left;">',
             '            <strong>Effect(s)</strong>',
             '        </span>',
             '        <hr style="border: 1px solid #dddddd;">',
@@ -283,10 +278,7 @@ class LINASItem:
             '        <span class="rel" style="width: 10%; text-align: center;">',
             f'            {self.__formatField(self.range)}',
             '        </span>',
-            '        <span class="rel" style="width: 15%; text-align: center;">',
-            f'            {self.__formatField(self.equippable)}',
-            '        </span>',
-            '        <span class="rel" style="width: 55%; text-align: left;">',
+            '        <span class="rel" style="width: 70%; text-align: left;">',
             f'            {self.desc}',
             '        </span>',
             '        <hr style="border: 1px solid #dddddd; text-align: center;">',

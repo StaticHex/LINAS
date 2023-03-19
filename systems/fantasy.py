@@ -14,7 +14,6 @@ from   sections.technique_section          import TechniqueSection
 from   sections.effect_section             import EffectSection
 from   sections.class_section              import ClassSection
 from   sections.item_section               import ItemSection
-from   sections.character_sheet            import CharacterSheet
 from   obj_classes.content_manager         import ContentManager
 from   obj_classes.data_manager            import DataManager
 from   obj_classes.linas_stat              import LINASStat

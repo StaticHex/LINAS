@@ -9,6 +9,7 @@ from utils.assets import AssetManager
 import os
 
 class TechniqueSection:
+    __am = AssetManager()
     def __init__(
         self,
         system : ContentManager,
@@ -31,9 +32,6 @@ class TechniqueSection:
 
         # Get TOC data from parent
         self.__contents = system.getContents()
-
-        am = AssetManager()
-        icon = 'style="height: 16px; width: auto;"'
 
         # Build out HTML here
         # ======================================================================
@@ -63,6 +61,8 @@ class TechniqueSection:
             The party has been caught in a thunder storm. The party's mage uses a thunder technique.
             The mage asks the DM if there's a bonus for using thunder in a thunderstorm. The
             DM allows the mage to target 2 additional people with the technique as a bonus
+
+            <h3>Technique Format</h3>
             </i>
             <div class="container pop">
                 <div class="cont-title">
@@ -81,10 +81,10 @@ class TechniqueSection:
                 </div>
                 <div class="cont-inner">
                     <span class="rel" style="width: 10%;">
-                        """+f'<strong><img src="{am.get("atk")}" {icon}"/></strong>'+"""
+                        """+f'{TechniqueSection.__am.tag("matk")}</strong>'+"""
                     </span>
                     <span class="rel" style="width: 10%;">
-                        """+f'<strong><img src="{am.get("tp")}" {icon}"/></strong>'+"""
+                        """+f'{TechniqueSection.__am.tag("pen")}</strong>'+"""
                     </span>
                     <span class="rel" style="width: 10%;">
                         <strong>Range</strong>
@@ -117,7 +117,7 @@ class TechniqueSection:
                 </div>
                 <div class="cont-inner">
                     <ul>
-                        <li>Notes appear here</li>
+                        <li>Notes appear here</li>.
                     </ul>
                 </div>
             </div>
@@ -129,8 +129,8 @@ class TechniqueSection:
                     <strong>Max Points</strong> - The maximum number of modifications which can be made to the technique
                     for more info about this, see the 'Leveling Up Techniques' section
                 </li>
-                <li>"""+f'<strong><img src="{am.get("atk")}" {icon}"/></strong>'+""" - Amount of damage the technique does.</li>
-                <li>"""+f'<strong><img src="{am.get("tp")}" {icon}"/></strong>'+""" - How much TP the technique costs to use.</li>
+                <li>"""+f'<strong>Damage ({TechniqueSection.__am.tag("matk")})</strong>'+""" - Amount of damage the technique does.</li>
+                <li>"""+f'<strong>TP Cost({TechniqueSection.__am.tag("tp")})</strong>'+""" - How much TP the technique costs to use.</li>
                 <li><strong>Range</strong> - How many squares away the technique can hit it's target</li>
                 <li>
                     <strong>Targets</strong> - How many entities a single use of the technique can target at one time. 
@@ -142,7 +142,7 @@ class TechniqueSection:
             </ul>
             <h3>Leveling Up Techniques</h3>
 
-            Spells are typically leveled up through training or studying. The exact
+            Techniques are typically leveled up through training or studying. The exact
             amount of time needed for a technique to level up is up to the DM.
             Additionally, the DM can decide to have the player roll to level up.
             one nice idea when rolling to level up and to keep things from getting

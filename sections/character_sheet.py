@@ -279,7 +279,7 @@ class CharacterSheet:
             '        <div class="cont-inner">',
             f'             <strong>HP ({CharacterSheet.__sHp}):</strong>____/____',
             f'             &emsp;&emsp;<strong>TP ({CharacterSheet.__sTp}):</strong>____/____',
-            '              &emsp;&emsp;<i style="font-size: 10pt;">HP + TP Max = 25, Stat Min (Not HP/TP) = 5, Starting = 0</i><br/>'
+            '              &emsp;&emsp;<i style="font-size: 10pt;">HP + TP Max = 25, Stat Max (Not HP/TP) = 5, Starting = 0</i><br/>'
             '              <hr style="border: 1px solid #dddddd;">'
             f'             <strong>SPD ({CharacterSheet.__sSpd}):</strong>____',
             f'             &nbsp;<strong>STR ({CharacterSheet.__sStr}):</strong>____',
