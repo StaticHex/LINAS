@@ -9,20 +9,6 @@ import os
 
 class CharacterSheet:
     __am = AssetManager()
-    __icon = 'style="height:15px; width:auto;"'
-    __sStr=f'<img src="{__am.get("str")}" {__icon}"/>'
-    __sInt=f'<img src="{__am.get("int")}" {__icon}"/>'
-    __sSpd=f'<img src="{__am.get("spd")}" {__icon}"/>'
-    __sDex=f'<img src="{__am.get("dex")}" {__icon}"/>'
-    __sEnd=f'<img src="{__am.get("end")}" {__icon}"/>'
-    __sSpr=f'<img src="{__am.get("spr")}" {__icon}"/>'
-    __sHp=f'<img src="{__am.get("hp")}" {__icon}"/>'
-    __sTp=f'<img src="{__am.get("tp")}" {__icon}"/>'
-    __sPen=f'<img src="{__am.get("pen")}" {__icon}"/>'
-    __sPAtk=f'<img src="{__am.get("patk")}" {__icon}"/>'
-    __sPDef=f'<img src="{__am.get("pdef")}" {__icon}"/>'
-    __sMAtk=f'<img src="{__am.get("matk")}" {__icon}"/>'
-    __sMDef=f'<img src="{__am.get("mdef")}" {__icon}"/>'
     def __init__(
         self,
         system : ContentManager
@@ -129,16 +115,16 @@ class CharacterSheet:
                                 stats in a way that makes sense. Your stats should be a reflection of your race's 
                                 strong points.</li>
                               <li>Allocate 2 points in any stats other than HP/TP (total points in stats other than HP/TP should be 4)</li>
-                              <li>Calculate adjusted speed (&#8645;{CharacterSheet.__sSpd}) by subtracting the number of points in speed from 
-                              the total speed penalty ({CharacterSheet.__sPen}) from <u>all</u> equipment, then add any points in strength and
+                              <li>Calculate adjusted speed (&#8645;{CharacterSheet.__am.tag("spd")}) by subtracting the number of points in speed from 
+                              the total speed penalty ({CharacterSheet.__am.tag("pen")}) from <u>all</u> equipment, then add any points in strength and
                               finally add 2. This value is used to calculate a wide number of things. Usually when the DM asks for speed, it's
                               this value</li>
-                              <li>Calculate Weapon damage (&#8645;{CharacterSheet.__sPAtk}) by adding together your weapon's base damage and
+                              <li>Calculate Weapon damage (&#8645;{CharacterSheet.__am.tag("patk")}) by adding together your weapon's base damage and
                               the points in either STR or DEX (depending on which stat your weapon uses)</li>
-                              <li>Calculate physical armor points (&#8645;{CharacterSheet.__sPAtk}) by adding together your armor's base 
-                              physical protection value ({CharacterSheet.__sPDef}) and the points in END</li>
-                              <li>Calculate magic armor points (&#8645;{CharacterSheet.__sMDef}) by adding together your armor's base 
-                              magic protection value ({CharacterSheet.__sMDef}) and the points in SPR</li>
+                              <li>Calculate physical armor points (&#8645;{CharacterSheet.__am.tag("patk")}) by adding together your armor's base 
+                              physical protection value ({CharacterSheet.__am.tag("pdef")}) and the points in END</li>
+                              <li>Calculate magic armor points (&#8645;{CharacterSheet.__am.tag("mdef")}) by adding together your armor's base 
+                              magic protection value ({CharacterSheet.__am.tag("mdef")}) and the points in SPR</li>
                           </ol>
             """,
             '        </div>',
@@ -277,22 +263,22 @@ class CharacterSheet:
             '            <h4 class="nopad">Stats</h4>',
             '        </div>',
             '        <div class="cont-inner">',
-            f'             <strong>HP ({CharacterSheet.__sHp}):</strong>____/____',
-            f'             &emsp;&emsp;<strong>TP ({CharacterSheet.__sTp}):</strong>____/____',
+            f'             <strong>HP ({CharacterSheet.__am.tag("hp")}):</strong>____/____',
+            f'             &emsp;&emsp;<strong>TP ({CharacterSheet.__am.tag("tp")}):</strong>____/____',
             '              &emsp;&emsp;<i style="font-size: 10pt;">HP + TP Max = 25, Stat Max (Not HP/TP) = 5, Starting = 0</i><br/>'
             '              <hr style="border: 1px solid #dddddd;">'
-            f'             <strong>SPD ({CharacterSheet.__sSpd}):</strong>____',
-            f'             &nbsp;<strong>STR ({CharacterSheet.__sStr}):</strong>____',
-            f'             &nbsp;<strong>INT ({CharacterSheet.__sInt}):</strong>____',
-            f'             &nbsp;<strong>DEX ({CharacterSheet.__sDex}):</strong>____',
-            f'             &nbsp;<strong>END ({CharacterSheet.__sEnd}):</strong>____',
-            f'             &nbsp;<strong>SPR ({CharacterSheet.__sSpr}):</strong>____<br/>',
+            f'             <strong>SPD ({CharacterSheet.__am.tag("spd")}):</strong>____',
+            f'             &nbsp;<strong>STR ({CharacterSheet.__am.tag("str")}):</strong>____',
+            f'             &nbsp;<strong>INT ({CharacterSheet.__am.tag("int")}):</strong>____',
+            f'             &nbsp;<strong>DEX ({CharacterSheet.__am.tag("dex")}):</strong>____',
+            f'             &nbsp;<strong>END ({CharacterSheet.__am.tag("end")}):</strong>____',
+            f'             &nbsp;<strong>SPR ({CharacterSheet.__am.tag("spr")}):</strong>____<br/>',
             '             <hr style="border: 1px solid #dddddd;">'
             '             <div style="color: #777777">',
-            f'                 <strong>&#8645;{CharacterSheet.__sSpd} ({CharacterSheet.__sSpd} - {CharacterSheet.__sPen} + {CharacterSheet.__sStr}  +2):</strong>____',
-            f'                 &nbsp;&emsp;<strong>&#8645;{CharacterSheet.__sPAtk} ({CharacterSheet.__sPAtk} + {CharacterSheet.__sStr}/{CharacterSheet.__sDex}):</strong>____'
-            f'                 &nbsp;&emsp;<strong>&#8645;{CharacterSheet.__sPDef} ({CharacterSheet.__sPDef} + {CharacterSheet.__sEnd}):</strong>____',
-            f'                 &nbsp;&emsp;<strong>&#8645;{CharacterSheet.__sMDef} ({CharacterSheet.__sMDef} + {CharacterSheet.__sSpr}):</strong>____',
+            f'                 <strong>&#8645;{CharacterSheet.__am.tag("spd")} ({CharacterSheet.__am.tag("spd")} - {CharacterSheet.__am.tag("pen")} + {CharacterSheet.__am.tag("str")}  +2):</strong>____',
+            f'                 &nbsp;&emsp;<strong>&#8645;{CharacterSheet.__am.tag("patk")} ({CharacterSheet.__am.tag("patk")} + {CharacterSheet.__am.tag("str")}/{CharacterSheet.__am.tag("dex")}):</strong>____'
+            f'                 &nbsp;&emsp;<strong>&#8645;{CharacterSheet.__am.tag("pdef")} ({CharacterSheet.__am.tag("pdef")} + {CharacterSheet.__am.tag("end")}):</strong>____',
+            f'                 &nbsp;&emsp;<strong>&#8645;{CharacterSheet.__am.tag("mdef")} ({CharacterSheet.__am.tag("mdef")} + {CharacterSheet.__am.tag("spr")}):</strong>____',
             '             </div>',
             '        </div>',
             '    </div>',
@@ -376,11 +362,11 @@ class CharacterSheet:
             '            <div class="container" style="margin: 0px 5px 5px 5px; padding: 0px 5px 5px 5px;">'
             '                <strong>Name:</strong>___________________________________________',
             '                <strong>Skill:</strong>___________________________<br/>',
-            f'               <strong>{CharacterSheet.__sPAtk}:</strong>____',
+            f'               <strong>{CharacterSheet.__am.tag("patk")}:</strong>____',
             '                <strong>Range:</strong>____',
             '                &emsp;&#9744;&nbsp;PHYS&emsp;&#9744;&nbsp;MAG&emsp;&#9744;&nbsp;DUAL',
             '                &emsp;<strong>Stat:</strong>_____',
-            f'               <strong>{CharacterSheet.__sPen}:</strong> ____',
+            f'               <strong>{CharacterSheet.__am.tag("pen")}:</strong> ____',
             '                <strong>Points:</strong> ____/____',
             '                <strong>Effect(s):</strong>________________________________________________________________________',
             '            </div>',
@@ -392,10 +378,10 @@ class CharacterSheet:
             '            </span>'
             '            <div class="container" style="margin: 0px 5px 5px 5px; padding: 0px 5px 5px 5px;">',
             '                <strong>Name:</strong>________________________&nbsp;&nbsp;',
-            f'                <strong>{CharacterSheet.__sPDef}:</strong>____',
-            f'                &nbsp;&nbsp;<strong>{CharacterSheet.__sMDef}:</strong>____',
+            f'                <strong>{CharacterSheet.__am.tag("pdef")}:</strong>____',
+            f'                &nbsp;&nbsp;<strong>{CharacterSheet.__am.tag("mdef")}:</strong>____',
             '                 &nbsp;&nbsp;&#9744;&nbsp;SHLD',
-            f'                &nbsp;&nbsp;<strong>{CharacterSheet.__sPen}:</strong> ____',
+            f'                &nbsp;&nbsp;<strong>{CharacterSheet.__am.tag("pen")}:</strong> ____',
             '                 &nbsp;&nbsp;<strong>Points:</strong> ____/____',
             '                <strong>Effect(s):</strong>________________________________________________________________________',
             '            </div>',
@@ -443,8 +429,8 @@ class CharacterSheet:
                 '        <div class="container" style="margin: 5px; padding: 5px;">',
                 '            <strong>Name:</strong>__________________________________________',
                 '            <strong>Skill:</strong>____________________________'
-                f'            <strong>{CharacterSheet.__sMAtk}:</strong>_____',
-                f'           &nbsp;&emsp;&emsp;<strong>{CharacterSheet.__sTp}:</strong>_____',
+                f'            <strong>{CharacterSheet.__am.tag("matk")}:</strong>_____',
+                f'           &nbsp;&emsp;&emsp;<strong>{CharacterSheet.__am.tag("tp")}:</strong>_____',
                 '            &nbsp;&emsp;&emsp;<strong>Range:</strong>_____',
                 '            &nbsp;&emsp;&emsp;<strong>Targets:</strong>_____',
                 '            &nbsp;&emsp;&emsp;<strong>Points:</strong>_____/_____',
