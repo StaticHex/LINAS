@@ -55,10 +55,10 @@ class NewPlayerSetupSection:
             After players decide on their character's background, the next step
             is to  choose a race and class for the character. The race and class
             should support  the character's background and most important it
-            should be a race and class the  character wants to play vs. a race
-            and class the player "thinks will do the  best." When creating a
-            character, some good questions to ask are: How does the  character
-            fit into society? Are they well liked? An outcast? Do they prefer to 
+            should be a race and class the character wants to play vs. a race
+            and class the player "thinks will do the best." When creating a
+            character, some good questions to ask are: How does the character
+            fit into society? Are they well liked? An outcast? etc.
 
             The DM should be actively involved in all character creation
             regardless of  whether it's custom or stock. Also, it is advised that

@@ -3,10 +3,13 @@ Class used to hold and modify data for LINAS' spells
 """
 from __future__ import print_function, division
 from typing import List, Dict
+from utils.assets import AssetManager
 import re
 from math import ceil
 
 class LinasTechnique:
+    __am = AssetManager()
+    __icon = 'style="height: 16px; width: 16px;"'
     def __init__(
         self,
         name        : str,
@@ -142,10 +145,10 @@ class LinasTechnique:
             '    </div>',
             '    <div class="cont-inner">',
             '        <span class="rel" style="width: 10%;">',
-            '            <strong>Damage</strong>',
+            f'            <strong><img src="{LinasTechnique.__am.get("atk")}" {LinasTechnique.__icon}"/></strong>',
             '        </span>',
             '        <span class="rel" style="width: 10%;">',
-            '            <strong>TP Cost</strong>',
+            f'            <strong><img src="{LinasTechnique.__am.get("tp")}" {LinasTechnique.__icon}"/></strong>',
             '        </span>',
             '        <span class="rel" style="width: 10%;">',
             '            <strong>Range</strong>',

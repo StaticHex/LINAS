@@ -5,6 +5,7 @@ from __future__ import print_function, division
 from obj_classes.content_manager import ContentManager
 from obj_classes.data_manager import DataManager
 from typing import List
+from utils.assets import AssetManager
 import os
 
 class TechniqueSection:
@@ -30,6 +31,9 @@ class TechniqueSection:
 
         # Get TOC data from parent
         self.__contents = system.getContents()
+
+        am = AssetManager()
+        icon = 'style="height: 16px; width: auto;"'
 
         # Build out HTML here
         # ======================================================================
@@ -60,32 +64,83 @@ class TechniqueSection:
             The mage asks the DM if there's a bonus for using thunder in a thunderstorm. The
             DM allows the mage to target 2 additional people with the technique as a bonus
             </i>
-
-            <h3>Spell Format</h3>
             <div class="container pop">
                 <div class="cont-title">
-                    <span class="rel" style="width: 75%;">
-                        <h4 class="nopad">Spell Name</h4>
+                    <span class="rel" style="width: 30%;">
+                        <h4 class="nopad">Technique Name</h4>
                     </span>
-                    <span class="rel" style="width: 10%;">
-                        <strong>Range:</strong> #
+                    <span class="rel" style="width: 25%">
+                        <strong> Req. Skill:</strong> Skill Name
                     </span>
-                    <span class="rel" style="width: 10%; padding-top: 0px; padding-right: 0px; text-align: right;">
-                        <text class="nopad">(1~#)<strong>&#9734;</strong></text>
+                    <span class="rel" style="width: 20%">
+                        <strong> Req. Stat:</strong> STAT
                     </span>
+                    <span class="rel" style="width: 15%; padding-top: 0px; text-align: right;">
+                        <strong>Max Points:</strong> #
+                    </span>            
                 </div>
                 <div class="cont-inner">
-                    <span class="rel" style="width: 10%;"><strong>Damage</strong></span>
-                    <span class="rel" style="width: 10%;"><strong>TP Cost</strong></span>
-                    <span class="rel" style="width: 20%;"><strong>Req. Skill</strong></span>
-                    <span class="rel" style="width: 50%; text-align: right;"><strong>Effect(s)</strong></span>
-                    <span class="rel" style="width: 10%;">#</span>
-                    <span class="rel" style="width: 10%;"># TP</span>
-                    <span class="rel" style="width: 20%;">Skill Name</span>
-                    <span class="rel" style="width: 50%; text-align: right;">The effect the technique has</span>
+                    <span class="rel" style="width: 10%;">
+                        """+f'<strong><img src="{am.get("atk")}" {icon}"/></strong>'+"""
+                    </span>
+                    <span class="rel" style="width: 10%;">
+                        """+f'<strong><img src="{am.get("tp")}" {icon}"/></strong>'+"""
+                    </span>
+                    <span class="rel" style="width: 10%;">
+                        <strong>Range</strong>
+                    </span>
+                    <span class="rel" style="width: 10%;">
+                        <strong>Targets</strong>
+                    </span>
+                    <span class="rel" style="width: 50%; text-align: left;">
+                        <strong>Effect(s)</strong>
+                    </span>
+                    <hr style="border: 1px solid #dddddd;">
+                </div>
+                <div class="cont-inner">
+                    <span class="rel" style="width: 10%;">
+                        #
+                    </span>
+                    <span class="rel" style="width: 10%;">
+                        #
+                    </span>
+                    <span class="rel" style="width: 10%;">
+                        #
+                    </span>
+                    <span class="rel" style="width: 10%;">
+                        #
+                    </span>
+                    <span class="rel" style="width: 50%; text-align: left;">
+                        Description of technique goes here
+                    </span>
+                    <hr style="border: 1px solid #dddddd;">
+                </div>
+                <div class="cont-inner">
+                    <ul>
+                        <li>Notes appear here</li>
+                    </ul>
                 </div>
             </div>
-            <h3>Leveling Up Spells</h3>
+            <ul>
+                <li><strong>Technique Name</strong> - The name of the technique</li>
+                <li><strong>Req. Skill</strong> - The skill used when rolling to see if the technique hits</li>
+                <li><strong>Req. Stat</strong> - The stat used to add damage to the technique's damage</li>
+                <li>
+                    <strong>Max Points</strong> - The maximum number of modifications which can be made to the technique
+                    for more info about this, see the 'Leveling Up Techniques' section
+                </li>
+                <li>"""+f'<strong><img src="{am.get("atk")}" {icon}"/></strong>'+""" - Amount of damage the technique does.</li>
+                <li>"""+f'<strong><img src="{am.get("tp")}" {icon}"/></strong>'+""" - How much TP the technique costs to use.</li>
+                <li><strong>Range</strong> - How many squares away the technique can hit it's target</li>
+                <li>
+                    <strong>Targets</strong> - How many entities a single use of the technique can target at one time. 
+                    If the target specifies 'self' the user can only use the technique on themselves. 
+                    If the target specifies 'field' ALL entities must roll to see if the technique hits.
+                </li>
+                <li><strong>Effect(s)</strong> - What the technique does when used</li>
+                <li><strong>Notes</strong> - Additional conditions or considerations for using the technique
+            </ul>
+            <h3>Leveling Up Techniques</h3>
 
             Spells are typically leveled up through training or studying. The exact
             amount of time needed for a technique to level up is up to the DM.
@@ -107,7 +162,7 @@ class TechniqueSection:
             not listed here which the DM chooses to allow the player to do. As always, it's
             up to the DM and players to work out what 'leveling up' means but the above are
             good guidelines if you're not sure where to start.
-            <h3>Forgetting Spells</h3>
+            <h3>Forgetting Techniques</h3>
 
             Forgetting techniques is much less involved than forgetting skills. You simply strike
             through or cross out the technique from your skill book (something to indicate you no

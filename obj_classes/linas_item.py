@@ -8,7 +8,7 @@ import re
 
 class LINASItem:
     __am = AssetManager()
-    __image_style='style="height:16px; width:16px;"'
+    __image_style='style="height:16px; width:autopx;"'
 
     def __init__(
         self,
