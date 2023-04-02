@@ -50,6 +50,15 @@ div {
     width: 2.25in;
     height: 4in;
 }
+.image-bg {
+    float:right; 
+    width: 1.125in; 
+    height: 2in; 
+    border: 1px solid black;
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center;
+}
 .container {
     border: 1px solid #999999;
     margin-bottom: 5px;
