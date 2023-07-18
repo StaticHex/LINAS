@@ -614,8 +614,7 @@ class Fantasy (ContentManager):
                             linkedSkill="Fencing",
                             notes=[
                                 """
-                                If dual wielding add +1 to damage and +1 to
-                                speed penalty""",
+                                If dual wielding add +1 to damage""",
                                 """
                                 Cannot use items or use techniques in battle while
                                 dual wielding.
@@ -3396,6 +3395,12 @@ class Fantasy (ContentManager):
                     some obligatory condition.
                     """,
                     children=[
+                        LINASEffect(
+                            name="Nausea",
+                            description="""
+                            Entity can no longer consume potions or food.
+                            """
+                        ),
                         LINASEffect(
                             name="Poison",
                             description="""

@@ -10,10 +10,12 @@ from __future__ import print_function, division
 from obj_classes.content_manager import ContentManager
 from obj_classes.pdf_generator import PDFGenerator
 from sections.character_sheet import CharacterSheet
+from sections.data_package import LINASDataPackage
 from obj_classes.linas_entity import LinasEntity
 from obj_classes.linas_item import LINASItem
 from obj_classes.linas_abil import LINASAbility
 from obj_classes.linas_technique import LinasTechnique
+from campaigns.stirring_echoes import StirringEchoes
 from systems.fantasy import Fantasy
 from json import loads
 import os
@@ -24,6 +26,19 @@ if __name__ == "__main__":
     # Define filenames and systems here
     cm=Fantasy()
 
+    if 'campaign' in argv:
+        if 'stirring_echoes' in argv:
+            outFile = f"{os.getcwd()}/pdfs/stirring_echoes.pdf"
+
+            # Create pdf generator
+            se = StirringEchoes()
+
+            generator = PDFGenerator(
+                outputPath=outFile,
+                cm=LINASDataPackage(se.contents, se.dm),
+                debug=True
+            )
+            generator.writeOutToPDF()
     if 'technique' in argv:
         file = ""
         for arg in argv:
